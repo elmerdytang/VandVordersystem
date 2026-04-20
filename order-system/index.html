@@ -94,6 +94,62 @@
     display: flex; align-items: center; justify-content: center;
     font-size: 42px; color: #cbd5e1;
   }
+
+  /* View toggle */
+  .view-toggle {
+    display: inline-flex; border: 1px solid var(--border); border-radius: 6px; overflow: hidden;
+  }
+  .view-btn {
+    background: white; border: none; padding: 8px 12px; font-size: 13px;
+    cursor: pointer; color: var(--muted); font-weight: 500;
+  }
+  .view-btn.active { background: var(--primary); color: white; }
+  .view-btn:not(.active):hover { background: #f1f5f9; }
+
+  /* List view */
+  .products-list {
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+  }
+  .product-row {
+    display: grid; grid-template-columns: 44px 90px 1fr 100px 90px 90px 130px;
+    gap: 12px; padding: 10px 14px; align-items: center;
+    border-bottom: 1px solid var(--border); font-size: 13px;
+  }
+  .product-row:last-child { border-bottom: none; }
+  .product-row:hover { background: #f8fafc; }
+  .product-row.header {
+    background: #f1f5f9; font-weight: 600; font-size: 12px;
+    text-transform: uppercase; color: var(--muted); letter-spacing: 0.3px;
+  }
+  .product-row img, .product-row .product-row-img-ph {
+    width: 40px; height: 40px; border-radius: 4px;
+    object-fit: cover; border: 1px solid var(--border);
+  }
+  .product-row .product-row-img-ph {
+    background: #f1f5f9; color: var(--muted);
+    display: flex; align-items: center; justify-content: center; font-size: 16px;
+  }
+  .product-row .pr-sku { font-family: monospace; font-size: 11px; color: var(--muted); }
+  .product-row .pr-name { font-weight: 600; }
+  .product-row .pr-name small { color: var(--muted); font-weight: 400; }
+  .product-row .pr-cat { font-size: 11px; text-transform: uppercase; letter-spacing: 0.3px; }
+  .product-row .pr-price { font-weight: 700; color: var(--primary-dark); text-align: right; }
+  .product-row .pr-price small { font-weight: 400; color: var(--muted); font-size: 10px; display: block; }
+  .product-row .pr-qty-row { display: flex; gap: 4px; align-items: center; }
+  .product-row .pr-qty-row input {
+    width: 48px; padding: 5px; border: 1px solid var(--border);
+    border-radius: 4px; text-align: center; font-size: 12px;
+  }
+  .product-row .pr-qty-row button {
+    flex: 1; background: var(--primary); color: white; border: none;
+    padding: 6px 8px; border-radius: 4px; cursor: pointer; font-size: 11px; font-weight: 500;
+  }
+  @media (max-width: 780px) {
+    .product-row { grid-template-columns: 44px 1fr; gap: 10px; }
+    .product-row > :nth-child(n+3):nth-child(-n+6) { grid-column: 2; }
+    .product-row > :nth-child(7) { grid-column: 1 / -1; }
+    .product-row.header { display: none; }
+  }
   .product-sku {
     font-family: monospace; font-size: 11px; color: var(--muted);
     background: #f1f5f9; padding: 2px 6px; border-radius: 3px;
@@ -431,6 +487,10 @@
             <option value="Spa_Salon">Spa &amp; Salon</option>
             <option value="Kitchen">Kitchen</option>
           </select>
+          <div class="view-toggle">
+            <button id="vt-grid" class="view-btn active" onclick="setShopView('grid')" title="Grid view">🟦 Grid</button>
+            <button id="vt-list" class="view-btn" onclick="setShopView('list')" title="List view">📋 List</button>
+          </div>
           <button onclick="openProductRequest()" style="padding:8px 14px;background:var(--accent);color:white;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:500;">📸 Request Product</button>
         </div>
         <div id="productsGrid" class="products-grid"></div>
@@ -1046,10 +1106,28 @@ function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 function fmtDate(iso) { return new Date(iso).toLocaleString('en-PH', { dateStyle: 'medium', timeStyle: 'short' }); }
 
 // ========== PRODUCTS & CART ==========
+function setShopView(view) {
+  localStorage.setItem('vv_shop_view', view);
+  document.getElementById('vt-grid').classList.toggle('active', view === 'grid');
+  document.getElementById('vt-list').classList.toggle('active', view === 'list');
+  renderProducts();
+}
+
+function getShopView() {
+  return localStorage.getItem('vv_shop_view') || 'grid';
+}
+
 function renderProducts() {
   const search = document.getElementById('search').value.toLowerCase().trim();
   const cat = document.getElementById('categoryFilter').value;
   const grid = document.getElementById('productsGrid');
+  const view = getShopView();
+
+  // Sync toggle state on first render
+  const gEl = document.getElementById('vt-grid');
+  const lEl = document.getElementById('vt-list');
+  if (gEl) gEl.classList.toggle('active', view === 'grid');
+  if (lEl) lEl.classList.toggle('active', view === 'list');
 
   let filtered = PRODUCTS.filter(p => p.active !== false);
   if (cat) filtered = filtered.filter(p => p.category === cat);
@@ -1062,35 +1140,73 @@ function renderProducts() {
   }
 
   if (!filtered.length) {
-    grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--muted);padding:40px;">No products match your search.</p>';
+    grid.className = '';
+    grid.innerHTML = '<p style="text-align:center;color:var(--muted);padding:40px;">No products match your search.</p>';
     return;
   }
 
-  grid.innerHTML = filtered.slice(0, 200).map(p => {
-    const catLabel = p.category.replace('_', ' & ');
-    const inCart = cart[p.sku] || 0;
-    const imgHtml = p.image
-      ? `<img src="${p.image}" alt="" class="product-img">`
-      : `<div class="product-img product-img-placeholder">📦</div>`;
-    return `
-      <div class="product-card">
-        ${imgHtml}
-        <span class="category-badge cat-${p.category}">${catLabel}</span>
-        <span class="product-sku">${p.sku}</span>
-        <div class="product-name">${escapeHtml(p.name)}</div>
-        ${p.brand ? `<div class="product-meta">Brand: ${escapeHtml(p.brand)}</div>` : ''}
-        ${p.variant ? `<div class="product-variant">${escapeHtml(p.variant)}</div>` : ''}
-        <div class="product-price">${peso(p.price)} <small>/ ${p.uom || 'unit'}</small></div>
-        <div class="qty-row">
-          <input type="number" min="1" value="${inCart || 1}" id="qty-${p.sku}">
-          <button class="btn-add" onclick="addToCart('${p.sku}')">${inCart ? '✓ In Cart (' + inCart + ')' : '+ Add'}</button>
-        </div>
-      </div>
-    `;
-  }).join('');
+  const shown = filtered.slice(0, 200);
+  const overflow = filtered.length > 200;
 
-  if (filtered.length > 200) {
-    grid.innerHTML += `<p style="grid-column:1/-1;text-align:center;color:var(--muted);padding:14px;font-size:13px;">Showing first 200 of ${filtered.length} results. Use search to narrow down.</p>`;
+  if (view === 'list') {
+    grid.className = 'products-list';
+    grid.innerHTML = `
+      <div class="product-row header">
+        <div></div>
+        <div>SKU</div>
+        <div>Name / Brand / Variant</div>
+        <div>Category</div>
+        <div style="text-align:right;">Price</div>
+        <div>UOM</div>
+        <div>Qty &amp; Add</div>
+      </div>
+      ${shown.map(p => {
+        const inCart = cart[p.sku] || 0;
+        const imgHtml = p.image ? `<img src="${p.image}" alt="">` : `<div class="product-row-img-ph">📦</div>`;
+        return `
+          <div class="product-row">
+            ${imgHtml}
+            <div class="pr-sku">${escapeHtml(p.sku)}</div>
+            <div class="pr-name">${escapeHtml(p.name)}${p.brand ? ' <small>· ' + escapeHtml(p.brand) + '</small>' : ''}${p.variant ? '<br><small>' + escapeHtml(p.variant) + '</small>' : ''}</div>
+            <div class="pr-cat">${escapeHtml(p.category.replace('_', ' & '))}</div>
+            <div class="pr-price">${peso(p.price)}<small>/ ${p.uom || 'unit'}</small></div>
+            <div style="font-size:12px;color:var(--muted);">${escapeHtml(p.uom || '')}</div>
+            <div class="pr-qty-row">
+              <input type="number" min="1" value="${inCart || 1}" id="qty-${p.sku}">
+              <button onclick="addToCart('${p.sku}')">${inCart ? '✓ ' + inCart : '+ Add'}</button>
+            </div>
+          </div>
+        `;
+      }).join('')}
+    `;
+  } else {
+    grid.className = 'products-grid';
+    grid.innerHTML = shown.map(p => {
+      const catLabel = p.category.replace('_', ' & ');
+      const inCart = cart[p.sku] || 0;
+      const imgHtml = p.image
+        ? `<img src="${p.image}" alt="" class="product-img">`
+        : `<div class="product-img product-img-placeholder">📦</div>`;
+      return `
+        <div class="product-card">
+          ${imgHtml}
+          <span class="category-badge cat-${p.category}">${catLabel}</span>
+          <span class="product-sku">${p.sku}</span>
+          <div class="product-name">${escapeHtml(p.name)}</div>
+          ${p.brand ? `<div class="product-meta">Brand: ${escapeHtml(p.brand)}</div>` : ''}
+          ${p.variant ? `<div class="product-variant">${escapeHtml(p.variant)}</div>` : ''}
+          <div class="product-price">${peso(p.price)} <small>/ ${p.uom || 'unit'}</small></div>
+          <div class="qty-row">
+            <input type="number" min="1" value="${inCart || 1}" id="qty-${p.sku}">
+            <button class="btn-add" onclick="addToCart('${p.sku}')">${inCart ? '✓ In Cart (' + inCart + ')' : '+ Add'}</button>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  if (overflow) {
+    grid.innerHTML += `<p style="text-align:center;color:var(--muted);padding:14px;font-size:13px;grid-column:1/-1;">Showing first 200 of ${filtered.length} results. Use search to narrow down.</p>`;
   }
 }
 
