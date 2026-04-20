@@ -2,7 +2,7 @@
 
 ## Business context
 
-V&V is a small wholesale supply business in the Philippines serving clinics, salons, offices, and food-service customers with ~718 SKUs across 5 categories: **Medical, Utility, Office, Spa/Salon, Kitchen**. Current state: ~9 branches across 7 customer companies, orders captured manually (PDFs over Viber → re-keyed into Google Sheets).
+V&V is a small wholesale supply business in the Philippines serving clinics, salons, offices, and food-service customers with **718 SKUs across 5 categories**: Medical, Utility, Office, Spa/Salon, Kitchen. Historical state: ~9 branches across 7 customer companies, orders captured manually (PDFs over Viber → re-keyed into Google Sheets).
 
 Owner: Elmer Dy Tang (elmerdytang@gmail.com). Not a developer — building/operating this system himself with AI assistance.
 
@@ -10,21 +10,58 @@ Owner: Elmer Dy Tang (elmerdytang@gmail.com). Not a developer — building/opera
 
 Replace manual order capture with a self-service web portal where:
 - Customer branches log in, browse catalog, add to cart, submit orders
-- A customer-side approver reviews branch orders before they reach V&V
+- A single customer-side approver (**Eisha**) reviews every order across all companies before it reaches V&V
 - V&V sees approved orders in an admin dashboard and drives them through fulfillment (Submitted → Confirmed → Procuring → Ready → Out for Delivery → Delivered → Paid)
 
 ## Architecture plan
 
-**Target platform:** Odoo Community, self-hosted on Alibaba Cloud ECS (~$10/mo). Free license; admin UI covers product CRUD, customer accounts with payment terms, A/R aging, consolidated procurement, sales reports.
+**Target platform (production):** Odoo Community, self-hosted on Alibaba Cloud ECS (~$10/mo). Free license; admin UI covers product CRUD, customer accounts with payment terms, A/R aging, consolidated procurement, sales reports.
 
 **Current state — static HTML prototype** at [order-system/](order-system/):
-- Single-page portal with 3 roles: Branch User, Approver, V&V Admin
-- Data in JSON files exported from the cleaned xlsx
+- Single-page portal with 4 roles: Branch User, Approver (Eisha / multi-company super-approver), V&V Admin, and new-customer signup
+- Data: JSON files exported from the cleaned xlsx + localStorage overlay for user-made changes
 - Orders persist in browser localStorage (demo limitation — not multi-device yet)
-- Approved orders generate a pre-filled email to elmerdytang@gmail.com
+- Staff login with username/password (demo credentials: `admin/vvadmin2026`, `eisha/eisha2026`)
+- Branch users login via simple company+branch dropdown selector
 - Run locally with `python -m http.server 8765` inside `order-system/`, browse `http://localhost:8765`
 
-**Notifications:** email for all events + SMS via Semaphore PH for critical moments (Out for Delivery, Overdue). Viber dropped for v1 — BSP costs blew the $20/mo budget.
+**Notifications plan:** email for all events + SMS via Semaphore PH for critical moments (Out for Delivery, Overdue). Viber dropped for v1 — BSP costs blew the $20/mo budget. Currently manual — approved orders open a clipboard-copy modal (not auto-mailto).
+
+## Features built
+
+**Branch users (Customer tab):**
+- Catalog with search, category filter, images, **Grid / List view toggle** (localStorage-persisted)
+- Cart with quantity controls, VAT-incl totals
+- Checkout with Delivery/Pickup option, notes
+- My Orders tab (Pending / Approved / Rejected with reason banner)
+- Request a product not in catalog (required photo upload)
+
+**Eisha (Super Approver):**
+- Multi-company dashboard aggregating all 7 companies
+- By Company & Branch breakdown with indented branch rows
+- Pending Approvals / Approval History tabs with company filter and search
+- Approve / Reject (reason required) — approval triggers email modal (copy/open mail, non-intrusive)
+- **Shop for a Branch** — Eisha places orders on behalf of any branch; auto-approved since she's the approver
+- Upload deposit slip per order (photo proof of GCash/bank payment)
+
+**V&V Admin:**
+- Dashboard with stat cards: new from approvers, in-fulfillment, delivered-unpaid, today's orders, revenue this month, at-customer, slips to validate, delivered-uninvoiced
+- Consolidated Procurement List grouped by preferred supplier, filterable + printable (one section per supplier)
+- Deposit Slips Awaiting Validation section with inline validate
+- Delivered but Not Yet Invoiced section with "+ Add SI #"
+- A/R Outstanding by Customer
+- All Orders with status pipeline dropdown + invoice filter (Uninvoiced / Invoiced / All)
+- **+ Log Manual Order** — capture offline/historical deliveries
+- Order splitting (`ORD-XXXX-A`, `-B`, …) for partial deliveries with independent status/billing
+- Validate deposit slips against bank app
+- Catalog CRUD: add/edit products, upload images (auto-resized to 600px), bulk actions (mark active/inactive, set supplier/category, adjust prices with `+10%`/`-5%`/`+50`/`=200` syntax)
+- Customer signup approval (assigns payment terms, auto-adds to login dropdown)
+- Product request handling (Sourcing / Add to Catalog with price prompt / Decline)
+- CSV export of all orders
+
+**Analytics tab:** total paid revenue, outstanding A/R, avg order value, monthly revenue trend with mini bars, by-customer, by-branch, fast-moving SKUs (portal orders only; historical data is totals-only).
+
+**Historical data:** 236 orders from `Sales 2025` tab auto-imported on load via `data/legacy_orders.json`. SI numbers preserved as `LEG-SI-XXXX`. Paid/unpaid status mapped. `₱4.27M` paid + `₱258K` A/R outstanding at import time.
 
 ## Key business rules
 
@@ -32,38 +69,66 @@ Replace manual order capture with a self-service web portal where:
 |---|---|
 | Pricing | Single price per SKU; no per-customer pricing; PHP, VAT-inclusive |
 | Payment terms | Loyal customers: **Net 15** (pay within 15 days of delivery). Non-loyal: **Prepaid** via GCash/bank — driver delivers only after payment confirmed. Driver never collects cash. |
-| BIR invoices | Issued separately by V&V, **not** generated by the portal |
-| Approval | Customer-side approver (one per company). Branch submits → approver reviews → approved orders go to V&V |
+| BIR invoices | Issued separately by V&V, **not** generated by the portal (portal stores the SI # you enter) |
+| Approval | **Eisha approves for all 7 companies.** Branch submits → Eisha reviews → approved orders go to V&V |
 | Delivery | V&V's own driver. No fixed zones. V&V picks delivery date, free delivery, small orders piggyback on big runs. Pickup is an option at checkout. |
-| Edit/cancel | 2-hour window after placing |
+| Edit/cancel | 2-hour window after placing *(policy; not yet enforced in UI)* |
 | Minimum order | None |
 | Inventory | Not tracked — V&V sources JIT per order |
 | Expiry/lot | Not tracked |
-| Images | Required in catalog |
+| Images | Supported but not required (Grid/List view handles missing photos) |
 | Onboarding | Customer self-signup with admin approval |
 
 ## Repository layout
 
 ```
 V&V/
-├── CLAUDE.md                  (this file)
+├── CLAUDE.md                    (this file — project context for Claude)
+├── README.md                    (GitHub repo overview)
+├── USER_GUIDE.md                (end-user manual for all 3 roles)
+├── SOP.md                       (Standard Operating Procedures — 12 SOPs + cadence)
+├── .gitignore                   (keeps xlsx + .claude/ out)
 ├── _references/
-│   ├── Sales Tracker 2025.xlsx              (original, untouched)
-│   ├── Sales Tracker 2025 - cleaned.xlsx    (Products · Customers · Suppliers, restructured)
-│   └── cleanup.py                            (script that produced the cleaned xlsx)
+│   ├── Sales Tracker 2025.xlsx              (original, untouched, NOT in git)
+│   ├── Sales Tracker 2025 - cleaned.xlsx    (restructured, NOT in git)
+│   └── cleanup.py                           (script that produced the cleaned xlsx)
 └── order-system/
-    ├── index.html                           (single-page portal: shop / approve / admin)
+    ├── index.html                           (entire portal — single file, ~3500 lines)
     └── data/
-        ├── products.json                    (681 active priced SKUs)
-        └── companies.json                   (7 companies with nested branches + approver)
+        ├── products.json                    (681 active priced SKUs w/ supplier)
+        ├── companies.json                   (7 companies with nested branches + Eisha as approver for all)
+        └── legacy_orders.json               (236 historical orders + 2 legacy-only companies: Centro Parañaque, Ayumi)
 ```
+
+## Persistent state (localStorage)
+
+The portal overlays JSON data with user edits via these keys:
+- `vv_orders` — all orders (portal-created + legacy + manual)
+- `vv_companies_added` — new companies from approved signups
+- `vv_products_added` — products created via admin Catalog
+- `vv_products_edited` — field overrides on any product (merged at load)
+- `vv_signups` — pending/approved/declined customer applications
+- `vv_requests` — product requests from branches
+- `vv_session` (session-scope) — current user login
+- `vv_cart` (session-scope) — current cart
+- `vv_shop_view` — grid vs list preference
 
 ## Data notes
 
-- **Original pricelist**: 718 SKUs; 37 missing prices; Brand filled on ~80 rows; Cost filled on ~44 rows; ~156 rows have an Outlet (preferred supplier) set
-- **Cleaning applied**: pack info parsed from `[...]` brackets into a `Variant/Pack` column; UOM inferred from keywords (box/pack/bottle/pair); SKUs generated per category (`MED-0001`, `UTL-0001`, …)
+- **Original pricelist:** 718 SKUs; 37 missing prices; Brand filled on ~80 rows; Cost filled on ~44 rows; ~156 rows have an Outlet (preferred supplier) set
+- **Cleaning applied:** pack info parsed from `[...]` brackets into a `Variant/Pack` column; UOM inferred from keywords (box/pack/bottle/pair); SKUs generated per category (`MED-0001`, `UTL-0001`, …)
 - **Companies grouped by TIN** — only Healthelements Inc. has multiple branches (Alabang, Pasig, Head Office); everyone else is single-branch
-- **Approvers**: only Healthelements and Stages Solutions have a named approver (both "Eisha"); other companies need approver assignment before they can use the approval flow
+- **Approvers:** **Eisha approves for all 7 companies** (consolidated decision made during the project). Her contact: `+63 917 109 5850`.
+
+## Known gaps (see gap analysis in the project notes)
+
+High-ROI items not yet built: quick-reorder button, delivery receipt print format, edit/cancel window enforcement, auto-email templates after signup approval, Statement of Account generator, password-change UI, status change email notifications to branches.
+
+Production blockers: localStorage-only storage, no real auth, no automated email/SMS, hardcoded credentials. These are the reasons Odoo migration is the end goal.
+
+## Automation in the repo
+
+- **Auto-push Stop hook** in `.claude/settings.local.json` (not committed): after every Claude turn, if there are changes, auto-commits with `auto: checkpoint from Claude session` and pushes to `elmerdytang/VandVordersystem`.
 
 ## Collaboration style
 
@@ -71,3 +136,4 @@ V&V/
 - Prefer concrete, direct recommendations with tradeoffs over research dumps.
 - When sourcing products, include **actual market prices** and realistic PH wholesale leads, not just search result lists.
 - Keep a budget lens on every tool/platform choice ($20/mo total hard cap).
+- After UI changes: start the dev server and verify the feature is reachable before declaring done.
