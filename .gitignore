@@ -1,0 +1,44 @@
+# Sensitive business data — never commit
+_references/Sales Tracker 2025.xlsx
+_references/Sales Tracker 2025 - cleaned.xlsx
+_references/*.xlsx
+_references/*.xls
+_references/*.csv
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Node (if we add build tooling later)
+node_modules/
+dist/
+build/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs and temp
+*.log
+*.tmp
+tmp/
+temp/
+
+# Local env
+.env
+.env.local
+
+# Claude Code local config (machine-specific)
+.claude/
+

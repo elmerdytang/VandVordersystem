@@ -1,0 +1,6812 @@
+[
+  {
+    "sku": "KIT-0001",
+    "name": "Black Straw",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "100pcs per pack",
+    "uom": "pack",
+    "price": 45.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0002",
+    "name": "Botanical Tea",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "",
+    "uom": "",
+    "price": 250.0,
+    "supplier": "Daily"
+  },
+  {
+    "sku": "KIT-0003",
+    "name": "Brown Sugar",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "50 per pack",
+    "uom": "pack",
+    "price": 168.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0005",
+    "name": "Chopping Board",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "",
+    "uom": "",
+    "price": 350.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0006",
+    "name": "Cling Wrap",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "",
+    "uom": "",
+    "price": 40.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0007",
+    "name": "Coffee Stirrer",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "black, 100pcs per pack",
+    "uom": "pack",
+    "price": 48.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0008",
+    "name": "Creamer",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "50 per pack",
+    "uom": "pack",
+    "price": 178.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0009",
+    "name": "Creamer",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "100 per pack",
+    "uom": "pack",
+    "price": 350.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0011",
+    "name": "Digital Kitchen Timer",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "",
+    "uom": "",
+    "price": 225.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0012",
+    "name": "Digital Kitchen Timer",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "2025",
+    "uom": "",
+    "price": 225.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0013",
+    "name": "Disposable Spoon 6\" white",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "25 pcs",
+    "uom": "",
+    "price": 35.0,
+    "supplier": "Mega"
+  },
+  {
+    "sku": "KIT-0014",
+    "name": "Equal",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "1 box = 100 sticks",
+    "uom": "box",
+    "price": 275.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0015",
+    "name": "Hinged Cups 30ml",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "100 per pack",
+    "uom": "pack",
+    "price": 150.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0016",
+    "name": "Iced Tea",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "",
+    "uom": "",
+    "price": 300.0,
+    "supplier": "Hitop"
+  },
+  {
+    "sku": "KIT-0017",
+    "name": "Kitchen Organizer [65 cm / ~21in)",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "",
+    "uom": "",
+    "price": 1180.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "KIT-0018",
+    "name": "Knife",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "",
+    "uom": "",
+    "price": 135.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0019",
+    "name": "Kraft Paper Cup with Lid",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "8oz, 50s per pack",
+    "uom": "pack",
+    "price": 3.5,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0020",
+    "name": "MEGA 8oz Double Wall Paper Cup",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "25 pcs",
+    "uom": "",
+    "price": 128.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0021",
+    "name": "Nescafe Classic 80g / 42 cups",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "",
+    "uom": "",
+    "price": 135.0,
+    "supplier": "Daily"
+  },
+  {
+    "sku": "KIT-0022",
+    "name": "Orocan Kitchen Queen Dish Drainer 8722M",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "",
+    "uom": "",
+    "price": 1760.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "KIT-0023",
+    "name": "Plastic Cup",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "5oz per pc",
+    "uom": "",
+    "price": 1.5,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0024",
+    "name": "Plastic Cups",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "16oz, 50s per pack",
+    "uom": "pack",
+    "price": 1.5,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0025",
+    "name": "Plastic Cups",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "8oz, 50s per pack",
+    "uom": "pack",
+    "price": 1.5,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0026",
+    "name": "Plastic Cups",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "",
+    "uom": "",
+    "price": 1.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0027",
+    "name": "Spoon and Fork",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "stainless",
+    "uom": "",
+    "price": 30.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0028",
+    "name": "Steel Wool Brush Set of 3",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "",
+    "uom": "",
+    "price": 50.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0029",
+    "name": "Stevia Sugar",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "",
+    "uom": "",
+    "price": 289.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0030",
+    "name": "Strainer Big",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "",
+    "uom": "",
+    "price": 157.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0031",
+    "name": "Strainer Small",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "",
+    "uom": "",
+    "price": 125.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0032",
+    "name": "White Paper Cup",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "5oz per pc",
+    "uom": "",
+    "price": 1.5,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0033",
+    "name": "White Paper Cup (10oz, 50 pcs)",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "",
+    "uom": "",
+    "price": 2.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0034",
+    "name": "White Paper Cups",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "8oz,100s per pack",
+    "uom": "pack",
+    "price": 2.5,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0035",
+    "name": "White Paper Cups",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "6.5oz,100s per pack",
+    "uom": "pack",
+    "price": 2.5,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0036",
+    "name": "White Sugar",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "50 per pack",
+    "uom": "pack",
+    "price": 168.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0037",
+    "name": "White Sugar",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "1kg",
+    "uom": "",
+    "price": 100.0,
+    "supplier": "Daily"
+  },
+  {
+    "sku": "KIT-0039",
+    "name": "Ziplock (Small, per pack of 100 pcs)",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "",
+    "uom": "pack",
+    "price": 45.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0040",
+    "name": "brown sugar",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "100 per pack JAN2025",
+    "uom": "pack",
+    "price": 165.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0041",
+    "name": "creamer",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "100 per pack JAN2025",
+    "uom": "pack",
+    "price": 150.0,
+    "supplier": ""
+  },
+  {
+    "sku": "KIT-0042",
+    "name": "sugar",
+    "brand": "",
+    "category": "Kitchen",
+    "variant": "100 per pack JAN2025",
+    "uom": "pack",
+    "price": 165.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0002",
+    "name": "1cc syringe luer lock",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 315.0,
+    "supplier": "G2"
+  },
+  {
+    "sku": "MED-0003",
+    "name": "32G 4mm needles",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 2430.0,
+    "supplier": "G2"
+  },
+  {
+    "sku": "MED-0004",
+    "name": "3cc syringe luer lock",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 315.0,
+    "supplier": "G2"
+  },
+  {
+    "sku": "MED-0005",
+    "name": "Adult Diapers",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 240.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0006",
+    "name": "Alcohol Lamp",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 88.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0007",
+    "name": "Alcohol Pads",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 90.0,
+    "supplier": "G2"
+  },
+  {
+    "sku": "MED-0008",
+    "name": "Alcohol Swab (IV Insertion)",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 90.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0009",
+    "name": "BBR IV Catheter 22g w/ safety cap 2025",
+    "brand": "Bbraun",
+    "category": "Medical",
+    "variant": "box",
+    "uom": "box",
+    "price": 4650.0,
+    "supplier": "Mcfranz"
+  },
+  {
+    "sku": "MED-0010",
+    "name": "BBR IV Catheter 24g w/ safety cap",
+    "brand": "B.Braun",
+    "category": "Medical",
+    "variant": "box",
+    "uom": "box",
+    "price": 4650.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0011",
+    "name": "BBR IV Catheter 24g w/ safety cap 090924",
+    "brand": "Bbraun",
+    "category": "Medical",
+    "variant": "box",
+    "uom": "box",
+    "price": 4650.0,
+    "supplier": "Mcfranz"
+  },
+  {
+    "sku": "MED-0012",
+    "name": "BBR Macroset",
+    "brand": "Bbraun",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 135.0,
+    "supplier": "Mcfranz"
+  },
+  {
+    "sku": "MED-0013",
+    "name": "BBR Microset",
+    "brand": "Bbraun",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 150.0,
+    "supplier": "Mcfranz"
+  },
+  {
+    "sku": "MED-0014",
+    "name": "BD Insulin Syringe",
+    "brand": "",
+    "category": "Medical",
+    "variant": "0.5cc",
+    "uom": "",
+    "price": 2095.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0015",
+    "name": "BP Apparatus",
+    "brand": "",
+    "category": "Medical",
+    "variant": "desk type",
+    "uom": "",
+    "price": 2093.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0016",
+    "name": "BP Apparatus (Stethoscope & Sphygmomanometer)",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 743.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0017",
+    "name": "BP Apparatus w/ standby model with wheels",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 5200.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0018",
+    "name": "Baxtel Aneroid BP Apparatus (Stethoscope & Sphygmomanometer)",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 3200.0,
+    "supplier": "Aneroid"
+  },
+  {
+    "sku": "MED-0019",
+    "name": "Chlorhexedine Spray (antiseptic) 300ml",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 460.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "MED-0020",
+    "name": "Cutasept",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 370.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0021",
+    "name": "Denatured Alcohol",
+    "brand": "",
+    "category": "Medical",
+    "variant": "price per case",
+    "uom": "case",
+    "price": 2000.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0022",
+    "name": "Denatured Alcohol",
+    "brand": "",
+    "category": "Medical",
+    "variant": "price per gallon",
+    "uom": "",
+    "price": 500.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0023",
+    "name": "Denatured Alcohol",
+    "brand": "",
+    "category": "Medical",
+    "variant": "per gallon",
+    "uom": "",
+    "price": 2430.0,
+    "supplier": "Darwin"
+  },
+  {
+    "sku": "MED-0025",
+    "name": "EUR Plain LR",
+    "brand": "Euromed",
+    "category": "Medical",
+    "variant": "500ml, 24 bottles",
+    "uom": "bottle",
+    "price": 2880.0,
+    "supplier": "Euromed"
+  },
+  {
+    "sku": "MED-0026",
+    "name": "EUR Plain LR",
+    "brand": "Euromed",
+    "category": "Medical",
+    "variant": "1L, 12 bottles",
+    "uom": "bottle",
+    "price": 1440.0,
+    "supplier": "Euromed"
+  },
+  {
+    "sku": "MED-0027",
+    "name": "EUR Plain NSS",
+    "brand": "Euromed",
+    "category": "Medical",
+    "variant": "box",
+    "uom": "box",
+    "price": 1320.0,
+    "supplier": "Euromed"
+  },
+  {
+    "sku": "MED-0028",
+    "name": "EUR Plain NSS",
+    "brand": "Euromed",
+    "category": "Medical",
+    "variant": "500ml",
+    "uom": "",
+    "price": 2640.0,
+    "supplier": "Euromed"
+  },
+  {
+    "sku": "MED-0029",
+    "name": "EUR Plain NSS",
+    "brand": "Euromed",
+    "category": "Medical",
+    "variant": "100ml",
+    "uom": "",
+    "price": 8910.0,
+    "supplier": "Euromed"
+  },
+  {
+    "sku": "MED-0030",
+    "name": "Enema Bucket",
+    "brand": "Home Gallery Timba",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 240.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0031",
+    "name": "Eur PNSS 100ml per bottle",
+    "brand": "",
+    "category": "Medical",
+    "variant": "glass",
+    "uom": "bottle",
+    "price": 74.25,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0032",
+    "name": "First Aid Kit",
+    "brand": "",
+    "category": "Medical",
+    "variant": "Small",
+    "uom": "",
+    "price": 750.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0033",
+    "name": "First Aid Kit",
+    "brand": "",
+    "category": "Medical",
+    "variant": "Large",
+    "uom": "",
+    "price": 1800.0,
+    "supplier": "G2"
+  },
+  {
+    "sku": "MED-0034",
+    "name": "Gauze Pads",
+    "brand": "",
+    "category": "Medical",
+    "variant": "4x4",
+    "uom": "",
+    "price": 324.0,
+    "supplier": "G2"
+  },
+  {
+    "sku": "MED-0035",
+    "name": "Glass Slides",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 135.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0036",
+    "name": "Hair Cover",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 150.0,
+    "supplier": "G2"
+  },
+  {
+    "sku": "MED-0037",
+    "name": "Hydrogen Peroxide",
+    "brand": "G2",
+    "category": "Medical",
+    "variant": "per gallon",
+    "uom": "",
+    "price": 600.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0038",
+    "name": "Hypodemice Needle 18g MAKATI 1st",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 513.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0039",
+    "name": "Hypodemice Needle 23g MAKATI 1st",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 513.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0040",
+    "name": "Hypodermic Needle 18g",
+    "brand": "",
+    "category": "Medical",
+    "variant": "2025",
+    "uom": "",
+    "price": 513.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0041",
+    "name": "Hypodermic Needle 21g",
+    "brand": "",
+    "category": "Medical",
+    "variant": "2025",
+    "uom": "",
+    "price": 513.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0042",
+    "name": "Hypodermic Needle 21g MAKATI 1st",
+    "brand": "",
+    "category": "Medical",
+    "variant": "For IV Laser",
+    "uom": "",
+    "price": 513.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0043",
+    "name": "Hypodermic Needle 23g",
+    "brand": "",
+    "category": "Medical",
+    "variant": "2025",
+    "uom": "",
+    "price": 513.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0044",
+    "name": "Hypodermic Needle G27",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 375.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0045",
+    "name": "IND Face mask",
+    "brand": "Indoplas",
+    "category": "Medical",
+    "variant": "3-ply",
+    "uom": "",
+    "price": 80.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0046",
+    "name": "IND Latex Gloves",
+    "brand": "Indoplas",
+    "category": "Medical",
+    "variant": "small",
+    "uom": "",
+    "price": 230.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0047",
+    "name": "IND Latex Gloves",
+    "brand": "Indoplas",
+    "category": "Medical",
+    "variant": "medium",
+    "uom": "",
+    "price": 230.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0048",
+    "name": "IND Latex Gloves",
+    "brand": "Indoplas",
+    "category": "Medical",
+    "variant": "large",
+    "uom": "",
+    "price": 230.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0049",
+    "name": "IV Basket",
+    "brand": "",
+    "category": "Medical",
+    "variant": "with cover, medium",
+    "uom": "",
+    "price": 90.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0050",
+    "name": "IV Stand",
+    "brand": "",
+    "category": "Medical",
+    "variant": "stainless, wheels",
+    "uom": "",
+    "price": 1850.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0051",
+    "name": "IV Stand",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 2000.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0053",
+    "name": "Insulin Syringe 1.0cc",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 2100.0,
+    "supplier": "G2"
+  },
+  {
+    "sku": "MED-0054",
+    "name": "Isopropyl Alcohol",
+    "brand": "",
+    "category": "Medical",
+    "variant": "gallon",
+    "uom": "",
+    "price": 460.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0055",
+    "name": "Kelly Forcep",
+    "brand": "",
+    "category": "Medical",
+    "variant": "long",
+    "uom": "",
+    "price": 243.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0056",
+    "name": "Kelly Forcep",
+    "brand": "",
+    "category": "Medical",
+    "variant": "small, per piece",
+    "uom": "",
+    "price": 95.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0057",
+    "name": "Kelly Forcep Medium Curved",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 475.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0058",
+    "name": "Kelly Pad",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 1500.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0059",
+    "name": "Lab Gown",
+    "brand": "",
+    "category": "Medical",
+    "variant": "large, long sleeves",
+    "uom": "",
+    "price": 550.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0060",
+    "name": "Lab gown Medium",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 525.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0061",
+    "name": "Lancing Device",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 243.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0062",
+    "name": "Lancing Device",
+    "brand": "",
+    "category": "Medical",
+    "variant": "2025",
+    "uom": "",
+    "price": 225.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0063",
+    "name": "Lancing Needle",
+    "brand": "",
+    "category": "Medical",
+    "variant": "2025",
+    "uom": "",
+    "price": 300.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0064",
+    "name": "Latex Gloves",
+    "brand": "",
+    "category": "Medical",
+    "variant": "extra small",
+    "uom": "",
+    "price": 280.0,
+    "supplier": "G2"
+  },
+  {
+    "sku": "MED-0065",
+    "name": "Lidocaine Lidophil 50ml",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 115.0,
+    "supplier": "G2"
+  },
+  {
+    "sku": "MED-0066",
+    "name": "Littman Stethoscope Classic III",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 8500.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0067",
+    "name": "MAYO Surgical Scissors Curved",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 185.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0068",
+    "name": "MUL Iron Sucrose",
+    "brand": "Multicare",
+    "category": "Medical",
+    "variant": "Maxifer, 5ml vial",
+    "uom": "vial",
+    "price": 530.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0069",
+    "name": "Medical Hair Cover",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 172.0,
+    "supplier": "G3"
+  },
+  {
+    "sku": "MED-0070",
+    "name": "Medical Penlight",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 95.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0071",
+    "name": "Metal Foot Stirrup",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 2430.0,
+    "supplier": "Ichadora"
+  },
+  {
+    "sku": "MED-0072",
+    "name": "Micropore Tape",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 740.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0073",
+    "name": "Mustela Facial Wash",
+    "brand": "",
+    "category": "Medical",
+    "variant": "per bottle",
+    "uom": "bottle",
+    "price": 1320.0,
+    "supplier": "Mustella"
+  },
+  {
+    "sku": "MED-0074",
+    "name": "Mustela Micellar Water",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 885.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "MED-0075",
+    "name": "Mustela Micellar Wipes",
+    "brand": "",
+    "category": "Medical",
+    "variant": "per pack",
+    "uom": "pack",
+    "price": 780.0,
+    "supplier": "Mustella"
+  },
+  {
+    "sku": "MED-0076",
+    "name": "Nitrile Gloves (small)",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 243.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0077",
+    "name": "Nitrile Gloves 2025",
+    "brand": "",
+    "category": "Medical",
+    "variant": "Medium",
+    "uom": "",
+    "price": 250.0,
+    "supplier": "Orex"
+  },
+  {
+    "sku": "MED-0078",
+    "name": "Nitrile Gloves 2025",
+    "brand": "",
+    "category": "Medical",
+    "variant": "Small",
+    "uom": "",
+    "price": 250.0,
+    "supplier": "Orex"
+  },
+  {
+    "sku": "MED-0079",
+    "name": "Nitrile Gloves Extra Small",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 250.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0080",
+    "name": "ORM Suction Catheter",
+    "brand": "Ormed",
+    "category": "Medical",
+    "variant": "fr18, 10box=1case",
+    "uom": "case",
+    "price": 1000.0,
+    "supplier": "Impexcos"
+  },
+  {
+    "sku": "MED-0081",
+    "name": "ORM Suction Catheter",
+    "brand": "Ormed",
+    "category": "Medical",
+    "variant": "fr18, per pc",
+    "uom": "",
+    "price": 100.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0082",
+    "name": "Olten Kelly Forcep (Big 7\")",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 1285.0,
+    "supplier": "G2"
+  },
+  {
+    "sku": "MED-0087",
+    "name": "Paramedic Medical Scissor",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 335.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0088",
+    "name": "Partners Lancet",
+    "brand": "",
+    "category": "Medical",
+    "variant": "200pcs/box",
+    "uom": "box",
+    "price": 216.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0089",
+    "name": "Partners Lancet 2025",
+    "brand": "",
+    "category": "Medical",
+    "variant": "200pcs/box",
+    "uom": "box",
+    "price": 325.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0091",
+    "name": "Plastic Kidney Basin",
+    "brand": "",
+    "category": "Medical",
+    "variant": "medium",
+    "uom": "",
+    "price": 25.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0092",
+    "name": "Pulse Oximeter",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 743.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0093",
+    "name": "SIM Hypodermic Needle",
+    "brand": "Simplex",
+    "category": "Medical",
+    "variant": "23g",
+    "uom": "",
+    "price": 375.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0094",
+    "name": "SIM Hypodermic Needle",
+    "brand": "Simplex",
+    "category": "Medical",
+    "variant": "21g",
+    "uom": "",
+    "price": 375.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0095",
+    "name": "SIM Hypodermic Needle",
+    "brand": "Simplex",
+    "category": "Medical",
+    "variant": "18g",
+    "uom": "",
+    "price": 375.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0096",
+    "name": "SINO Glucometer read to 500mg/dl",
+    "brand": "Ormed",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 1280.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0097",
+    "name": "SUR Flat Tourniquet",
+    "brand": "",
+    "category": "Medical",
+    "variant": "50 pcs per box",
+    "uom": "box",
+    "price": 15.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0098",
+    "name": "SUR KY Jelly",
+    "brand": "",
+    "category": "Medical",
+    "variant": "150g, per pc",
+    "uom": "",
+    "price": 250.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0099",
+    "name": "SUR Latex Gloves",
+    "brand": "Surgitech",
+    "category": "Medical",
+    "variant": "small",
+    "uom": "",
+    "price": 230.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0100",
+    "name": "SUR Latex Gloves",
+    "brand": "Surgitech",
+    "category": "Medical",
+    "variant": "medium",
+    "uom": "",
+    "price": 230.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0101",
+    "name": "SURGU Hypodermic Needle",
+    "brand": "Sureguard",
+    "category": "Medical",
+    "variant": "23g",
+    "uom": "",
+    "price": 375.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0102",
+    "name": "SURGU Hypodermic Needle",
+    "brand": "Sureguard",
+    "category": "Medical",
+    "variant": "18g",
+    "uom": "",
+    "price": 375.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0103",
+    "name": "Sharp Container",
+    "brand": "",
+    "category": "Medical",
+    "variant": "5L",
+    "uom": "",
+    "price": 265.0,
+    "supplier": "G2"
+  },
+  {
+    "sku": "MED-0104",
+    "name": "Sinocare Test Strips",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 700.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0105",
+    "name": "Slide Cover Slips",
+    "brand": "",
+    "category": "Medical",
+    "variant": "24x55mm, 0.13-.16mm",
+    "uom": "",
+    "price": 100.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0106",
+    "name": "Slide Cover Slips",
+    "brand": "",
+    "category": "Medical",
+    "variant": "22x22mm, 0.13-.16mm",
+    "uom": "",
+    "price": 100.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0107",
+    "name": "Sterile Surgical Gloves size 8",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 900.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0108",
+    "name": "Stethoscope",
+    "brand": "",
+    "category": "Medical",
+    "variant": "Partners",
+    "uom": "",
+    "price": 1485.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0109",
+    "name": "Surgical Scissors Curved",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 243.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0110",
+    "name": "Syringe",
+    "brand": "Cardinal",
+    "category": "Medical",
+    "variant": "3cc, box",
+    "uom": "box",
+    "price": 200.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0111",
+    "name": "Syringe",
+    "brand": "Cardinal",
+    "category": "Medical",
+    "variant": "10cc. box",
+    "uom": "box",
+    "price": 400.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0112",
+    "name": "Syringe",
+    "brand": "Cardinal",
+    "category": "Medical",
+    "variant": "20cc. box",
+    "uom": "box",
+    "price": 570.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0113",
+    "name": "Syringe 10ml/cc",
+    "brand": "",
+    "category": "Medical",
+    "variant": "2025",
+    "uom": "",
+    "price": 432.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0114",
+    "name": "Syringe 10ml/cc Makati 1st",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 432.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0115",
+    "name": "Syringe 20ml/cc",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 720.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0116",
+    "name": "Syringe 3ml/cc",
+    "brand": "",
+    "category": "Medical",
+    "variant": "2025",
+    "uom": "",
+    "price": 284.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0117",
+    "name": "Syringe 3ml/cc MAKATI 1st",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 284.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0118",
+    "name": "Syringe 50cc",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 610.0,
+    "supplier": "G2"
+  },
+  {
+    "sku": "MED-0119",
+    "name": "Syringe July2025",
+    "brand": "",
+    "category": "Medical",
+    "variant": "5cc, box",
+    "uom": "box",
+    "price": 315.0,
+    "supplier": "G2"
+  },
+  {
+    "sku": "MED-0120",
+    "name": "Syringe July2025",
+    "brand": "",
+    "category": "Medical",
+    "variant": "3cc, box",
+    "uom": "box",
+    "price": 315.0,
+    "supplier": "G2"
+  },
+  {
+    "sku": "MED-0121",
+    "name": "TER Hypodermic Needle",
+    "brand": "Terumo",
+    "category": "Medical",
+    "variant": "18g",
+    "uom": "",
+    "price": 375.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0122",
+    "name": "TER Hypodermic Needle",
+    "brand": "Terumo",
+    "category": "Medical",
+    "variant": "21g",
+    "uom": "",
+    "price": 450.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0123",
+    "name": "TER Hypodermic Needle",
+    "brand": "Terumo",
+    "category": "Medical",
+    "variant": "23g",
+    "uom": "",
+    "price": 375.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0125",
+    "name": "Thermal Scanner",
+    "brand": "",
+    "category": "Medical",
+    "variant": "Gun Type",
+    "uom": "",
+    "price": 675.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0126",
+    "name": "Tongue Depressor",
+    "brand": "",
+    "category": "Medical",
+    "variant": "1 box = 100 pcs",
+    "uom": "box",
+    "price": 205.0,
+    "supplier": "G2"
+  },
+  {
+    "sku": "MED-0127",
+    "name": "Torniquet",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 20.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0128",
+    "name": "Tuberculine Syringe",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "tube",
+    "price": 500.0,
+    "supplier": "Impexcos"
+  },
+  {
+    "sku": "MED-0129",
+    "name": "Underpads",
+    "brand": "",
+    "category": "Medical",
+    "variant": "per case",
+    "uom": "case",
+    "price": 200.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0130",
+    "name": "Weighing Scale",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 6500.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0131",
+    "name": "Wheel Chair",
+    "brand": "",
+    "category": "Medical",
+    "variant": "",
+    "uom": "",
+    "price": 3920.0,
+    "supplier": ""
+  },
+  {
+    "sku": "MED-0132",
+    "name": "Wooden Rounded Plate",
+    "brand": "",
+    "category": "Medical",
+    "variant": "for needles",
+    "uom": "",
+    "price": 279.0,
+    "supplier": "Sm"
+  },
+  {
+    "sku": "OFC-0001",
+    "name": "12-in Ruler",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 58.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0003",
+    "name": "3-layer desk / folder tray",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 959.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0004",
+    "name": "3-tier storage cart",
+    "brand": "",
+    "category": "Office",
+    "variant": "metal, black or white",
+    "uom": "",
+    "price": 800.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0005",
+    "name": "A4 Clipboard",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 161.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0006",
+    "name": "AA Battery",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 137.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0007",
+    "name": "AA Battery (2s)",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 90.0,
+    "supplier": "Lam"
+  },
+  {
+    "sku": "OFC-0008",
+    "name": "AAA Battery (2s)",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 120.0,
+    "supplier": "Lam"
+  },
+  {
+    "sku": "OFC-0009",
+    "name": "AcrilaManila Tip Jar Transparent",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 685.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0010",
+    "name": "Acrylic Tip Jar Transparent",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 685.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0011",
+    "name": "Ballpen",
+    "brand": "",
+    "category": "Office",
+    "variant": "black",
+    "uom": "",
+    "price": 8.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0012",
+    "name": "Ballpen",
+    "brand": "",
+    "category": "Office",
+    "variant": "red",
+    "uom": "",
+    "price": 8.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0013",
+    "name": "Ballpen",
+    "brand": "",
+    "category": "Office",
+    "variant": "blue",
+    "uom": "",
+    "price": 8.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0014",
+    "name": "Ballpen 0.5 Flextime",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 135.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "OFC-0015",
+    "name": "Ballpen Holder",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 114.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0016",
+    "name": "Battery 1x3V = CR2023",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 25.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0017",
+    "name": "Bavin 7-in-1 adapter",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 1724.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0018",
+    "name": "Binder Clip 51mm",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 11.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0019",
+    "name": "Binder Clip Small",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 3.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0020",
+    "name": "Binder Clip Yellow",
+    "brand": "",
+    "category": "Office",
+    "variant": "1in",
+    "uom": "",
+    "price": 9.5,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0021",
+    "name": "Blue Ink for Stamp Pad",
+    "brand": "",
+    "category": "Office",
+    "variant": "Eveready gtk",
+    "uom": "",
+    "price": 78.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0022",
+    "name": "Bond Paper",
+    "brand": "",
+    "category": "Office",
+    "variant": "short, 80gsm",
+    "uom": "",
+    "price": 275.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0023",
+    "name": "Brother BTD60 Black Ink",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 635.0,
+    "supplier": "Lam"
+  },
+  {
+    "sku": "OFC-0024",
+    "name": "Brown Envelope",
+    "brand": "",
+    "category": "Office",
+    "variant": "short",
+    "uom": "",
+    "price": 4.5,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0025",
+    "name": "Brown Envelope",
+    "brand": "",
+    "category": "Office",
+    "variant": "long",
+    "uom": "",
+    "price": 5.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0026",
+    "name": "COPY PAPER Long Bond",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 288.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0027",
+    "name": "COPY PAPER Short Bond",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 348.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0028",
+    "name": "Carbon Paper",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 35.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0029",
+    "name": "Cash box",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "box",
+    "price": 1699.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0030",
+    "name": "Casio Calculator",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 730.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0031",
+    "name": "Casio Calculator 12dgt MX120-B",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 797.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0032",
+    "name": "Clear Packaging Tape",
+    "brand": "",
+    "category": "Office",
+    "variant": "1in",
+    "uom": "pack",
+    "price": 22.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0033",
+    "name": "Clear Packaging Tape",
+    "brand": "",
+    "category": "Office",
+    "variant": "2in",
+    "uom": "pack",
+    "price": 65.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0035",
+    "name": "Clearbook",
+    "brand": "",
+    "category": "Office",
+    "variant": "long, black",
+    "uom": "",
+    "price": 350.0,
+    "supplier": "National Bookstore"
+  },
+  {
+    "sku": "OFC-0036",
+    "name": "Clearbook A4 Black",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 150.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0037",
+    "name": "Clip Folder",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 115.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0038",
+    "name": "Clipboard for Bill Receipt",
+    "brand": "",
+    "category": "Office",
+    "variant": "A5",
+    "uom": "",
+    "price": 108.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0039",
+    "name": "Coin Envelope Brown",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 54.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0040",
+    "name": "Correction Tape",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 48.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0041",
+    "name": "Correction Tape",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 50.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0042",
+    "name": "Date Stamp",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 44.0,
+    "supplier": "Ofc Warehouse"
+  },
+  {
+    "sku": "OFC-0043",
+    "name": "Decora Binder Clip 1 5/8\" (Medium)",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 6.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0044",
+    "name": "Dong-A Correction Tape",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 95.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0045",
+    "name": "Double Sided Tape",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 35.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0046",
+    "name": "Double Sided Tape for Wall",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 80.0,
+    "supplier": "Diy Store"
+  },
+  {
+    "sku": "OFC-0047",
+    "name": "EPSON L3210 ink refill",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 460.0,
+    "supplier": "Lam"
+  },
+  {
+    "sku": "OFC-0048",
+    "name": "Elite Glossy Photo Paper",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 298.0,
+    "supplier": "National"
+  },
+  {
+    "sku": "OFC-0049",
+    "name": "Epson Ink",
+    "brand": "",
+    "category": "Office",
+    "variant": "black ink",
+    "uom": "",
+    "price": 419.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0050",
+    "name": "Epson Ink",
+    "brand": "",
+    "category": "Office",
+    "variant": "cyan, magenta, yellow",
+    "uom": "",
+    "price": 473.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0051",
+    "name": "Epson Ink Black",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 420.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0052",
+    "name": "Eraser",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 10.0,
+    "supplier": "Lam"
+  },
+  {
+    "sku": "OFC-0053",
+    "name": "Fastener",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 45.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0054",
+    "name": "Fiber Castell 0.5 Ballpen",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 25.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0055",
+    "name": "File folder",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 186.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0056",
+    "name": "Folder",
+    "brand": "",
+    "category": "Office",
+    "variant": "short",
+    "uom": "",
+    "price": 7.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0057",
+    "name": "Gel Pen",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 35.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0059",
+    "name": "Glue",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 59.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0060",
+    "name": "HAR Bond Paper",
+    "brand": "",
+    "category": "Office",
+    "variant": "Hard Copy, long, 80gsm",
+    "uom": "",
+    "price": 320.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0061",
+    "name": "HAR Bond Paper",
+    "brand": "",
+    "category": "Office",
+    "variant": "Hard Copy, A4, 80gsm",
+    "uom": "",
+    "price": 290.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0062",
+    "name": "HBW Retractable Pen",
+    "brand": "Hbw",
+    "category": "Office",
+    "variant": "HBW, black",
+    "uom": "",
+    "price": 8.5,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0063",
+    "name": "HBW Retractable Pen",
+    "brand": "",
+    "category": "Office",
+    "variant": "HBW, red",
+    "uom": "",
+    "price": 8.5,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0064",
+    "name": "HP GT52 HP Black Ink",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 486.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0065",
+    "name": "HP GT53 HP Yellow Ink",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 486.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0066",
+    "name": "Heavy Dutter Cutter Extra Blades",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 26.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0067",
+    "name": "Heavy Duty Cutter",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 150.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0068",
+    "name": "Highlighter",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 50.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0069",
+    "name": "Ink Brother DCP-T520W",
+    "brand": "",
+    "category": "Office",
+    "variant": "per bottle",
+    "uom": "bottle",
+    "price": 600.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0070",
+    "name": "Ink HP Smart Tank 515, black",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 415.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0071",
+    "name": "Internet Router TP Link",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 4320.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0072",
+    "name": "Joy Binder Clip 2\" (Large)",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 9.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0073",
+    "name": "LAM Carbon Paper",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 35.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0074",
+    "name": "LAM Office Regular Cutter",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 123.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0075",
+    "name": "LAM Whiteboard Marker",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 77.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0076",
+    "name": "Logbook",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 216.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0077",
+    "name": "Long Clear Book (Black)",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 210.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0078",
+    "name": "MON Pencil",
+    "brand": "",
+    "category": "Office",
+    "variant": "Monggol, no.2",
+    "uom": "",
+    "price": 15.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0079",
+    "name": "Maped 7-in Scissors",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 149.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0080",
+    "name": "Masking Tape 1in",
+    "brand": "",
+    "category": "Office",
+    "variant": "Amrak",
+    "uom": "",
+    "price": 60.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0081",
+    "name": "Masking Tape, small 1in",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 57.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0082",
+    "name": "Measuring Tape",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 162.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0083",
+    "name": "Metal Tape Dispenser",
+    "brand": "Joy",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 175.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0084",
+    "name": "Mighty Bond",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 100.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0085",
+    "name": "Mongol Pencil No. 2",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 15.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0086",
+    "name": "OFC WRHSE Clear Book Long Black w plastic sleeves",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 98.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0087",
+    "name": "OFC WRHSE Date Stamp",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 44.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0088",
+    "name": "OFC WRHSE Long Clear Book (Black)",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 115.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0089",
+    "name": "OFC WRHSE Stamp Pad",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 47.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0090",
+    "name": "OFC WRHSE Sticky Notes 400/500 sheets",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 77.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0091",
+    "name": "OFC WRHSE usb 16gb",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 540.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0092",
+    "name": "Pantry Trash Bin with Pedal",
+    "brand": "",
+    "category": "Office",
+    "variant": "50L",
+    "uom": "",
+    "price": 1100.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0093",
+    "name": "Paper Clips",
+    "brand": "",
+    "category": "Office",
+    "variant": "silver",
+    "uom": "",
+    "price": 18.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0094",
+    "name": "Pencil",
+    "brand": "",
+    "category": "Office",
+    "variant": "Monggol",
+    "uom": "",
+    "price": 16.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0095",
+    "name": "Pentel Black",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 47.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0096",
+    "name": "Pentel Blue",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 47.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0097",
+    "name": "Permanent Marker",
+    "brand": "",
+    "category": "Office",
+    "variant": "black",
+    "uom": "",
+    "price": 51.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0098",
+    "name": "Permanent Marker",
+    "brand": "",
+    "category": "Office",
+    "variant": "black, small",
+    "uom": "",
+    "price": 60.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0099",
+    "name": "Permanent Marker",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 24.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0100",
+    "name": "Pett Cash Voucher",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 11.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0101",
+    "name": "Petty Cash Voucher Carbonized",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 85.0,
+    "supplier": "Shopee"
+  },
+  {
+    "sku": "OFC-0102",
+    "name": "Photo Paper A4",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 220.0,
+    "supplier": "National"
+  },
+  {
+    "sku": "OFC-0103",
+    "name": "Plastic Envelope",
+    "brand": "",
+    "category": "Office",
+    "variant": "small",
+    "uom": "",
+    "price": 20.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0104",
+    "name": "Plastic Envelope",
+    "brand": "",
+    "category": "Office",
+    "variant": "long",
+    "uom": "",
+    "price": 24.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0105",
+    "name": "Plastic Fastener",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 228.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0106",
+    "name": "Post-it Pad",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 41.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0108",
+    "name": "Printer ink Black Epson L3110",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 419.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0109",
+    "name": "Printer ink Black Epson L3110",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 419.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0110",
+    "name": "Puncher",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 144.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0111",
+    "name": "Pushpin for Corkboard",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 22.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0112",
+    "name": "Rubber Band",
+    "brand": "",
+    "category": "Office",
+    "variant": "box, gms brite",
+    "uom": "box",
+    "price": 223.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0113",
+    "name": "SANDISK flashdrive",
+    "brand": "",
+    "category": "Office",
+    "variant": "8GB",
+    "uom": "",
+    "price": 290.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0114",
+    "name": "SCO Clear Tape",
+    "brand": "",
+    "category": "Office",
+    "variant": "Scotch, 1in",
+    "uom": "",
+    "price": 32.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0115",
+    "name": "SCO Clear Tape",
+    "brand": "",
+    "category": "Office",
+    "variant": "Scotch, 2in",
+    "uom": "",
+    "price": 97.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0116",
+    "name": "SCOTCH TAPE 1in",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 30.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0117",
+    "name": "Scissors",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 115.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0118",
+    "name": "Scotch Brite Clear Tape 3/4 size",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 15.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0119",
+    "name": "Scotch Tape",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 22.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0120",
+    "name": "Scotch Tape 3in",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 28.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0121",
+    "name": "Sign Here Sticky Notes",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 47.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0122",
+    "name": "Sign Pen",
+    "brand": "",
+    "category": "Office",
+    "variant": "Enice, 0.5, black",
+    "uom": "",
+    "price": 7.5,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0123",
+    "name": "Signpen black 0.35",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 46.0,
+    "supplier": "Lam"
+  },
+  {
+    "sku": "OFC-0124",
+    "name": "Stamp Pad Ink Blue",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 62.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0125",
+    "name": "Staple Wire No. 10",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 14.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0126",
+    "name": "Staple Wire No. 35",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 61.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0127",
+    "name": "Stapler",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 216.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0128",
+    "name": "Sticker Paper",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 180.0,
+    "supplier": "National"
+  },
+  {
+    "sku": "OFC-0129",
+    "name": "Sticky note",
+    "brand": "",
+    "category": "Office",
+    "variant": "square pad, 12 pads per pack",
+    "uom": "pack",
+    "price": 588.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0130",
+    "name": "Sticky note",
+    "brand": "",
+    "category": "Office",
+    "variant": "square pad",
+    "uom": "",
+    "price": 45.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0131",
+    "name": "Tape Holder",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 149.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0132",
+    "name": "Tape dispenser Big",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 150.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0133",
+    "name": "Thermal Paper",
+    "brand": "",
+    "category": "Office",
+    "variant": "Maya terminal, 50x57mm",
+    "uom": "",
+    "price": 33.5,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0134",
+    "name": "Thermal Paper for GHL",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 144.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "OFC-0135",
+    "name": "USB Sandisk 32gb",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 300.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0136",
+    "name": "Vinyl Paper Clip (per box)",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "box",
+    "price": 15.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0137",
+    "name": "White Envelope",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 51.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0138",
+    "name": "White Envelope",
+    "brand": "",
+    "category": "Office",
+    "variant": "25 pcs",
+    "uom": "",
+    "price": 45.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0139",
+    "name": "White Folder",
+    "brand": "",
+    "category": "Office",
+    "variant": "long",
+    "uom": "",
+    "price": 8.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0140",
+    "name": "White Folder",
+    "brand": "",
+    "category": "Office",
+    "variant": "short",
+    "uom": "",
+    "price": 7.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0141",
+    "name": "Whiteboard Marker",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 77.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0142",
+    "name": "Wooden Clipboard",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 85.0,
+    "supplier": ""
+  },
+  {
+    "sku": "OFC-0143",
+    "name": "jelly double sided tape",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 225.0,
+    "supplier": "Diy"
+  },
+  {
+    "sku": "OFC-0144",
+    "name": "single hole sharpener",
+    "brand": "",
+    "category": "Office",
+    "variant": "",
+    "uom": "",
+    "price": 12.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0001",
+    "name": "Acetone",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 1250.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0002",
+    "name": "Adjustable facial band",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 50.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "SPA-0003",
+    "name": "Alligator Hair Clip",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "1 pack 100 pcs",
+    "uom": "pack",
+    "price": 265.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "SPA-0004",
+    "name": "Argan Treatment",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "BSE, gallon",
+    "uom": "",
+    "price": 660.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0005",
+    "name": "BSE Callus Remover",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 460.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0007",
+    "name": "BSE Cuticle Remover",
+    "brand": "Bse",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 315.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0009",
+    "name": "BSE Foot Lotion",
+    "brand": "Bse",
+    "category": "Spa_Salon",
+    "variant": "peppermint",
+    "uom": "",
+    "price": 450.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0010",
+    "name": "BSE Foot Lotion",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 450.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0011",
+    "name": "BSE Foot Scrub",
+    "brand": "Bse",
+    "category": "Spa_Salon",
+    "variant": "peppermint",
+    "uom": "",
+    "price": 465.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0012",
+    "name": "BSE Foot Soak",
+    "brand": "Bse",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 460.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0013",
+    "name": "BSE Hair Conditioner",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "Green Tea, per gallon",
+    "uom": "",
+    "price": 300.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0014",
+    "name": "BSE Lotion",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "cherry blossom scent",
+    "uom": "",
+    "price": 650.0,
+    "supplier": "Bse"
+  },
+  {
+    "sku": "SPA-0016",
+    "name": "BSE Massage Oil with VCO",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "Lavander Scent",
+    "uom": "",
+    "price": 775.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0018",
+    "name": "BSE Shampoo",
+    "brand": "Bse",
+    "category": "Spa_Salon",
+    "variant": "green tea",
+    "uom": "",
+    "price": 350.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0019",
+    "name": "BSE VCO Unscented Massage Oil",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 1701.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0020",
+    "name": "Bath Towel Thin White 2026",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 299.0,
+    "supplier": "Landmark [Easy Earth]"
+  },
+  {
+    "sku": "SPA-0022",
+    "name": "Black Trolley (Landmark)",
+    "brand": "Landmark",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "roll",
+    "price": 1400.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0023",
+    "name": "Bobbie Polish Remover",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 1400.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0024",
+    "name": "Bobby Pins",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "per box",
+    "uom": "box",
+    "price": 54.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0025",
+    "name": "Bobby Pins U-Shape",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "per box",
+    "uom": "box",
+    "price": 85.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0026",
+    "name": "Calous Remover",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "SPAvenue, gallon",
+    "uom": "",
+    "price": 265.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0027",
+    "name": "Cling Wrap",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "18x500",
+    "uom": "",
+    "price": 635.0,
+    "supplier": "Bestchoice"
+  },
+  {
+    "sku": "SPA-0028",
+    "name": "Coffee Cup Set",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 128.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "SPA-0029",
+    "name": "Container Pump",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 45.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "SPA-0030",
+    "name": "Cotton Ball Jar Container",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 225.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0031",
+    "name": "Cotton Balls",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "1000s per pack",
+    "uom": "pack",
+    "price": 350.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0032",
+    "name": "Cotton Buds",
+    "brand": "Daily",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 23.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0033",
+    "name": "Cotton Pads",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 90.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0034",
+    "name": "Croco Cling Wrap",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 730.0,
+    "supplier": "Bestchoice"
+  },
+  {
+    "sku": "SPA-0035",
+    "name": "Cupping torch",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 236.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0036",
+    "name": "Daiso LInen Spray",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 100.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0037",
+    "name": "Detangler Brush",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 200.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0038",
+    "name": "Disposable Ear Cap",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 2.75,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0039",
+    "name": "Disposable Rubber Slippers",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 20.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0040",
+    "name": "Disposable Shower Cap",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 3.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0041",
+    "name": "Disposable Slippers Open Toes",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "per pair",
+    "uom": "pair",
+    "price": 58.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0042",
+    "name": "Disposable Slippers Toe-Covered",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "10 pcs / pack",
+    "uom": "pack",
+    "price": 165.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0043",
+    "name": "Disposable Towellete",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "100 pcs",
+    "uom": "",
+    "price": 446.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0044",
+    "name": "Dry Brush",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "natural bristle",
+    "uom": "",
+    "price": 140.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0045",
+    "name": "Dry Brush",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "Natural Bristle, 2025",
+    "uom": "",
+    "price": 100.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0046",
+    "name": "Ear Seeds",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 350.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0047",
+    "name": "Face Cushion with Silicon Gel",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 800.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0048",
+    "name": "Face Sheet",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "100 per pack",
+    "uom": "pack",
+    "price": 2.5,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0049",
+    "name": "Facemask Black",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 95.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "SPA-0050",
+    "name": "Facial Sponge",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 42.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "SPA-0051",
+    "name": "Facial Tissue",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 195.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0052",
+    "name": "Facial Tissue",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "small, green, per pack / 80 px per bundle",
+    "uom": "pack",
+    "price": 35.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0053",
+    "name": "Facial Tissue",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "green pack, 6 packs / bundle",
+    "uom": "pack",
+    "price": 200.0,
+    "supplier": "Torrecamps"
+  },
+  {
+    "sku": "SPA-0054",
+    "name": "Facial Tissue 2025",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "green pack, 8 packs / case",
+    "uom": "case",
+    "price": 470.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0055",
+    "name": "Facial Towel (white)",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 60.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "SPA-0056",
+    "name": "Foot Blush",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "price per gallon",
+    "uom": "",
+    "price": 400.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0057",
+    "name": "Foot Blush non-BSE",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 366.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "SPA-0058",
+    "name": "Foot File",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 68.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0059",
+    "name": "Foot Spa Basin",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 1200.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0060",
+    "name": "Glass Bowl (for rinsing face)",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 980.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "SPA-0061",
+    "name": "HANSOL Ventosa Fiber Glass Set",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 3650.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0062",
+    "name": "Hair Spray Bottle",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "bottle",
+    "price": 150.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0063",
+    "name": "Hairstyle Foam",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "tresemmeKeratin smooth, 198g,7oz",
+    "uom": "",
+    "price": 750.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "SPA-0064",
+    "name": "Hand Towel (new 2025; dark gray)",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 350.0,
+    "supplier": "Rob Dept Store"
+  },
+  {
+    "sku": "SPA-0065",
+    "name": "Head Pillow",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 320.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0066",
+    "name": "Herbal Pillow 6x10in",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "Peppermint",
+    "uom": "",
+    "price": 380.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0067",
+    "name": "Highball Glass (350ml)",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 95.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "SPA-0068",
+    "name": "Hot & Cold Pack",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "microwaveable",
+    "uom": "pack",
+    "price": 350.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0069",
+    "name": "Hot & Cold Pack + Extra Cover",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "pack",
+    "price": 500.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0070",
+    "name": "Incense (Money Magnet / Cleansing)",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 55.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0071",
+    "name": "JAJM Cupping torch",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 236.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0072",
+    "name": "Keratin",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "per gallon",
+    "uom": "",
+    "price": 2650.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0074",
+    "name": "LED Nail Lamp (30 led bulbs)",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 230.0,
+    "supplier": "Shopee"
+  },
+  {
+    "sku": "SPA-0075",
+    "name": "Leaf-shaped Humidifier",
+    "brand": "Shopee",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 670.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0076",
+    "name": "Leg Pillow",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 410.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0077",
+    "name": "Licorice Powder 100g",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 390.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0079",
+    "name": "Mac Styler Hair Straightener MC5576",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 3075.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0081",
+    "name": "Magnetic Cape",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 85.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "SPA-0082",
+    "name": "Make Up Remover Pads",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 157.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "SPA-0083",
+    "name": "Martel Towel Hotel Bath Large",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 829.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "SPA-0084",
+    "name": "Megabox 20L plastic container",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "box",
+    "price": 260.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0085",
+    "name": "Mini Stainless Hair Clip",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 60.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "SPA-0086",
+    "name": "Moringa Powder 100g",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 110.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0087",
+    "name": "Moxa",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 518.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0088",
+    "name": "Mustela Micellar Water",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "750ml",
+    "uom": "",
+    "price": 1998.0,
+    "supplier": "Mustela"
+  },
+  {
+    "sku": "SPA-0089",
+    "name": "NEWSTAR wireless bell spare remote 1 pair",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "white",
+    "uom": "pair",
+    "price": 1103.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0090",
+    "name": "NEWSTAR wireless door bell",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "white",
+    "uom": "",
+    "price": 2517.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0091",
+    "name": "NEWSTAR wireless door bell",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "black",
+    "uom": "",
+    "price": 2552.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0092",
+    "name": "Nail Buff Cube",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 60.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0093",
+    "name": "Nail Buffer",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "12 pcs per set",
+    "uom": "",
+    "price": 700.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0094",
+    "name": "Nail File",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "manipis",
+    "uom": "",
+    "price": 30.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0095",
+    "name": "Nail File (Wood)",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 2.75,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0096",
+    "name": "Nail Nipper",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 95.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0097",
+    "name": "ORE Black Gloves",
+    "brand": "Orex",
+    "category": "Spa_Salon",
+    "variant": "small",
+    "uom": "",
+    "price": 200.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0098",
+    "name": "ORE Black Gloves",
+    "brand": "Orex",
+    "category": "Spa_Salon",
+    "variant": "medium",
+    "uom": "",
+    "price": 200.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0099",
+    "name": "ORE Black Gloves",
+    "brand": "Orex",
+    "category": "Spa_Salon",
+    "variant": "large",
+    "uom": "",
+    "price": 200.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0100",
+    "name": "Oil Canister",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 150.0,
+    "supplier": "Fw Spavenue"
+  },
+  {
+    "sku": "SPA-0102",
+    "name": "Organic Thread",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "Organica per pack 6pcs",
+    "uom": "pack",
+    "price": 1200.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0103",
+    "name": "Paddle Brush",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 290.0,
+    "supplier": "Ecolabel Lazada"
+  },
+  {
+    "sku": "SPA-0104",
+    "name": "Palo Santo",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 162.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0105",
+    "name": "Parian 1010 Makeup Brush Cleaner",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "32oz",
+    "uom": "",
+    "price": 2300.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0106",
+    "name": "Power Blender",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "Oster",
+    "uom": "",
+    "price": 2069.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0107",
+    "name": "Precious Herbal Pillow (Medium)",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 940.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "SPA-0108",
+    "name": "Purity Cotton Roll",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "roll",
+    "price": 175.0,
+    "supplier": "Daily"
+  },
+  {
+    "sku": "SPA-0109",
+    "name": "Quezon Pure Wild Honey",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "750ml",
+    "uom": "",
+    "price": 270.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0110",
+    "name": "Rosemary Powder 50g",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 112.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0111",
+    "name": "Rubber Band Black",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 200.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0112",
+    "name": "Salon Cape",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "plain",
+    "uom": "",
+    "price": 180.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0113",
+    "name": "Salon Chair",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 660.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0114",
+    "name": "Salon Chair with backrest",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 860.0,
+    "supplier": "Shopee"
+  },
+  {
+    "sku": "SPA-0115",
+    "name": "Schwarzkopf Stain Remover",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 695.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0117",
+    "name": "Section Clips / Crocodile Clip",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "12 pcs per pack",
+    "uom": "pack",
+    "price": 130.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0118",
+    "name": "Service Bell",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 105.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0119",
+    "name": "Shower Head",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 575.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0120",
+    "name": "Singer Oil",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 86.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "SPA-0121",
+    "name": "Single Bedsheet (3set)",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 690.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "SPA-0122",
+    "name": "Single, Blanket",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 150.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0123",
+    "name": "Spa Utensil Set",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 160.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "SPA-0124",
+    "name": "Squeeze Plastic Bottle 1000ml",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "bottle",
+    "price": 138.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0125",
+    "name": "Squeeze Plastic Bottle 400ml",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "bottle",
+    "price": 105.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0126",
+    "name": "Sunshine Nail Buffer",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 25.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "SPA-0127",
+    "name": "Tea Light Candle",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "10 pcs / pack",
+    "uom": "pack",
+    "price": 70.0,
+    "supplier": "Spavenue"
+  },
+  {
+    "sku": "SPA-0128",
+    "name": "Tint Sanitzer",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 350.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0129",
+    "name": "Tough Mama Personal Blender NTMPB4",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 1959.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "SPA-0130",
+    "name": "Towel 140x70cm",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "Large",
+    "uom": "",
+    "price": 575.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0131",
+    "name": "UV Lamp",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 1800.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0132",
+    "name": "VCO Sweet Orange",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 1400.0,
+    "supplier": "Bse"
+  },
+  {
+    "sku": "SPA-0133",
+    "name": "Ventosa Cups",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "no.2",
+    "uom": "",
+    "price": 40.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0134",
+    "name": "Ventosa Cups",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "no.3",
+    "uom": "",
+    "price": 40.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0135",
+    "name": "Ventosa Cups",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "no.4",
+    "uom": "",
+    "price": 40.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0136",
+    "name": "Ventosa Cups",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "no.5",
+    "uom": "",
+    "price": 46.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0137",
+    "name": "Vinyl Gloves Black",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 190.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0138",
+    "name": "Well Hair Hair Spray (99ml)",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 190.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0139",
+    "name": "Well Hair Spray (300ml)",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 290.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0140",
+    "name": "White Sage",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "smudge stick",
+    "uom": "",
+    "price": 420.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0141",
+    "name": "Wooden Boat-shape Tray",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 403.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0142",
+    "name": "Wooden Tray",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 325.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0143",
+    "name": "XL Towel",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 750.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "SPA-0144",
+    "name": "Young Living Eucalyptus",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "15ml",
+    "uom": "",
+    "price": 1105.0,
+    "supplier": "Shopee"
+  },
+  {
+    "sku": "SPA-0145",
+    "name": "Young Living Lemon Grass",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "15ml",
+    "uom": "",
+    "price": 880.0,
+    "supplier": "Shopee"
+  },
+  {
+    "sku": "SPA-0146",
+    "name": "bobby pins per box JAN 2025]",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "box",
+    "price": 85.0,
+    "supplier": ""
+  },
+  {
+    "sku": "SPA-0147",
+    "name": "cotton pads square",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 345.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "SPA-0148",
+    "name": "disposable bed sheet",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "",
+    "uom": "",
+    "price": 690.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "SPA-0149",
+    "name": "salon blade",
+    "brand": "",
+    "category": "Spa_Salon",
+    "variant": "for hair",
+    "uom": "",
+    "price": 47.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "UTL-0001",
+    "name": "3M Gel Door Cushion",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 195.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0002",
+    "name": "5-step ladder",
+    "brand": "Wilcon",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 3450.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0003",
+    "name": "60x60cm foldable desk",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 1210.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0004",
+    "name": "9W LED Bulb",
+    "brand": "",
+    "category": "Utility",
+    "variant": "warm white",
+    "uom": "",
+    "price": 145.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0005",
+    "name": "AA Battery Pack of 4",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "pack",
+    "price": 110.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0006",
+    "name": "AAA Battery",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 135.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0007",
+    "name": "AAA Battery Pack of 4",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "pack",
+    "price": 136.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0008",
+    "name": "ACE Silicon Sealant",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 309.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0009",
+    "name": "Air Filter for Air Purifier",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 385.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0010",
+    "name": "Air Freshener for CR",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 265.0,
+    "supplier": "Ace"
+  },
+  {
+    "sku": "UTL-0011",
+    "name": "Albatross Bathroom Deodorizer (Strawberry)",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 48.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0012",
+    "name": "Alcohol Dispenser, Jerry Can with Alcohol Pump",
+    "brand": "",
+    "category": "Utility",
+    "variant": "500ml",
+    "uom": "",
+    "price": 70.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0014",
+    "name": "All Purpose Cleaner",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 250.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0015",
+    "name": "BSE Dishwashing Liquid",
+    "brand": "",
+    "category": "Utility",
+    "variant": "gallon",
+    "uom": "",
+    "price": 330.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0016",
+    "name": "BSE Handsoap",
+    "brand": "",
+    "category": "Utility",
+    "variant": "strawberry or powder, per gallon",
+    "uom": "",
+    "price": 200.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0017",
+    "name": "BSE Liquid Detergent",
+    "brand": "",
+    "category": "Utility",
+    "variant": "liter",
+    "uom": "",
+    "price": 150.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0018",
+    "name": "BSE Liquid Detergent",
+    "brand": "",
+    "category": "Utility",
+    "variant": "gallon",
+    "uom": "",
+    "price": 330.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0019",
+    "name": "BSE Liquid Hand Soap",
+    "brand": "",
+    "category": "Utility",
+    "variant": "strawberry, gallon",
+    "uom": "",
+    "price": 220.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0020",
+    "name": "BSE Multipurpose Cleaner",
+    "brand": "",
+    "category": "Utility",
+    "variant": "price per gallon",
+    "uom": "",
+    "price": 225.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0021",
+    "name": "Basin",
+    "brand": "",
+    "category": "Utility",
+    "variant": "small",
+    "uom": "",
+    "price": 120.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0022",
+    "name": "Bathmat",
+    "brand": "",
+    "category": "Utility",
+    "variant": "Landmrk",
+    "uom": "",
+    "price": 250.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0023",
+    "name": "Baygon 24-hour roach killer",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 347.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0024",
+    "name": "Baygon Odorless 300ml",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 300.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0025",
+    "name": "Baygon Orange",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 483.0,
+    "supplier": "Daily"
+  },
+  {
+    "sku": "UTL-0026",
+    "name": "Baygon Roach Killer",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 400.0,
+    "supplier": "Daily"
+  },
+  {
+    "sku": "UTL-0027",
+    "name": "Baygon Unscented",
+    "brand": "",
+    "category": "Utility",
+    "variant": "per bottle",
+    "uom": "bottle",
+    "price": 455.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0028",
+    "name": "Baygon multiinsect killer aqua base500ml",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 444.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0029",
+    "name": "Big Lighter",
+    "brand": "Cricket",
+    "category": "Utility",
+    "variant": "kitchen lighter / igniter",
+    "uom": "",
+    "price": 161.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0030",
+    "name": "Blue Tablet for Toilet",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 45.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0031",
+    "name": "Blue Tablet for Toilet",
+    "brand": "",
+    "category": "Utility",
+    "variant": "2025",
+    "uom": "",
+    "price": 70.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "UTL-0032",
+    "name": "Bowl Brush",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 250.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0033",
+    "name": "Broom",
+    "brand": "",
+    "category": "Utility",
+    "variant": "Scotch Brite",
+    "uom": "",
+    "price": 400.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0034",
+    "name": "Brown Paper Bag Small 12x5",
+    "brand": "",
+    "category": "Utility",
+    "variant": "FB",
+    "uom": "bag",
+    "price": 8.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0035",
+    "name": "Brush with handle",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 288.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0036",
+    "name": "Butane Gas Fuel (Refill)",
+    "brand": "",
+    "category": "Utility",
+    "variant": "GEM",
+    "uom": "",
+    "price": 120.0,
+    "supplier": "Daily"
+  },
+  {
+    "sku": "UTL-0037",
+    "name": "Butane Gas Fuel (Refill) for Lighter",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 135.0,
+    "supplier": "Hitop"
+  },
+  {
+    "sku": "UTL-0038",
+    "name": "Butane for Lighter",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 50.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0039",
+    "name": "CR Door Mat thick anti slid",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 175.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "UTL-0040",
+    "name": "CR Rug brown",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 230.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0041",
+    "name": "CROCO Jumbo Foil",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 550.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0042",
+    "name": "Cabinet Divider / Storage rack",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 1299.0,
+    "supplier": "Shopee"
+  },
+  {
+    "sku": "UTL-0043",
+    "name": "Cacazi Door Bell",
+    "brand": "",
+    "category": "Utility",
+    "variant": "2 senders; 1 receiver",
+    "uom": "",
+    "price": 490.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0045",
+    "name": "Can Opener",
+    "brand": "Landmark",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 220.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0046",
+    "name": "Candle",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 23.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0047",
+    "name": "Candle Vigil#2",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 115.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0048",
+    "name": "Ceramic Soap Dispenser",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 300.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0050",
+    "name": "Cleaning Brush for Slippers",
+    "brand": "Wilcon",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 114.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0051",
+    "name": "Collapsable Broom Set",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 350.0,
+    "supplier": "Lazada [Imuto]"
+  },
+  {
+    "sku": "UTL-0052",
+    "name": "DIY STORE Plastic Circle Basket for Acupunture",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 30.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0053",
+    "name": "Daiso Linen Spray",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 100.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0054",
+    "name": "DewDrops All Purpose Cleaner",
+    "brand": "",
+    "category": "Utility",
+    "variant": "Citrus Scent, per liter",
+    "uom": "",
+    "price": 175.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0055",
+    "name": "Digital Luggage Weighing Scale",
+    "brand": "Shopee / Lazada",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 162.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0056",
+    "name": "Dishwasing Sponge",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 40.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0057",
+    "name": "Domex Toilet Cleaner (Blue)",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 180.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0058",
+    "name": "Domex Toilet Cleaner (Pink)",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 180.0,
+    "supplier": "Hitop"
+  },
+  {
+    "sku": "UTL-0059",
+    "name": "Door mat",
+    "brand": "Shopee / Lazada",
+    "category": "Utility",
+    "variant": "water absorbent, 60x40xm",
+    "uom": "",
+    "price": 145.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0060",
+    "name": "Doorbell",
+    "brand": "",
+    "category": "Utility",
+    "variant": "1 button, 1 speaker",
+    "uom": "",
+    "price": 2560.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0061",
+    "name": "Doorbell extra button pair",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "pair",
+    "price": 1100.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0063",
+    "name": "Dustpan",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 58.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0064",
+    "name": "Dustpan + Broom Set",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 505.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "UTL-0065",
+    "name": "ESSA Palanggana (Small, White)",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 200.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "UTL-0066",
+    "name": "Electric Lighter 2",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 350.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0067",
+    "name": "Electric Tape",
+    "brand": "",
+    "category": "Utility",
+    "variant": "Green",
+    "uom": "",
+    "price": 72.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0068",
+    "name": "Electric racket fly killer",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 350.0,
+    "supplier": "Diy"
+  },
+  {
+    "sku": "UTL-0069",
+    "name": "Epson Ink 003",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 440.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0070",
+    "name": "Face Towel",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 85.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0071",
+    "name": "Fliptop Bottle 80ml",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "bottle",
+    "price": 120.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "UTL-0072",
+    "name": "Floor Brush (Long Handle)",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 355.0,
+    "supplier": "Home Galley"
+  },
+  {
+    "sku": "UTL-0073",
+    "name": "Floor Wax",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 473.0,
+    "supplier": "Ace"
+  },
+  {
+    "sku": "UTL-0074",
+    "name": "Generic Anti-slid CR Door Mat",
+    "brand": "",
+    "category": "Utility",
+    "variant": "Brown",
+    "uom": "",
+    "price": 230.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "UTL-0075",
+    "name": "Glade scented gel ocean escape",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 199.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0077",
+    "name": "Glass wiper with long handle",
+    "brand": "Home Gallery, Landmark",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 415.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0078",
+    "name": "Glass wiper with long handle Concorde",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 575.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0079",
+    "name": "Glider 22mm",
+    "brand": "Truevalue",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 185.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0080",
+    "name": "Hand Towel",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 250.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0081",
+    "name": "Hand Towel (new 2025)",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 115.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0082",
+    "name": "Hand Towel Microfiber (Dark Color)",
+    "brand": "",
+    "category": "Utility",
+    "variant": "set of 4",
+    "uom": "",
+    "price": 270.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0083",
+    "name": "Handwash Dispenser",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 450.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0084",
+    "name": "Heavy Duty Extension Cord",
+    "brand": "Landmark",
+    "category": "Utility",
+    "variant": "Panther",
+    "uom": "",
+    "price": 485.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0085",
+    "name": "Home Gallery Broom",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 400.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0086",
+    "name": "Home Gallery Mop Head",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 795.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0087",
+    "name": "Home Gallery Tornado Mop & Spin Dry Bucket Set",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 1250.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "UTL-0088",
+    "name": "Hook for Curtains",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 449.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0089",
+    "name": "Hook for curtains",
+    "brand": "True Value",
+    "category": "Utility",
+    "variant": "pack of 10",
+    "uom": "pack",
+    "price": 92.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0090",
+    "name": "JML Power Blender Extreme",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 1999.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0091",
+    "name": "KEYWAY Plastic Foot Stool",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 750.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0092",
+    "name": "Kleenex Facial Tissue",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 30.0,
+    "supplier": "Daily"
+  },
+  {
+    "sku": "UTL-0093",
+    "name": "Knife Holder",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 190.0,
+    "supplier": "Daily"
+  },
+  {
+    "sku": "UTL-0094",
+    "name": "Knife Sharpener",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 140.0,
+    "supplier": "Hardware Tapat Ng Hi-Top"
+  },
+  {
+    "sku": "UTL-0095",
+    "name": "LED Bulb",
+    "brand": "",
+    "category": "Utility",
+    "variant": "warm white, 7w",
+    "uom": "",
+    "price": 130.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0096",
+    "name": "LNDMRK Dustpan + Broom Set",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 505.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0097",
+    "name": "LNDMRK Rug Brown",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 253.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0098",
+    "name": "LNDMRK Rug Light Gray",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 230.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0099",
+    "name": "Leather Cleaner",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 150.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "UTL-0100",
+    "name": "Leather Paint",
+    "brand": "Marikina",
+    "category": "Utility",
+    "variant": "60ml",
+    "uom": "",
+    "price": 68.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0101",
+    "name": "Liquid Sosa",
+    "brand": "",
+    "category": "Utility",
+    "variant": "bottle",
+    "uom": "bottle",
+    "price": 225.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0103",
+    "name": "Liquid Sosa",
+    "brand": "",
+    "category": "Utility",
+    "variant": "per liter 2025",
+    "uom": "",
+    "price": 225.0,
+    "supplier": "Daily"
+  },
+  {
+    "sku": "UTL-0105",
+    "name": "Lysol Multisurface Cleaner",
+    "brand": "",
+    "category": "Utility",
+    "variant": "1L",
+    "uom": "",
+    "price": 475.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0106",
+    "name": "Lysol Multisurface Cleaner (2L)",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 345.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0107",
+    "name": "Lysol Multisurface Cleaner Shopee",
+    "brand": "",
+    "category": "Utility",
+    "variant": "900ml",
+    "uom": "",
+    "price": 235.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0108",
+    "name": "Lysol Toilet Bowl Cleaner",
+    "brand": "Hi-Top",
+    "category": "Utility",
+    "variant": "Original, 700ml",
+    "uom": "",
+    "price": 125.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0109",
+    "name": "MEGA BOX 20L Liter",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "box",
+    "price": 279.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0110",
+    "name": "MR MUSCLE Floor Cleaner",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 175.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0111",
+    "name": "Masking Tape",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 25.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0112",
+    "name": "Microfiber Rag",
+    "brand": "",
+    "category": "Utility",
+    "variant": "small",
+    "uom": "",
+    "price": 25.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0113",
+    "name": "Microfiber Towel (Small 2025)",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 55.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "UTL-0114",
+    "name": "Microfiber Towel (Small)",
+    "brand": "Landmark",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 40.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0115",
+    "name": "Microfiber Towel - Pranela type for cleaning (Small 2025) 6/pack",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "pack",
+    "price": 220.0,
+    "supplier": "Daily"
+  },
+  {
+    "sku": "UTL-0116",
+    "name": "Mighty Clean Glass Cleaner",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 280.0,
+    "supplier": "Mightyclean Lazada"
+  },
+  {
+    "sku": "UTL-0117",
+    "name": "Minimalist Timer",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 125.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0118",
+    "name": "Mr. Muscle All Purpose Cleaner 3.7L / 1 Gal",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 475.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "UTL-0119",
+    "name": "Mr. Muscle Drain Declogger 500ml",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 219.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0120",
+    "name": "Mr. Muscle Floor Cleaner",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 175.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0121",
+    "name": "Mr. Muscle Glass Cleaner",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 200.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0122",
+    "name": "Mr. Muscle Multipurpose Cleaner",
+    "brand": "",
+    "category": "Utility",
+    "variant": "1L",
+    "uom": "",
+    "price": 175.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0123",
+    "name": "Mr. Muscle Multipurpose Cleaner 2L (Lemon)",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 288.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0124",
+    "name": "Mr. Muscle Tank Block",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 173.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0125",
+    "name": "Mr. Muscle all purpose cleaner 1L (morning freshness scent)",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 170.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0126",
+    "name": "Nail on slides",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 263.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0127",
+    "name": "OMNI Extension Cord 5 plugs",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 575.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0128",
+    "name": "ONE HOME K2 Air Purifier + 2 Filters",
+    "brand": "Smart One Home / Shopee",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 2000.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0129",
+    "name": "PHILIPS 9W LED Warm White",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 170.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0130",
+    "name": "PHILIPS LED Cool Daylight 8w",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 170.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0131",
+    "name": "PLEDGE Multisurface Cleaner",
+    "brand": "Truevalue, Uptown",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 690.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0132",
+    "name": "PUROX Multipurpose Cleaner",
+    "brand": "Bse",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 222.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0133",
+    "name": "Panasonic LED Bulb Cool White 8w",
+    "brand": "Landmark",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 175.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0134",
+    "name": "Panasonic LED Bulb Warm White 8w",
+    "brand": "Landmark",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 175.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0135",
+    "name": "Philipps LED Bulb Warm White 8W",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 203.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "UTL-0136",
+    "name": "Philips screw",
+    "brand": "Landmark",
+    "category": "Utility",
+    "variant": "120mm",
+    "uom": "",
+    "price": 80.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0137",
+    "name": "Pillow Case Square",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "case",
+    "price": 325.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0138",
+    "name": "Plastic Hook Big (3M)",
+    "brand": "Truevalue",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 620.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0139",
+    "name": "Plastic Hook Small (3M)",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 270.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0140",
+    "name": "Plastic Walis Tambo",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 120.0,
+    "supplier": "Daily"
+  },
+  {
+    "sku": "UTL-0141",
+    "name": "Pliers",
+    "brand": "Landmark",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 185.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0142",
+    "name": "Pull Out Tissue",
+    "brand": "",
+    "category": "Utility",
+    "variant": "175pulls, case",
+    "uom": "case",
+    "price": 1300.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0143",
+    "name": "Pull Out Tissue",
+    "brand": "",
+    "category": "Utility",
+    "variant": "2-ply, case",
+    "uom": "case",
+    "price": 1100.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0144",
+    "name": "Push Cart",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 3500.0,
+    "supplier": "Wilcon"
+  },
+  {
+    "sku": "UTL-0145",
+    "name": "ROSU 3-hole Adaptor",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 90.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0146",
+    "name": "ROYU 4-gang universal outlet (9 meters)",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 485.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0147",
+    "name": "ROYU Extension Cord 3 meters",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 265.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0148",
+    "name": "ROYU Wire Extension",
+    "brand": "",
+    "category": "Utility",
+    "variant": "4 outlets, Daily",
+    "uom": "",
+    "price": 679.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0149",
+    "name": "ROYU Wire Extension",
+    "brand": "",
+    "category": "Utility",
+    "variant": "4 outlets",
+    "uom": "",
+    "price": 679.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0150",
+    "name": "Round Rolling Stool Stainless",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "roll",
+    "price": 1215.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0151",
+    "name": "Round Wood Stool",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 980.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0152",
+    "name": "Rug Light Gray",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 230.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0153",
+    "name": "Rug for CR",
+    "brand": "",
+    "category": "Utility",
+    "variant": "Brown",
+    "uom": "",
+    "price": 325.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0154",
+    "name": "SCOTCH BRITE Steel Wool",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 52.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0155",
+    "name": "SCOTCH BRITE sponge",
+    "brand": "",
+    "category": "Utility",
+    "variant": "pack of 3",
+    "uom": "pack",
+    "price": 112.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0156",
+    "name": "SOL Disinfectant Spray",
+    "brand": "",
+    "category": "Utility",
+    "variant": "case, 12 bottles",
+    "uom": "case",
+    "price": 380.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0157",
+    "name": "Sando Bag Large (40 pcs/pack)",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "pack",
+    "price": 50.0,
+    "supplier": "Ravina"
+  },
+  {
+    "sku": "UTL-0158",
+    "name": "Sando Bag XL",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "bag",
+    "price": 540.0,
+    "supplier": "Mega"
+  },
+  {
+    "sku": "UTL-0159",
+    "name": "Sando Bag XXL",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "bag",
+    "price": 190.0,
+    "supplier": "Mega"
+  },
+  {
+    "sku": "UTL-0160",
+    "name": "Sando Plastic Bag",
+    "brand": "",
+    "category": "Utility",
+    "variant": "blue, XL",
+    "uom": "bag",
+    "price": 2.25,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0161",
+    "name": "Sando Plastic Bag",
+    "brand": "",
+    "category": "Utility",
+    "variant": "blue, L",
+    "uom": "bag",
+    "price": 1.5,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0162",
+    "name": "Scissorrs for kids",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 14.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0163",
+    "name": "Scotch Brite Mop Set",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 2565.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "UTL-0165",
+    "name": "Scotch Brite Walis Tambo",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 470.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0166",
+    "name": "Scotch Brite scubbing pad",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 95.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0167",
+    "name": "Screw Driver",
+    "brand": "Landmark",
+    "category": "Utility",
+    "variant": "120mm",
+    "uom": "",
+    "price": 80.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0168",
+    "name": "Seaways Bathroom Cleaner",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 230.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "UTL-0169",
+    "name": "Slip On Slippers Women Size 8",
+    "brand": "Farmers Tiangge",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 400.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0170",
+    "name": "Small Basket",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 60.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0171",
+    "name": "Small Lighter",
+    "brand": "Cricket",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 30.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0172",
+    "name": "Small Trash Bin",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 150.0,
+    "supplier": "Diy"
+  },
+  {
+    "sku": "UTL-0173",
+    "name": "Small circular jar with cover",
+    "brand": "Landmark",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 49.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0174",
+    "name": "Spinner Head Mop",
+    "brand": "Daily",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 1250.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0175",
+    "name": "Spray Bottle",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "bottle",
+    "price": 95.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0176",
+    "name": "Spray Bottle",
+    "brand": "Nepa",
+    "category": "Utility",
+    "variant": "CR Cleaner, 1L",
+    "uom": "bottle",
+    "price": 100.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0177",
+    "name": "Spray Bottle 500ml",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "bottle",
+    "price": 150.0,
+    "supplier": "Shopee"
+  },
+  {
+    "sku": "UTL-0178",
+    "name": "Spray Gun",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 100.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0179",
+    "name": "Spray bottle for liquid detergent",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "bottle",
+    "price": 150.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0180",
+    "name": "Stainless Foot Stool",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 1320.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0181",
+    "name": "Stainless Steel Brush with Handle",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 130.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0182",
+    "name": "Stylish Alcohol Dispenser",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 550.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "UTL-0183",
+    "name": "Surf Powder",
+    "brand": "",
+    "category": "Utility",
+    "variant": "1kg",
+    "uom": "",
+    "price": 150.0,
+    "supplier": "Daily"
+  },
+  {
+    "sku": "UTL-0184",
+    "name": "Table Corner Protector",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 200.0,
+    "supplier": "Check Price"
+  },
+  {
+    "sku": "UTL-0185",
+    "name": "Table Mirror",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 633.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "UTL-0186",
+    "name": "Throw Pillow",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 165.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0188",
+    "name": "Tip Jar",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 150.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0190",
+    "name": "Tissue Roll",
+    "brand": "",
+    "category": "Utility",
+    "variant": "Virgin Pulp, pack",
+    "uom": "pack",
+    "price": 550.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0191",
+    "name": "Tissue Roll Holder",
+    "brand": "",
+    "category": "Utility",
+    "variant": "stainless",
+    "uom": "roll",
+    "price": 400.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0192",
+    "name": "Toilet Deodorizer per pair",
+    "brand": "",
+    "category": "Utility",
+    "variant": "Blue",
+    "uom": "pair",
+    "price": 230.0,
+    "supplier": "Hi-Top"
+  },
+  {
+    "sku": "UTL-0193",
+    "name": "Trash bag",
+    "brand": "",
+    "category": "Utility",
+    "variant": "black, small",
+    "uom": "bag",
+    "price": 300.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0194",
+    "name": "Trash bag",
+    "brand": "",
+    "category": "Utility",
+    "variant": "black, medium",
+    "uom": "bag",
+    "price": 330.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0195",
+    "name": "Trash bag",
+    "brand": "",
+    "category": "Utility",
+    "variant": "black, large",
+    "uom": "bag",
+    "price": 380.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0196",
+    "name": "Trash bag",
+    "brand": "",
+    "category": "Utility",
+    "variant": "black, xl",
+    "uom": "bag",
+    "price": 420.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0197",
+    "name": "Trash bag",
+    "brand": "",
+    "category": "Utility",
+    "variant": "black, xxl",
+    "uom": "bag",
+    "price": 520.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0198",
+    "name": "Trash bag",
+    "brand": "",
+    "category": "Utility",
+    "variant": "green, small",
+    "uom": "bag",
+    "price": 300.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0199",
+    "name": "Trash bag",
+    "brand": "",
+    "category": "Utility",
+    "variant": "green, medium",
+    "uom": "bag",
+    "price": 330.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0200",
+    "name": "Trash bag",
+    "brand": "",
+    "category": "Utility",
+    "variant": "green, large",
+    "uom": "bag",
+    "price": 380.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0201",
+    "name": "Trash bag",
+    "brand": "",
+    "category": "Utility",
+    "variant": "green, xl",
+    "uom": "bag",
+    "price": 420.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0202",
+    "name": "Trash bag",
+    "brand": "",
+    "category": "Utility",
+    "variant": "yellow, small",
+    "uom": "bag",
+    "price": 300.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0203",
+    "name": "Trash bag",
+    "brand": "",
+    "category": "Utility",
+    "variant": "yellow, medium",
+    "uom": "bag",
+    "price": 330.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0204",
+    "name": "Trash bag",
+    "brand": "",
+    "category": "Utility",
+    "variant": "yellow, large",
+    "uom": "bag",
+    "price": 380.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0205",
+    "name": "Trash bag",
+    "brand": "",
+    "category": "Utility",
+    "variant": "yellow, xl",
+    "uom": "bag",
+    "price": 420.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0206",
+    "name": "Trash bag",
+    "brand": "",
+    "category": "Utility",
+    "variant": "yellow, xxl",
+    "uom": "bag",
+    "price": 520.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0207",
+    "name": "Trash bag",
+    "brand": "",
+    "category": "Utility",
+    "variant": "clear / trans, small",
+    "uom": "bag",
+    "price": 300.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0208",
+    "name": "Trash bag",
+    "brand": "",
+    "category": "Utility",
+    "variant": "clear / trans, medium",
+    "uom": "bag",
+    "price": 330.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0209",
+    "name": "Trash bag",
+    "brand": "",
+    "category": "Utility",
+    "variant": "clear / trans, large",
+    "uom": "bag",
+    "price": 380.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0210",
+    "name": "Trash bag",
+    "brand": "",
+    "category": "Utility",
+    "variant": "clear / trans, XL",
+    "uom": "bag",
+    "price": 420.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0211",
+    "name": "Trash bag",
+    "brand": "",
+    "category": "Utility",
+    "variant": "clear / trans, XXL",
+    "uom": "bag",
+    "price": 520.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0212",
+    "name": "Trash bag Oct2025",
+    "brand": "",
+    "category": "Utility",
+    "variant": "clear / trans, medium",
+    "uom": "bag",
+    "price": 380.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0213",
+    "name": "Trash bag Oct2025",
+    "brand": "",
+    "category": "Utility",
+    "variant": "clear / trans, XL",
+    "uom": "bag",
+    "price": 610.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0214",
+    "name": "Trash bin with foot pedal",
+    "brand": "Landmark",
+    "category": "Utility",
+    "variant": "20L",
+    "uom": "",
+    "price": 700.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0215",
+    "name": "WILCON / LANDMARK Walis & Dustpan Set",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 506.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0216",
+    "name": "WILCON Bed Adhesive smooth variant",
+    "brand": "",
+    "category": "Utility",
+    "variant": "4pcs per set",
+    "uom": "",
+    "price": 75.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0217",
+    "name": "Walis Tambo",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 160.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0218",
+    "name": "Walis Tingting",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 95.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0219",
+    "name": "WalisTambo (2025)",
+    "brand": "Landmark",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 380.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0220",
+    "name": "Wall Clock",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 1000.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0221",
+    "name": "White Toilet Bowl Brush",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 175.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0222",
+    "name": "Wipe Out Stain Remover",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 175.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "UTL-0223",
+    "name": "Wooden Bowl",
+    "brand": "Kahoy Woodcrafts",
+    "category": "Utility",
+    "variant": "small",
+    "uom": "",
+    "price": 120.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0224",
+    "name": "Wooden Bowl",
+    "brand": "Kahoy Woodcrafts",
+    "category": "Utility",
+    "variant": "medium",
+    "uom": "",
+    "price": 180.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0225",
+    "name": "Wooden Foldable Table",
+    "brand": "True Value",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 745.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0226",
+    "name": "Wooden Foot Stool",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 2500.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0227",
+    "name": "Wooden Fork",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 35.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0228",
+    "name": "Wooden Spoon",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 35.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0229",
+    "name": "Wooden Stirrer",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 100.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0230",
+    "name": "Wooden Tray",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 600.0,
+    "supplier": "Landmark"
+  },
+  {
+    "sku": "UTL-0231",
+    "name": "ZON Color 1 Gal",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 420.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0232",
+    "name": "ZON Liquid Bleach",
+    "brand": "",
+    "category": "Utility",
+    "variant": "1 gal, bottle",
+    "uom": "bottle",
+    "price": 170.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0233",
+    "name": "ZON Liquid Bleach",
+    "brand": "",
+    "category": "Utility",
+    "variant": "1 gal, case",
+    "uom": "case",
+    "price": 170.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0234",
+    "name": "Zim Powder",
+    "brand": "",
+    "category": "Utility",
+    "variant": "green",
+    "uom": "",
+    "price": 47.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0235",
+    "name": "Ziplock (large, 100 pcs)",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 175.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0236",
+    "name": "Ziplock (medium, 100 pcs)",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 135.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0237",
+    "name": "Ziplock Zippy Lock #7",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 110.0,
+    "supplier": "Mega Plastic"
+  },
+  {
+    "sku": "UTL-0238",
+    "name": "Zonrox Color 1000ml",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 100.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0239",
+    "name": "Zonrox Color 900ml",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 85.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0240",
+    "name": "Zonrox Color Safe 900 ml",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 80.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0241",
+    "name": "Zonrox Color Safe Gallon",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 368.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0242",
+    "name": "Zonrox Lemon 1 Gal",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 170.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0243",
+    "name": "Zonrox Lemon 1000ml",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 55.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0244",
+    "name": "Zonrox Lemon 500ml",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 40.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0245",
+    "name": "Zonrox Original 1L",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 52.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0246",
+    "name": "baking soda",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 108.0,
+    "supplier": "Hi-Top"
+  },
+  {
+    "sku": "UTL-0247",
+    "name": "hand wash pump for CR",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 380.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0249",
+    "name": "rubber slippers",
+    "brand": "",
+    "category": "Utility",
+    "variant": "2026",
+    "uom": "",
+    "price": 230.0,
+    "supplier": "Lazada"
+  },
+  {
+    "sku": "UTL-0250",
+    "name": "spray mop",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 213.0,
+    "supplier": ""
+  },
+  {
+    "sku": "UTL-0251",
+    "name": "spray mop refill",
+    "brand": "",
+    "category": "Utility",
+    "variant": "",
+    "uom": "",
+    "price": 33.0,
+    "supplier": ""
+  }
+]

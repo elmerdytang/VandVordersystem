@@ -1,0 +1,3562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V&V Order Portal</title>
+<style>
+  :root {
+    --primary: #305496;
+    --primary-dark: #1f3a6b;
+    --accent: #0ea5e9;
+    --bg: #f5f7fa;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --text: #1e293b;
+    --muted: #64748b;
+    --success: #059669;
+    --warning: #d97706;
+    --danger: #dc2626;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  header {
+    background: var(--primary); color: white; padding: 14px 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  }
+  header h1 { font-size: 20px; font-weight: 600; }
+  .user-info { font-size: 14px; display: flex; gap: 14px; align-items: center; }
+  .badge {
+    background: rgba(255,255,255,0.2); padding: 3px 10px;
+    border-radius: 12px; font-size: 12px; font-weight: 500;
+  }
+  .badge-approver { background: #f59e0b; color: #422006; }
+  .btn-logout {
+    background: transparent; border: 1px solid rgba(255,255,255,0.4);
+    color: white; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-size: 13px;
+  }
+  .btn-logout:hover { background: rgba(255,255,255,0.15); }
+
+  /* Tabs */
+  .tabs {
+    background: white; border-bottom: 1px solid var(--border);
+    padding: 0 24px; display: flex; gap: 4px;
+  }
+  .tab {
+    padding: 12px 20px; cursor: pointer; border: none; background: none;
+    font-size: 14px; font-weight: 500; color: var(--muted);
+    border-bottom: 3px solid transparent;
+  }
+  .tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+  .tab .count {
+    background: var(--warning); color: white; font-size: 11px;
+    padding: 1px 7px; border-radius: 10px; margin-left: 6px;
+  }
+
+  .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+  .layout { display: grid; grid-template-columns: 1fr 380px; gap: 20px; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+
+  .filters {
+    background: var(--card); padding: 16px; border-radius: 8px;
+    border: 1px solid var(--border); margin-bottom: 16px;
+    display: flex; gap: 12px; flex-wrap: wrap;
+  }
+  .filters input, .filters select {
+    padding: 8px 12px; border: 1px solid var(--border);
+    border-radius: 6px; font-size: 14px; background: white;
+  }
+  .filters input { flex: 1; min-width: 200px; }
+  .filters input:focus, .filters select:focus { outline: 2px solid var(--primary); outline-offset: -1px; }
+
+  .products-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px;
+  }
+  .product-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px; display: flex; flex-direction: column;
+    transition: box-shadow 0.15s;
+  }
+  .product-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+  .product-img {
+    width: 100%; height: 140px; object-fit: contain;
+    background: #f8fafc; border-radius: 6px; margin-bottom: 10px;
+    border: 1px solid var(--border);
+  }
+  .product-img-placeholder {
+    display: flex; align-items: center; justify-content: center;
+    font-size: 42px; color: #cbd5e1;
+  }
+  .product-sku {
+    font-family: monospace; font-size: 11px; color: var(--muted);
+    background: #f1f5f9; padding: 2px 6px; border-radius: 3px;
+    display: inline-block; margin-bottom: 8px; align-self: flex-start;
+  }
+  .product-name { font-weight: 600; font-size: 14px; line-height: 1.3; margin-bottom: 6px; min-height: 36px; }
+  .product-meta { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+  .product-variant { font-size: 12px; color: var(--primary); font-weight: 500; margin-bottom: 8px; }
+  .product-price { font-size: 18px; font-weight: 700; color: var(--primary-dark); margin-top: auto; margin-bottom: 10px; }
+  .product-price small { font-size: 11px; color: var(--muted); font-weight: normal; }
+  .qty-row { display: flex; gap: 6px; align-items: center; }
+  .qty-row input {
+    width: 60px; padding: 6px; border: 1px solid var(--border);
+    border-radius: 4px; text-align: center; font-size: 14px;
+  }
+  .btn-add {
+    flex: 1; background: var(--primary); color: white; border: none;
+    padding: 8px 12px; border-radius: 4px; cursor: pointer; font-size: 13px; font-weight: 500;
+  }
+  .btn-add:hover { background: var(--primary-dark); }
+
+  .category-badge {
+    display: inline-block; font-size: 10px; padding: 2px 6px;
+    border-radius: 3px; font-weight: 500; text-transform: uppercase;
+    letter-spacing: 0.3px; margin-bottom: 6px;
+  }
+  .cat-Medical { background: #fee2e2; color: #991b1b; }
+  .cat-Utility { background: #dbeafe; color: #1e40af; }
+  .cat-Office { background: #e0e7ff; color: #3730a3; }
+  .cat-Spa_Salon { background: #fce7f3; color: #9f1239; }
+  .cat-Kitchen { background: #fef3c7; color: #92400e; }
+
+  /* Cart */
+  .cart {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 16px; position: sticky; top: 20px;
+    max-height: calc(100vh - 40px); display: flex; flex-direction: column;
+  }
+  .cart h2 { font-size: 16px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  .cart-items { flex: 1; overflow-y: auto; max-height: 400px; margin-bottom: 12px; }
+  .cart-empty { color: var(--muted); text-align: center; padding: 30px 0; font-size: 14px; }
+  .cart-item {
+    display: grid; grid-template-columns: 1fr auto; gap: 8px;
+    padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px;
+  }
+  .cart-item:last-child { border-bottom: none; }
+  .cart-item-name { font-weight: 500; margin-bottom: 4px; }
+  .cart-item-meta { font-size: 11px; color: var(--muted); }
+  .cart-item-controls { display: flex; gap: 4px; align-items: center; }
+  .cart-item-controls button {
+    width: 22px; height: 22px; border: 1px solid var(--border);
+    background: white; border-radius: 3px; cursor: pointer; font-size: 14px; line-height: 1;
+  }
+  .cart-item-controls input {
+    width: 40px; padding: 3px; border: 1px solid var(--border);
+    border-radius: 3px; text-align: center; font-size: 12px;
+  }
+  .cart-item-price { font-weight: 600; text-align: right; min-width: 80px; }
+  .cart-item-remove {
+    background: none; border: none; color: var(--danger);
+    cursor: pointer; font-size: 11px; padding: 2px 0;
+  }
+  .cart-summary { padding-top: 12px; border-top: 2px solid var(--border); font-size: 14px; }
+  .cart-summary-row { display: flex; justify-content: space-between; margin-bottom: 6px; }
+  .cart-summary-total {
+    font-size: 18px; font-weight: 700; color: var(--primary-dark);
+    padding-top: 8px; border-top: 1px solid var(--border); margin-top: 6px;
+  }
+  .checkout-btn {
+    width: 100%; background: var(--success); color: white; border: none;
+    padding: 12px; border-radius: 6px; cursor: pointer; font-size: 15px; font-weight: 600; margin-top: 12px;
+  }
+  .checkout-btn:hover { background: #047857; }
+
+  /* Login modal */
+  .modal-backdrop {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+    display: flex; align-items: center; justify-content: center; z-index: 100;
+  }
+  .modal { background: white; border-radius: 10px; padding: 28px; max-width: 460px; width: 90%; }
+  .modal h2 { margin-bottom: 6px; color: var(--primary-dark); }
+  .modal p { color: var(--muted); margin-bottom: 20px; font-size: 14px; }
+  .modal label { display: block; font-weight: 500; font-size: 13px; margin-bottom: 4px; }
+  .modal select, .modal input {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--border);
+    border-radius: 6px; font-size: 14px; margin-bottom: 14px;
+  }
+  .modal .btn-primary {
+    width: 100%; background: var(--primary); color: white;
+    border: none; padding: 11px; border-radius: 6px; cursor: pointer;
+    font-size: 15px; font-weight: 600;
+  }
+  .modal .btn-primary:hover { background: var(--primary-dark); }
+
+  /* Checkout modal */
+  .checkout-modal {
+    background: white; border-radius: 10px; padding: 24px;
+    max-width: 600px; width: 90%; max-height: 90vh; overflow-y: auto;
+  }
+  .checkout-modal h2 { margin-bottom: 16px; }
+  .checkout-modal textarea {
+    width: 100%; padding: 10px; border: 1px solid var(--border);
+    border-radius: 6px; font-size: 14px; font-family: inherit;
+    min-height: 70px; margin-bottom: 12px;
+  }
+  .checkout-modal label { display: block; font-weight: 500; font-size: 13px; margin-bottom: 4px; color: var(--text); }
+  .fulfillment { display: flex; gap: 10px; margin-bottom: 16px; }
+  .fulfillment label {
+    flex: 1; border: 1px solid var(--border); border-radius: 6px;
+    padding: 10px; cursor: pointer; text-align: center;
+    font-weight: 500; font-size: 14px;
+  }
+  .fulfillment input[type="radio"] { display: none; }
+  .fulfillment label:has(input:checked) { border-color: var(--primary); background: #eff6ff; }
+  .btn-row { display: flex; gap: 10px; margin-top: 16px; }
+  .btn-row button { flex: 1; padding: 11px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600; }
+  .btn-cancel { background: white; border: 1px solid var(--border); color: var(--text); }
+  .btn-submit { background: var(--success); color: white; border: none; }
+  .btn-reject { background: var(--danger); color: white; border: none; }
+  .btn-approve { background: var(--success); color: white; border: none; }
+
+  .status-banner {
+    padding: 10px 14px; border-radius: 6px; font-size: 13px;
+    margin-bottom: 14px; border: 1px solid;
+  }
+  .banner-info { background: #dbeafe; border-color: #93c5fd; color: #1e40af; }
+  .banner-warn { background: #fef3c7; border-color: #fcd34d; color: #92400e; }
+  .banner-success { background: #d1fae5; border-color: #6ee7b7; color: #065f46; }
+  .banner-danger { background: #fee2e2; border-color: #fca5a5; color: #991b1b; }
+
+  /* Orders list */
+  .orders-section { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+  .orders-section h2 { font-size: 16px; margin-bottom: 12px; }
+  .order-card {
+    border: 1px solid var(--border); border-radius: 6px; padding: 12px;
+    margin-bottom: 10px; display: grid; grid-template-columns: 1fr auto; gap: 12px;
+    align-items: start;
+  }
+  .order-card.pending { border-left: 4px solid var(--warning); }
+  .order-card.approved { border-left: 4px solid var(--success); }
+  .order-card.rejected { border-left: 4px solid var(--danger); }
+  .order-head { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .order-id { font-family: monospace; font-size: 12px; background: #f1f5f9; padding: 2px 6px; border-radius: 3px; }
+  .order-status {
+    font-size: 11px; padding: 2px 8px; border-radius: 10px;
+    font-weight: 600; text-transform: uppercase;
+  }
+  .status-pending { background: #fef3c7; color: #92400e; }
+  .status-approved { background: #d1fae5; color: #065f46; }
+  .status-rejected { background: #fee2e2; color: #991b1b; }
+  .status-submitted { background: #dbeafe; color: #1e40af; }
+  .order-meta { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .order-total { font-size: 18px; font-weight: 700; color: var(--primary-dark); }
+  .order-detail-btn {
+    background: white; border: 1px solid var(--primary); color: var(--primary);
+    padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px;
+    margin-top: 6px; font-weight: 500;
+  }
+  .order-detail-btn:hover { background: var(--primary); color: white; }
+
+  .empty-state { text-align: center; color: var(--muted); padding: 40px 20px; font-size: 14px; }
+
+  /* Order detail modal */
+  .detail-modal {
+    background: white; border-radius: 10px; padding: 24px;
+    max-width: 700px; width: 92%; max-height: 90vh; overflow-y: auto;
+  }
+  .order-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 13px; }
+  .order-table th, .order-table td { text-align: left; padding: 8px; border-bottom: 1px solid var(--border); }
+  .order-table th { background: #f8fafc; font-weight: 600; }
+  .order-table td.num { text-align: right; }
+  .totals-row { font-size: 16px; font-weight: 700; color: var(--primary-dark); }
+  .detail-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; margin: 12px 0; font-size: 13px; }
+  .detail-meta dt { color: var(--muted); }
+  .detail-meta dd { font-weight: 500; }
+
+  @media print {
+    header, .tabs, .cart, .btn-row, .filters { display: none !important; }
+  }
+
+  /* Admin dashboard */
+  .badge-admin { background: #10b981; color: white; }
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 14px; margin-bottom: 20px;
+  }
+  .stat-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 16px;
+  }
+  .stat-card .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; font-weight: 600; }
+  .stat-card .value { font-size: 28px; font-weight: 700; color: var(--primary-dark); margin-top: 6px; }
+  .stat-card .sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .stat-card.warning .value { color: var(--warning); }
+  .stat-card.success .value { color: var(--success); }
+  .stat-card.danger .value { color: var(--danger); }
+
+  .admin-filter-bar {
+    background: white; padding: 12px 16px; border-radius: 8px;
+    border: 1px solid var(--border); margin-bottom: 16px;
+    display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+  }
+  .admin-filter-bar select, .admin-filter-bar input {
+    padding: 7px 10px; border: 1px solid var(--border);
+    border-radius: 5px; font-size: 13px; background: white;
+  }
+  .admin-filter-bar input { flex: 1; min-width: 180px; }
+  .admin-filter-bar .spacer { flex: 0 0 auto; }
+  .admin-filter-bar button {
+    padding: 7px 12px; border: 1px solid var(--primary); background: var(--primary);
+    color: white; border-radius: 5px; font-size: 13px; cursor: pointer; font-weight: 500;
+  }
+  .admin-order-row {
+    background: white; border: 1px solid var(--border); border-radius: 6px;
+    padding: 12px 14px; margin-bottom: 8px;
+    display: grid; grid-template-columns: 140px 1fr auto auto; gap: 14px; align-items: center;
+  }
+  .admin-order-row .status-select {
+    padding: 5px 8px; border: 1px solid var(--border);
+    border-radius: 4px; font-size: 12px; background: white;
+  }
+  @media (max-width: 780px) {
+    .admin-order-row { grid-template-columns: 1fr; }
+  }
+
+  /* Signup + Request forms */
+  .form-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px 12px;
+  }
+  .form-grid .full { grid-column: 1 / -1; }
+  .form-grid label { display: block; font-weight: 500; font-size: 13px; margin-bottom: 3px; }
+  .form-grid input, .form-grid select, .form-grid textarea {
+    width: 100%; padding: 8px 10px; border: 1px solid var(--border);
+    border-radius: 5px; font-size: 13px; font-family: inherit;
+  }
+  .form-grid textarea { min-height: 60px; }
+
+  .branch-row {
+    background: #f8fafc; border: 1px solid var(--border); border-radius: 6px;
+    padding: 10px; margin-bottom: 8px;
+    display: grid; grid-template-columns: 1fr 2fr 1fr auto; gap: 8px;
+    align-items: end;
+  }
+  .branch-row label { font-size: 11px; color: var(--muted); font-weight: 500; }
+  .branch-row input {
+    padding: 6px 8px; border: 1px solid var(--border); border-radius: 4px;
+    font-size: 13px;
+  }
+  .branch-row button {
+    background: white; color: var(--danger); border: 1px solid var(--danger);
+    padding: 5px 10px; border-radius: 4px; font-size: 12px; cursor: pointer;
+  }
+  @media (max-width: 640px) { .branch-row { grid-template-columns: 1fr; } }
+
+  /* Photo upload */
+  .photo-drop {
+    border: 2px dashed var(--border); border-radius: 8px;
+    padding: 20px; text-align: center; margin-top: 4px;
+    background: #fafbfc;
+  }
+  .photo-drop:hover { border-color: var(--primary); background: #f0f7ff; }
+  #photoPlaceholder { cursor: pointer; color: var(--muted); }
+  #photoPreview img {
+    max-width: 100%; max-height: 240px; border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+
+  /* Admin request / signup cards */
+  .request-card, .signup-card {
+    background: white; border: 1px solid var(--border); border-radius: 8px;
+    padding: 14px; margin-bottom: 10px;
+    display: grid; grid-template-columns: auto 1fr auto; gap: 14px;
+    align-items: start;
+  }
+  .request-card.pending, .signup-card.pending { border-left: 4px solid var(--warning); }
+  .request-card.approved, .signup-card.approved { border-left: 4px solid var(--success); }
+  .request-card.declined, .signup-card.declined { border-left: 4px solid var(--danger); }
+  .request-photo {
+    width: 120px; height: 120px; border-radius: 6px; object-fit: cover;
+    border: 1px solid var(--border); cursor: pointer;
+  }
+  .request-photo:hover { opacity: 0.85; }
+  .card-actions { display: flex; flex-direction: column; gap: 6px; min-width: 140px; }
+  .card-actions button {
+    padding: 6px 10px; border-radius: 4px; font-size: 12px;
+    font-weight: 600; cursor: pointer; border: none;
+  }
+  @media (max-width: 720px) {
+    .request-card, .signup-card { grid-template-columns: 1fr; }
+    .request-photo { width: 100%; height: 180px; }
+  }
+
+  .photo-modal {
+    background: transparent; max-width: 90vw; max-height: 90vh;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .photo-modal img { max-width: 90vw; max-height: 85vh; border-radius: 8px; }
+  .photo-modal .close {
+    background: white; border: none; padding: 8px 16px; border-radius: 6px;
+    margin-top: 12px; cursor: pointer; font-weight: 600;
+  }
+
+  .login-tab {
+    flex: 1; padding: 10px 0; border: none; background: none;
+    font-size: 14px; font-weight: 500; color: var(--muted);
+    border-bottom: 3px solid transparent; cursor: pointer;
+  }
+  .login-tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🛒 V&amp;V Order Portal</h1>
+  <div class="user-info" id="userInfo" style="display:none;">
+    <span id="userLabel"></span>
+    <span class="badge" id="userRoleBadge"></span>
+    <button class="btn-logout" onclick="logout()">Switch Account</button>
+  </div>
+</header>
+
+<div class="tabs" id="tabs" style="display:none;"></div>
+
+<div class="container">
+  <div id="view-shop" style="display:none;">
+    <div class="layout">
+      <main>
+        <div class="filters">
+          <input type="text" id="search" placeholder="Search products by name or SKU…" oninput="renderProducts()">
+          <select id="categoryFilter" onchange="renderProducts()">
+            <option value="">All Categories</option>
+            <option value="Medical">Medical</option>
+            <option value="Utility">Utility</option>
+            <option value="Office">Office</option>
+            <option value="Spa_Salon">Spa &amp; Salon</option>
+            <option value="Kitchen">Kitchen</option>
+          </select>
+          <button onclick="openProductRequest()" style="padding:8px 14px;background:var(--accent);color:white;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:500;">📸 Request Product</button>
+        </div>
+        <div id="productsGrid" class="products-grid"></div>
+      </main>
+      <aside>
+        <div class="cart">
+          <h2>Cart (<span id="cartCount">0</span>)</h2>
+          <div class="cart-items" id="cartItems">
+            <div class="cart-empty">Your cart is empty.<br>Add products to get started.</div>
+          </div>
+          <div class="cart-summary" id="cartSummary" style="display:none;">
+            <div class="cart-summary-row"><span>Items</span><span id="cartItemCount">0</span></div>
+            <div class="cart-summary-row"><span>Subtotal</span><span id="cartSubtotal">₱0.00</span></div>
+            <div class="cart-summary-row cart-summary-total"><span>Total (VAT incl.)</span><span id="cartTotal">₱0.00</span></div>
+            <button class="checkout-btn" onclick="openCheckout()">Submit for Approval →</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div id="view-my-orders" style="display:none;">
+    <div id="myOrdersList"></div>
+  </div>
+
+  <div id="view-approvals" style="display:none;">
+    <div id="approvalsList"></div>
+  </div>
+
+  <div id="view-admin" style="display:none;">
+    <div id="adminContent"></div>
+  </div>
+</div>
+
+<!-- Login Modal -->
+<div class="modal-backdrop" id="loginModal">
+  <div class="modal" style="max-width:480px;">
+    <h2>Welcome to V&amp;V Order Portal</h2>
+
+    <div style="display:flex;gap:6px;margin:14px 0 16px;border-bottom:1px solid var(--border);">
+      <button class="login-tab active" data-ltab="customer" onclick="switchLoginTab('customer')">🏪 Customer</button>
+      <button class="login-tab" data-ltab="staff" onclick="switchLoginTab('staff')">🔐 Staff Login</button>
+    </div>
+
+    <div id="login-customer">
+      <p style="color:var(--muted);font-size:13px;margin-bottom:14px;">Select your company and branch to place or track orders.</p>
+      <label>Company</label>
+      <select id="companySelect" onchange="onCompanyChange()">
+        <option value="">-- Select your company --</option>
+      </select>
+      <label>Branch</label>
+      <select id="roleSelect">
+        <option value="">-- Select your branch --</option>
+      </select>
+      <button class="btn-primary" onclick="login()">Continue</button>
+      <p style="text-align:center;margin-top:14px;margin-bottom:0;font-size:13px;">
+        New customer? <a href="#" onclick="openSignup(); return false;" style="color:var(--primary);font-weight:500;">Apply for an account →</a>
+      </p>
+    </div>
+
+    <div id="login-staff" style="display:none;">
+      <p style="color:var(--muted);font-size:13px;margin-bottom:14px;">For V&amp;V admin and approvers only.</p>
+      <label>Username</label>
+      <input type="text" id="staffUser" placeholder="Username" autocomplete="username">
+      <label>Password</label>
+      <input type="password" id="staffPass" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter') staffLogin()">
+      <button class="btn-primary" onclick="staffLogin()" style="background:var(--primary-dark);">Staff Sign In</button>
+      <p style="font-size:11px;color:var(--muted);margin-top:10px;line-height:1.5;">
+        <b>Demo credentials:</b><br>
+        Admin — <code>admin</code> / <code>vvadmin2026</code><br>
+        Eisha (approver) — <code>eisha</code> / <code>eisha2026</code>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Signup Modal -->
+<div class="modal-backdrop" id="signupModal" style="display:none;">
+  <div class="checkout-modal">
+    <h2>Apply for a V&amp;V Account</h2>
+    <p style="color:var(--muted);font-size:13px;margin-bottom:14px;">
+      Fill out your company information. V&amp;V will review and approve your account within 1–2 business days, then email you credentials and payment terms.
+    </p>
+
+    <h3 style="font-size:14px;margin:10px 0 8px;color:var(--primary-dark);">Company Information</h3>
+    <div class="form-grid">
+      <div><label>Company Name *</label><input type="text" id="su_company" required></div>
+      <div><label>TIN *</label><input type="text" id="su_tin" placeholder="e.g. 123-456-789-0000" required></div>
+      <div class="full"><label>Business Address *</label><input type="text" id="su_address" required></div>
+      <div><label>Business Type *</label>
+        <select id="su_type" required>
+          <option value="">-- Select --</option>
+          <option>Medical Clinic</option>
+          <option>Hospital</option>
+          <option>Salon / Spa</option>
+          <option>Office</option>
+          <option>Restaurant / Food Service</option>
+          <option>Hotel / Hospitality</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div><label>Estimated Monthly Orders</label>
+        <select id="su_volume">
+          <option value="">-- Select --</option>
+          <option>Less than ₱10,000</option>
+          <option>₱10,000 – ₱50,000</option>
+          <option>₱50,000 – ₱200,000</option>
+          <option>More than ₱200,000</option>
+        </select>
+      </div>
+    </div>
+
+    <h3 style="font-size:14px;margin:14px 0 8px;color:var(--primary-dark);">Primary Contact</h3>
+    <div class="form-grid">
+      <div><label>Full Name *</label><input type="text" id="su_contact" required></div>
+      <div><label>Role / Position</label><input type="text" id="su_role" placeholder="e.g. Owner, Purchasing Manager"></div>
+      <div><label>Email *</label><input type="email" id="su_email" required></div>
+      <div><label>Mobile *</label><input type="tel" id="su_mobile" placeholder="+63 9XX XXX XXXX" required></div>
+    </div>
+
+    <h3 style="font-size:14px;margin:14px 0 8px;color:var(--primary-dark);">Branches</h3>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:8px;">
+      List every branch/location that will be ordering. If you only have one location, just fill in the first row.
+    </p>
+    <div id="branchesList"></div>
+    <button type="button" onclick="addBranchRow()" style="background:white;border:1px dashed var(--border);padding:8px 14px;border-radius:5px;cursor:pointer;font-size:13px;color:var(--muted);width:100%;margin-top:4px;">+ Add another branch</button>
+
+    <h3 style="font-size:14px;margin:14px 0 8px;color:var(--primary-dark);">Order Approver</h3>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:8px;">
+      The person who reviews and approves orders placed by your branches before they reach V&amp;V. Can be the same as the primary contact.
+    </p>
+    <label style="display:flex;align-items:center;gap:6px;font-size:13px;margin-bottom:8px;cursor:pointer;">
+      <input type="checkbox" id="su_approver_same" checked onchange="toggleApproverFields()"> Same as primary contact
+    </label>
+    <div class="form-grid" id="approverFields" style="display:none;">
+      <div><label>Approver Name</label><input type="text" id="su_approver_name"></div>
+      <div><label>Approver Mobile</label><input type="tel" id="su_approver_mobile" placeholder="+63 9XX XXX XXXX"></div>
+      <div class="full"><label>Approver Email</label><input type="email" id="su_approver_email"></div>
+    </div>
+
+    <label style="margin-top:14px;">How did you hear about V&amp;V?</label>
+    <input type="text" id="su_referral" placeholder="Optional">
+
+    <div class="btn-row">
+      <button class="btn-cancel" onclick="closeModal('signupModal')">Cancel</button>
+      <button class="btn-submit" onclick="submitSignup()">Submit Application</button>
+    </div>
+  </div>
+</div>
+
+<!-- Log Manual Order Modal -->
+<div class="modal-backdrop" id="manualOrderModal" style="display:none;">
+  <div class="checkout-modal">
+    <h2>Log a Manual Order</h2>
+    <p style="color:var(--muted);font-size:13px;margin-bottom:14px;">
+      Use this to record deliveries that happened offline (e.g. Viber orders before the portal, or deliveries you haven't invoiced yet). The order is added to your books with the status you pick.
+    </p>
+
+    <div class="form-grid">
+      <div><label>Company *</label>
+        <select id="mo_company" onchange="mo_onCompanyChange()">
+          <option value="">-- Select --</option>
+        </select>
+      </div>
+      <div><label>Branch *</label>
+        <select id="mo_branch">
+          <option value="">-- Select company first --</option>
+        </select>
+      </div>
+      <div><label>Delivery Date *</label><input type="date" id="mo_date"></div>
+      <div><label>Total Amount (PHP, VAT-incl) *</label><input type="number" id="mo_amount" min="0" step="0.01" placeholder="e.g. 12500"></div>
+      <div><label>Status</label>
+        <select id="mo_status">
+          <option value="Delivered" selected>Delivered (awaiting payment)</option>
+          <option value="Paid">Paid (already collected)</option>
+          <option value="Out for Delivery">Out for Delivery</option>
+          <option value="Ready">Ready</option>
+          <option value="Confirmed">Confirmed</option>
+        </select>
+      </div>
+      <div><label>Invoice / SI # <span style="font-weight:400;color:var(--muted);">(blank = not invoiced yet)</span></label>
+        <input type="text" id="mo_invoice" placeholder="e.g. 626">
+      </div>
+      <div class="full"><label>Notes</label>
+        <textarea id="mo_notes" placeholder="Anything about this delivery…"></textarea>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-cancel" onclick="closeModal('manualOrderModal')">Cancel</button>
+      <button class="btn-submit" onclick="submitManualOrder()">Save Order</button>
+    </div>
+  </div>
+</div>
+
+<!-- Product Form Modal -->
+<div class="modal-backdrop" id="productFormModal" style="display:none;">
+  <div class="checkout-modal">
+    <h2 id="productFormTitle">Add Product</h2>
+    <div class="form-grid">
+      <div>
+        <label>SKU</label>
+        <input type="text" id="productFormSku" placeholder="e.g. MED-0500">
+        <div id="productFormSkuHint" style="font-size:11px;color:var(--muted);margin-top:3px;"></div>
+      </div>
+      <div><label>Category *</label>
+        <select id="productFormCategory">
+          <option value="">-- Select --</option>
+          <option>Medical</option>
+          <option>Utility</option>
+          <option>Office</option>
+          <option>Spa_Salon</option>
+          <option>Kitchen</option>
+        </select>
+      </div>
+      <div class="full"><label>Product Name *</label><input type="text" id="productFormName"></div>
+      <div><label>Brand</label><input type="text" id="productFormBrand"></div>
+      <div><label>Preferred Supplier</label><input type="text" id="productFormSupplier" list="supplierList" placeholder="Pick existing or type new"></div>
+      <datalist id="supplierList"></datalist>
+      <div><label>Variant / Pack</label><input type="text" id="productFormVariant" placeholder="e.g. 500ml, 24 bottles"></div>
+      <div><label>Unit of Measure</label><input type="text" id="productFormUom" placeholder="e.g. box, pack, bottle"></div>
+      <div><label>Sales Price (PHP, VAT-incl) *</label><input type="number" id="productFormPrice" min="0" step="0.01"></div>
+      <div style="display:flex;align-items:end;padding-bottom:6px;">
+        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:400;font-size:13px;">
+          <input type="checkbox" id="productFormActive" checked> Active (visible in Shop)
+        </label>
+      </div>
+    </div>
+
+    <label style="margin-top:14px;">Product Photo</label>
+    <div class="photo-drop">
+      <input type="file" id="prodPhoto" accept="image/*" onchange="handleProdPhotoUpload(event)" style="display:none;">
+      <div id="prodPhotoPlaceholder" onclick="document.getElementById('prodPhoto').click()">
+        <div style="font-size:32px;margin-bottom:6px;">📷</div>
+        <div><b>Click to upload a photo</b></div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px;">JPG or PNG · auto-resized to 600px max</div>
+      </div>
+      <div id="prodPhotoPreview" style="display:none;">
+        <img id="prodPhotoImg" alt="Product photo preview">
+        <div style="display:flex;gap:8px;margin-top:8px;justify-content:center;">
+          <button type="button" onclick="document.getElementById('prodPhoto').click()" class="btn-cancel" style="padding:6px 12px;border-radius:4px;">Change</button>
+          <button type="button" onclick="clearProdPhoto()" class="btn-cancel" style="padding:6px 12px;border-radius:4px;color:var(--danger);border-color:var(--danger);">Remove</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-cancel" onclick="closeModal('productFormModal')">Cancel</button>
+      <button class="btn-submit" onclick="submitProductForm()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- Split Order Modal -->
+<div class="modal-backdrop" id="splitModal" style="display:none;">
+  <div class="checkout-modal" style="max-width:680px;">
+    <h2>Split Order</h2>
+    <p style="color:var(--muted);font-size:13px;margin-bottom:14px;">
+      Move some items into a new order so they can be delivered and billed separately. The original order keeps the rest.
+    </p>
+    <div class="status-banner banner-info" id="splitBanner"></div>
+
+    <table class="order-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th class="num">In Order</th>
+          <th class="num">Split Qty</th>
+          <th class="num">Keep Qty</th>
+          <th class="num">Split Value</th>
+        </tr>
+      </thead>
+      <tbody id="splitTableBody"></tbody>
+      <tfoot>
+        <tr class="totals-row">
+          <td colspan="4" class="num"><b>New split order total</b></td>
+          <td class="num"><b id="splitNewTotal">₱0.00</b></td>
+        </tr>
+        <tr>
+          <td colspan="4" class="num" style="color:var(--muted);">Original order remains</td>
+          <td class="num" style="color:var(--muted);" id="splitRemainTotal">₱0.00</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <label for="splitReason">Reason / notes (optional)</label>
+    <textarea id="splitReason" placeholder="e.g. Partial delivery — Chopping Board still being procured"></textarea>
+
+    <div class="btn-row">
+      <button class="btn-cancel" onclick="closeModal('splitModal')">Cancel</button>
+      <button class="btn-submit" onclick="confirmSplitOrder()">Create Split</button>
+    </div>
+  </div>
+</div>
+
+<!-- Product Request Modal -->
+<div class="modal-backdrop" id="requestModal" style="display:none;">
+  <div class="checkout-modal">
+    <h2>Request a Product</h2>
+    <p style="color:var(--muted);font-size:13px;margin-bottom:14px;">
+      Can't find what you need in the catalog? Let us know and V&amp;V will source it for you. A photo of the exact product is required so we can match it correctly.
+    </p>
+
+    <div class="form-grid">
+      <div class="full"><label>Product Name *</label><input type="text" id="rq_name" placeholder="e.g. Hypoallergenic Surgical Tape" required></div>
+      <div><label>Category *</label>
+        <select id="rq_category" required>
+          <option value="">-- Select --</option>
+          <option>Medical</option>
+          <option>Utility</option>
+          <option>Office</option>
+          <option>Spa_Salon</option>
+          <option>Kitchen</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div><label>Brand (if specific)</label><input type="text" id="rq_brand"></div>
+      <div><label>Estimated Quantity</label><input type="number" id="rq_qty" min="1" placeholder="How many per month"></div>
+      <div><label>Unit / Pack Size</label><input type="text" id="rq_uom" placeholder="e.g. box of 100, 500ml bottle"></div>
+      <div class="full"><label>Description / Specifications</label>
+        <textarea id="rq_desc" placeholder="Size, specifications, color, material, any details that help us source the right item."></textarea>
+      </div>
+    </div>
+
+    <label style="margin-top:14px;">Product Photo *</label>
+    <div id="photoDropArea" class="photo-drop">
+      <input type="file" id="rq_photo" accept="image/*" onchange="handlePhotoUpload(event)" style="display:none;">
+      <div id="photoPlaceholder" onclick="document.getElementById('rq_photo').click()">
+        <div style="font-size:32px;margin-bottom:6px;">📷</div>
+        <div><b>Click to upload a photo</b></div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px;">JPG, PNG, or HEIC · required</div>
+      </div>
+      <div id="photoPreview" style="display:none;">
+        <img id="photoImg" alt="Product photo preview">
+        <button type="button" onclick="clearPhoto()" class="btn-cancel" style="margin-top:8px;padding:6px 12px;border-radius:4px;">Remove photo</button>
+      </div>
+    </div>
+
+    <label style="margin-top:14px;">Notes</label>
+    <textarea id="rq_notes" placeholder="How urgent? Any other information?"></textarea>
+
+    <div class="btn-row">
+      <button class="btn-cancel" onclick="closeModal('requestModal')">Cancel</button>
+      <button class="btn-submit" onclick="submitProductRequest()">Submit Request</button>
+    </div>
+  </div>
+</div>
+
+<!-- Checkout Modal -->
+<div class="modal-backdrop" id="checkoutModal" style="display:none;">
+  <div class="checkout-modal">
+    <h2>Submit Order for Approval</h2>
+    <div class="status-banner banner-info" id="checkoutBanner"></div>
+    <label>Fulfillment</label>
+    <div class="fulfillment">
+      <label><input type="radio" name="fulfill" value="delivery" checked><span>🚚 Delivery</span></label>
+      <label><input type="radio" name="fulfill" value="pickup"><span>🏪 Pickup</span></label>
+    </div>
+    <label for="orderNotes">Order Notes (optional)</label>
+    <textarea id="orderNotes" placeholder="Preferred delivery date, special instructions, etc."></textarea>
+    <div class="btn-row">
+      <button class="btn-cancel" onclick="closeModal('checkoutModal')">Cancel</button>
+      <button class="btn-submit" onclick="submitForApproval()">Submit for Approval</button>
+    </div>
+  </div>
+</div>
+
+<!-- Order Detail / Approve Modal -->
+<div class="modal-backdrop" id="detailModal" style="display:none;">
+  <div class="detail-modal" id="detailContent"></div>
+</div>
+
+<script>
+const ADMIN_EMAIL = 'elmerdytang@gmail.com';
+let PRODUCTS = [];
+let COMPANIES = [];
+let session = null;  // { companyCode, role: 'branch:<code>' | 'approver' }
+let cart = {};
+
+// ========== INIT ==========
+async function load() {
+  const baseProducts = await (await fetch('data/products.json')).json();
+  const addedProducts = JSON.parse(localStorage.getItem('vv_products_added') || '[]');
+  PRODUCTS = [...baseProducts, ...addedProducts].map(p => ({ active: true, ...p }));
+  const edits = JSON.parse(localStorage.getItem('vv_products_edited') || '{}');
+  PRODUCTS.forEach(p => { if (edits[p.sku]) Object.assign(p, edits[p.sku]); });
+
+  const base = await (await fetch('data/companies.json')).json();
+  const added = JSON.parse(localStorage.getItem('vv_companies_added') || '[]');
+  let legacy = { orders: [], legacy_companies: [] };
+  try { legacy = await (await fetch('data/legacy_orders.json')).json(); } catch (_) {}
+  COMPANIES = [...base, ...added, ...(legacy.legacy_companies || [])];
+
+  // Merge legacy historical orders into vv_orders once (idempotent by order_id)
+  const existing = JSON.parse(localStorage.getItem('vv_orders') || '[]');
+  const existingIds = new Set(existing.map(o => o.order_id));
+  const toAdd = (legacy.orders || []).filter(o => !existingIds.has(o.order_id));
+  if (toAdd.length) {
+    localStorage.setItem('vv_orders', JSON.stringify([...existing, ...toAdd]));
+  }
+
+  const sel = document.getElementById('companySelect');
+  COMPANIES.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c.code;
+    opt.textContent = `${c.name} (${c.branches.length} branch${c.branches.length>1?'es':''})`;
+    sel.appendChild(opt);
+  });
+  const saved = sessionStorage.getItem('vv_session');
+  if (saved) { session = JSON.parse(saved); onLoggedIn(); }
+
+  const savedCart = sessionStorage.getItem('vv_cart');
+  if (savedCart) cart = JSON.parse(savedCart);
+}
+
+function onCompanyChange() {
+  const code = document.getElementById('companySelect').value;
+  const roleSel = document.getElementById('roleSelect');
+  roleSel.innerHTML = '<option value="">-- Select your branch --</option>';
+  if (!code) return;
+  const co = COMPANIES.find(c => c.code === code);
+  co.branches.forEach(b => {
+    const opt = document.createElement('option');
+    opt.value = `branch:${b.code}`;
+    opt.textContent = `🏪 ${b.name}`;
+    roleSel.appendChild(opt);
+  });
+}
+
+function login() {
+  const companyCode = document.getElementById('companySelect').value;
+  const role = document.getElementById('roleSelect').value;
+  if (!companyCode || !role) { alert('Please select your company and branch.'); return; }
+  session = { companyCode, role };
+  sessionStorage.setItem('vv_session', JSON.stringify(session));
+  onLoggedIn();
+}
+
+function getCompany() { return COMPANIES.find(c => c.code === session.companyCode); }
+function getBranch() {
+  if (!session.role.startsWith('branch:')) return null;
+  const code = session.role.split(':')[1];
+  return getCompany().branches.find(b => b.code === code);
+}
+function isApprover() { return session.role === 'approver'; }
+function isAdmin() { return session.role === 'admin'; }
+function isSuperApprover() { return session.role === 'super_approver'; }
+function approverName() { return isSuperApprover() ? 'Eisha' : getCompany().approver_name; }
+
+function onLoggedIn() {
+  document.getElementById('loginModal').style.display = 'none';
+  document.getElementById('userInfo').style.display = 'flex';
+  document.getElementById('tabs').style.display = 'flex';
+
+  const roleBadge = document.getElementById('userRoleBadge');
+
+  if (isAdmin()) {
+    document.getElementById('userLabel').textContent = 'V&V Operations';
+    roleBadge.textContent = 'ADMIN';
+    roleBadge.className = 'badge badge-admin';
+    buildTabs(['dashboard', 'all-orders', 'analytics', 'catalog', 'signups', 'requests']);
+    switchTab('dashboard');
+    return;
+  }
+
+  if (isSuperApprover()) {
+    document.getElementById('userLabel').textContent = `Eisha · ${COMPANIES.length} companies`;
+    roleBadge.textContent = 'SUPER APPROVER';
+    roleBadge.className = 'badge badge-approver';
+    buildTabs(['super-dashboard', 'super-pending', 'super-history']);
+    switchTab('super-dashboard');
+    return;
+  }
+
+  const co2 = getCompany();
+  if (isApprover()) {
+    document.getElementById('userLabel').textContent = `${co2.approver_name} · ${co2.name}`;
+    roleBadge.textContent = 'APPROVER';
+    roleBadge.className = 'badge badge-approver';
+    buildTabs(['approvals', 'history']);
+    switchTab('approvals');
+  } else {
+    const br = getBranch();
+    document.getElementById('userLabel').textContent = `${co2.name} · ${br.name}`;
+    roleBadge.textContent = br.terms;
+    roleBadge.className = 'badge';
+    buildTabs(['shop', 'my-orders']);
+    switchTab('shop');
+  }
+}
+
+function buildTabs(tabs) {
+  const el = document.getElementById('tabs');
+  const labels = {
+    'shop': '🛒 Shop',
+    'my-orders': '📋 My Orders',
+    'approvals': '⚠️ Pending Approvals',
+    'history': '📜 Approval History',
+    'dashboard': '📊 Dashboard',
+    'all-orders': '📦 All Orders',
+    'analytics': '📈 Analytics',
+    'catalog': '📋 Catalog',
+    'signups': '✉️ Signups',
+    'requests': '📸 Product Requests',
+    'super-dashboard': '📊 My Dashboard',
+    'super-pending': '⚠️ Pending Approvals',
+    'super-history': '📜 Approval History',
+  };
+  el.innerHTML = tabs.map(t => `<button class="tab" data-tab="${t}" onclick="switchTab('${t}')">${labels[t]}<span id="tab-count-${t}" class="count" style="display:none;"></span></button>`).join('');
+  updateTabCounts();
+}
+
+function updateTabCounts() {
+  const orders = getAllOrders();
+  if (isSuperApprover()) {
+    const pending = orders.filter(o => o.status === 'Pending Approval').length;
+    const el = document.getElementById('tab-count-super-pending');
+    if (el) {
+      if (pending > 0) { el.textContent = pending; el.style.display = 'inline-block'; }
+      else { el.style.display = 'none'; }
+    }
+    return;
+  }
+  if (isAdmin()) {
+    const awaiting = orders.filter(o => o.status === 'Submitted to V&V').length;
+    const el = document.getElementById('tab-count-all-orders');
+    if (el) {
+      if (awaiting > 0) { el.textContent = awaiting; el.style.display = 'inline-block'; }
+      else { el.style.display = 'none'; }
+    }
+    const pendingSignups = getSignups().filter(s => s.status === 'Pending').length;
+    const sel = document.getElementById('tab-count-signups');
+    if (sel) {
+      if (pendingSignups > 0) { sel.textContent = pendingSignups; sel.style.display = 'inline-block'; }
+      else { sel.style.display = 'none'; }
+    }
+    const pendingReqs = getRequests().filter(r => r.status === 'Pending Review').length;
+    const rel = document.getElementById('tab-count-requests');
+    if (rel) {
+      if (pendingReqs > 0) { rel.textContent = pendingReqs; rel.style.display = 'inline-block'; }
+      else { rel.style.display = 'none'; }
+    }
+    return;
+  }
+  const co = getCompany();
+  const relevant = orders.filter(o => o.company.code === co.code);
+  const pending = relevant.filter(o => o.status === 'Pending Approval').length;
+  const tcount = document.getElementById('tab-count-approvals');
+  if (tcount) {
+    if (pending > 0) { tcount.textContent = pending; tcount.style.display = 'inline-block'; }
+    else { tcount.style.display = 'none'; }
+  }
+  const mycount = document.getElementById('tab-count-my-orders');
+  if (mycount && !isApprover()) {
+    const br = getBranch();
+    const myPending = relevant.filter(o => o.branch.code === br.code && o.status === 'Pending Approval').length;
+    if (myPending > 0) { mycount.textContent = myPending; mycount.style.display = 'inline-block'; }
+    else { mycount.style.display = 'none'; }
+  }
+}
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+  document.querySelectorAll('[id^="view-"]').forEach(v => v.style.display = 'none');
+
+  if (tab === 'shop') { document.getElementById('view-shop').style.display = 'block'; renderProducts(); renderCart(); }
+  else if (tab === 'my-orders') { document.getElementById('view-my-orders').style.display = 'block'; renderMyOrders(); }
+  else if (tab === 'approvals') { document.getElementById('view-approvals').style.display = 'block'; renderApprovals('pending'); }
+  else if (tab === 'history') { document.getElementById('view-approvals').style.display = 'block'; renderApprovals('history'); }
+  else if (tab === 'dashboard') { document.getElementById('view-admin').style.display = 'block'; renderAdminDashboard(); }
+  else if (tab === 'all-orders') { document.getElementById('view-admin').style.display = 'block'; renderAdminOrders(); }
+  else if (tab === 'analytics') { document.getElementById('view-admin').style.display = 'block'; renderAnalytics(); }
+  else if (tab === 'catalog') { document.getElementById('view-admin').style.display = 'block'; renderAdminCatalog(); }
+  else if (tab === 'signups') { document.getElementById('view-admin').style.display = 'block'; renderAdminSignups(); }
+  else if (tab === 'requests') { document.getElementById('view-admin').style.display = 'block'; renderAdminRequests(); }
+  else if (tab === 'super-dashboard') { document.getElementById('view-admin').style.display = 'block'; renderSuperDashboard(); }
+  else if (tab === 'super-pending') { document.getElementById('view-admin').style.display = 'block'; renderSuperApprovals('pending'); }
+  else if (tab === 'super-history') { document.getElementById('view-admin').style.display = 'block'; renderSuperApprovals('history'); }
+  updateTabCounts();
+}
+
+function logout() {
+  sessionStorage.removeItem('vv_session');
+  sessionStorage.removeItem('vv_cart');
+  cart = {}; session = null;
+  location.reload();
+}
+
+// ========== ORDERS STORAGE ==========
+function getAllOrders() {
+  return JSON.parse(localStorage.getItem('vv_orders') || '[]');
+}
+function saveOrders(orders) {
+  localStorage.setItem('vv_orders', JSON.stringify(orders));
+}
+function saveOrder(order) {
+  const orders = getAllOrders();
+  const idx = orders.findIndex(o => o.order_id === order.order_id);
+  if (idx >= 0) orders[idx] = order; else orders.unshift(order);
+  saveOrders(orders);
+}
+
+// ========== UTILS ==========
+function peso(n) {
+  return '₱' + n.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+function fmtDate(iso) { return new Date(iso).toLocaleString('en-PH', { dateStyle: 'medium', timeStyle: 'short' }); }
+
+// ========== PRODUCTS & CART ==========
+function renderProducts() {
+  const search = document.getElementById('search').value.toLowerCase().trim();
+  const cat = document.getElementById('categoryFilter').value;
+  const grid = document.getElementById('productsGrid');
+
+  let filtered = PRODUCTS.filter(p => p.active !== false);
+  if (cat) filtered = filtered.filter(p => p.category === cat);
+  if (search) {
+    filtered = filtered.filter(p =>
+      p.name.toLowerCase().includes(search) ||
+      p.sku.toLowerCase().includes(search) ||
+      (p.brand && p.brand.toLowerCase().includes(search))
+    );
+  }
+
+  if (!filtered.length) {
+    grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--muted);padding:40px;">No products match your search.</p>';
+    return;
+  }
+
+  grid.innerHTML = filtered.slice(0, 200).map(p => {
+    const catLabel = p.category.replace('_', ' & ');
+    const inCart = cart[p.sku] || 0;
+    const imgHtml = p.image
+      ? `<img src="${p.image}" alt="" class="product-img">`
+      : `<div class="product-img product-img-placeholder">📦</div>`;
+    return `
+      <div class="product-card">
+        ${imgHtml}
+        <span class="category-badge cat-${p.category}">${catLabel}</span>
+        <span class="product-sku">${p.sku}</span>
+        <div class="product-name">${escapeHtml(p.name)}</div>
+        ${p.brand ? `<div class="product-meta">Brand: ${escapeHtml(p.brand)}</div>` : ''}
+        ${p.variant ? `<div class="product-variant">${escapeHtml(p.variant)}</div>` : ''}
+        <div class="product-price">${peso(p.price)} <small>/ ${p.uom || 'unit'}</small></div>
+        <div class="qty-row">
+          <input type="number" min="1" value="${inCart || 1}" id="qty-${p.sku}">
+          <button class="btn-add" onclick="addToCart('${p.sku}')">${inCart ? '✓ In Cart (' + inCart + ')' : '+ Add'}</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  if (filtered.length > 200) {
+    grid.innerHTML += `<p style="grid-column:1/-1;text-align:center;color:var(--muted);padding:14px;font-size:13px;">Showing first 200 of ${filtered.length} results. Use search to narrow down.</p>`;
+  }
+}
+
+function addToCart(sku) {
+  const qty = parseInt(document.getElementById('qty-' + sku).value) || 1;
+  if (qty < 1) return;
+  cart[sku] = qty;
+  sessionStorage.setItem('vv_cart', JSON.stringify(cart));
+  renderProducts();
+  renderCart();
+}
+function updateCartQty(sku, delta) {
+  const newQty = (cart[sku] || 0) + delta;
+  if (newQty <= 0) delete cart[sku]; else cart[sku] = newQty;
+  sessionStorage.setItem('vv_cart', JSON.stringify(cart));
+  renderProducts(); renderCart();
+}
+function setCartQty(sku, value) {
+  const qty = parseInt(value) || 0;
+  if (qty <= 0) delete cart[sku]; else cart[sku] = qty;
+  sessionStorage.setItem('vv_cart', JSON.stringify(cart));
+  renderProducts(); renderCart();
+}
+function removeFromCart(sku) {
+  delete cart[sku];
+  sessionStorage.setItem('vv_cart', JSON.stringify(cart));
+  renderProducts(); renderCart();
+}
+
+function renderCart() {
+  const items = document.getElementById('cartItems');
+  const summary = document.getElementById('cartSummary');
+  const entries = Object.entries(cart);
+  document.getElementById('cartCount').textContent = entries.length;
+
+  if (!entries.length) {
+    items.innerHTML = '<div class="cart-empty">Your cart is empty.<br>Add products to get started.</div>';
+    summary.style.display = 'none';
+    return;
+  }
+
+  let subtotal = 0;
+  items.innerHTML = entries.map(([sku, qty]) => {
+    const p = PRODUCTS.find(x => x.sku === sku);
+    if (!p) return '';
+    const line = p.price * qty;
+    subtotal += line;
+    return `
+      <div class="cart-item">
+        <div>
+          <div class="cart-item-name">${escapeHtml(p.name)}</div>
+          <div class="cart-item-meta">${p.sku} · ${peso(p.price)} / ${p.uom || 'unit'}</div>
+          <div class="cart-item-controls" style="margin-top:6px;">
+            <button onclick="updateCartQty('${sku}', -1)">−</button>
+            <input type="number" min="1" value="${qty}" onchange="setCartQty('${sku}', this.value)">
+            <button onclick="updateCartQty('${sku}', 1)">+</button>
+            <button class="cart-item-remove" onclick="removeFromCart('${sku}')" style="margin-left:8px;">Remove</button>
+          </div>
+        </div>
+        <div class="cart-item-price">${peso(line)}</div>
+      </div>
+    `;
+  }).join('');
+
+  document.getElementById('cartItemCount').textContent = entries.reduce((s, [, q]) => s + q, 0);
+  document.getElementById('cartSubtotal').textContent = peso(subtotal);
+  document.getElementById('cartTotal').textContent = peso(subtotal);
+  summary.style.display = 'block';
+}
+
+// ========== CHECKOUT ==========
+function openCheckout() {
+  if (!Object.keys(cart).length) return;
+  const co = getCompany();
+  const banner = document.getElementById('checkoutBanner');
+  banner.className = 'status-banner banner-info';
+  banner.innerHTML = `This order will be sent to <b>${escapeHtml(co.approver_name)}</b> for approval. You'll be notified once approved or rejected.`;
+  document.getElementById('checkoutModal').style.display = 'flex';
+}
+
+function generateOrderId() {
+  const d = new Date();
+  const ymd = d.toISOString().slice(0, 10).replace(/-/g, '');
+  const rand = Math.random().toString(36).slice(2, 6).toUpperCase();
+  return `ORD-${ymd}-${rand}`;
+}
+
+function submitForApproval() {
+  const orderId = generateOrderId();
+  const fulfillment = document.querySelector('input[name="fulfill"]:checked').value;
+  const notes = document.getElementById('orderNotes').value.trim();
+  const timestamp = new Date().toISOString();
+
+  const lines = Object.entries(cart).map(([sku, qty]) => {
+    const p = PRODUCTS.find(x => x.sku === sku);
+    return {
+      sku, name: p.name, brand: p.brand, variant: p.variant, uom: p.uom,
+      qty, unit_price: p.price, line_total: p.price * qty,
+    };
+  });
+  const total = lines.reduce((s, l) => s + l.line_total, 0);
+  const co = getCompany();
+  const br = getBranch();
+
+  const order = {
+    order_id: orderId,
+    timestamp,
+    status: 'Pending Approval',
+    company: { code: co.code, name: co.name, tin: co.tin, approver: co.approver_name },
+    branch: { code: br.code, name: br.name, address: br.address, mobile: br.mobile, terms: br.terms },
+    fulfillment, notes,
+    lines, total_php: total,
+    history: [{ at: timestamp, by: `${br.name} branch`, action: 'submitted_for_approval' }],
+  };
+
+  saveOrder(order);
+  cart = {};
+  sessionStorage.removeItem('vv_cart');
+  closeModal('checkoutModal');
+
+  alert(`Order ${orderId} submitted for approval.\n\nApprover: ${co.approver_name}\n\nYou'll see it in the "My Orders" tab.`);
+  switchTab('my-orders');
+}
+
+// ========== MY ORDERS (branch view) ==========
+function renderMyOrders() {
+  const br = getBranch();
+  const co = getCompany();
+  const orders = getAllOrders().filter(o => o.company.code === co.code && o.branch.code === br.code);
+  const container = document.getElementById('myOrdersList');
+
+  if (!orders.length) {
+    container.innerHTML = `<div class="orders-section"><div class="empty-state">You haven't placed any orders yet.<br>Go to <b>Shop</b> to get started.</div></div>`;
+    return;
+  }
+
+  const groups = {
+    'Pending Approval': orders.filter(o => o.status === 'Pending Approval'),
+    'Approved': orders.filter(o => o.status === 'Approved' || o.status === 'Submitted to V&V'),
+    'Rejected': orders.filter(o => o.status === 'Rejected'),
+  };
+
+  container.innerHTML = Object.entries(groups).map(([title, list]) => {
+    if (!list.length) return '';
+    return `
+      <div class="orders-section">
+        <h2>${title} (${list.length})</h2>
+        ${list.map(o => orderCardHtml(o, false)).join('')}
+      </div>
+    `;
+  }).join('') || `<div class="orders-section"><div class="empty-state">No orders to display.</div></div>`;
+}
+
+// ========== APPROVALS (approver view) ==========
+function renderApprovals(mode) {
+  const co = getCompany();
+  const orders = getAllOrders().filter(o => o.company.code === co.code);
+  const container = document.getElementById('approvalsList');
+
+  let list, title;
+  if (mode === 'pending') {
+    list = orders.filter(o => o.status === 'Pending Approval');
+    title = `Pending Your Approval (${list.length})`;
+  } else {
+    list = orders.filter(o => o.status !== 'Pending Approval');
+    title = `Approval History (${list.length})`;
+  }
+
+  if (!list.length) {
+    container.innerHTML = `<div class="orders-section"><h2>${title}</h2><div class="empty-state">${mode === 'pending' ? 'No orders awaiting your approval.' : 'No past decisions to show yet.'}</div></div>`;
+    return;
+  }
+  container.innerHTML = `<div class="orders-section"><h2>${title}</h2>${list.map(o => orderCardHtml(o, mode === 'pending')).join('')}</div>`;
+}
+
+function orderCardHtml(o, showApproveButtons) {
+  const statusClass = o.status === 'Pending Approval' ? 'pending' :
+                     (o.status === 'Rejected' ? 'rejected' : 'approved');
+  const statusBadge = o.status === 'Pending Approval' ? 'status-pending' :
+                      o.status === 'Rejected' ? 'status-rejected' :
+                      o.status === 'Submitted to V&V' ? 'status-submitted' : 'status-approved';
+
+  return `
+    <div class="order-card ${statusClass}">
+      <div>
+        <div class="order-head">
+          <span class="order-id">${o.order_id}</span>
+          <span class="order-status ${statusBadge}">${o.status}</span>
+          <span class="order-meta">${o.branch.name} · ${fmtDate(o.timestamp)}</span>
+        </div>
+        <div class="order-meta" style="margin-top:6px;">
+          ${o.lines.length} line item${o.lines.length>1?'s':''} · ${o.fulfillment === 'delivery' ? '🚚 Delivery' : '🏪 Pickup'}
+          ${o.notes ? ` · <i>"${escapeHtml(o.notes.substring(0,80))}${o.notes.length>80?'…':''}"</i>` : ''}
+        </div>
+        <button class="order-detail-btn" onclick="showOrderDetail('${o.order_id}')">View Details</button>
+      </div>
+      <div style="text-align:right;">
+        <div class="order-total">${peso(o.total_php)}</div>
+        ${showApproveButtons ? `
+          <div style="display:flex;gap:6px;margin-top:8px;">
+            <button class="btn-reject" style="padding:6px 12px;border-radius:4px;cursor:pointer;font-size:12px;font-weight:600;border:none;" onclick="rejectOrder('${o.order_id}')">Reject</button>
+            <button class="btn-approve" style="padding:6px 12px;border-radius:4px;cursor:pointer;font-size:12px;font-weight:600;border:none;" onclick="approveOrder('${o.order_id}')">Approve</button>
+          </div>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+function showOrderDetail(orderId) {
+  const o = getAllOrders().find(x => x.order_id === orderId);
+  if (!o) return;
+
+  const content = document.getElementById('detailContent');
+  const statusBadge = o.status === 'Pending Approval' ? 'status-pending' :
+                      o.status === 'Rejected' ? 'status-rejected' :
+                      o.status === 'Submitted to V&V' ? 'status-submitted' : 'status-approved';
+
+  content.innerHTML = `
+    <h2>Order Details</h2>
+    <div style="margin:8px 0 16px;">
+      <span class="order-id">${o.order_id}</span>
+      <span class="order-status ${statusBadge}" style="margin-left:8px;">${o.status}</span>
+    </div>
+
+    <dl class="detail-meta">
+      <dt>Placed</dt><dd>${fmtDate(o.timestamp)}</dd>
+      <dt>Company</dt><dd>${escapeHtml(o.company.name)}</dd>
+      <dt>Branch</dt><dd>${escapeHtml(o.branch.name)}</dd>
+      <dt>Approver</dt><dd>${escapeHtml(o.company.approver)}</dd>
+      <dt>Fulfillment</dt><dd>${o.fulfillment.toUpperCase()}</dd>
+      <dt>Terms</dt><dd>${escapeHtml(o.branch.terms)}</dd>
+      ${o.parent_order_id ? `<dt>Parent order</dt><dd style="font-family:monospace;">${escapeHtml(o.parent_order_id)}</dd>` : ''}
+      ${o.split_children?.length ? `<dt>Split children</dt><dd style="font-family:monospace;">${o.split_children.map(escapeHtml).join(', ')}</dd>` : ''}
+    </dl>
+
+    ${o.notes ? `<div class="status-banner banner-info"><b>Notes:</b> ${escapeHtml(o.notes)}</div>` : ''}
+    ${o.rejection_reason ? `<div class="status-banner banner-danger"><b>Rejection reason:</b> ${escapeHtml(o.rejection_reason)}</div>` : ''}
+
+    ${canUploadSlip(o) ? `
+      <div style="border:1px solid var(--border);border-radius:8px;padding:12px;margin:12px 0;background:#f8fafc;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <b>🧾 Payment / Deposit Slip</b>
+          ${o.deposit_slip_validated
+            ? `<span class="order-status status-approved">VALIDATED</span>`
+            : (o.deposit_slip ? `<span class="order-status status-pending">NEEDS VALIDATION</span>` : `<span style="color:var(--muted);font-size:12px;">No slip uploaded yet</span>`)}
+        </div>
+        ${o.deposit_slip ? `
+          <div style="display:flex;gap:10px;align-items:center;">
+            <img src="${o.deposit_slip}" style="width:110px;height:110px;object-fit:cover;border-radius:4px;border:1px solid var(--border);cursor:pointer;" onclick="viewDepositSlip('${o.order_id}')">
+            <div style="flex:1;font-size:12px;color:var(--muted);">
+              Uploaded ${fmtDate(o.deposit_slip_uploaded_at)}<br>
+              by <b>${escapeHtml(o.deposit_slip_uploaded_by)}</b>
+              ${o.deposit_slip_validated ? `<br>✓ Validated ${fmtDate(o.deposit_slip_validated_at)} by <b>${escapeHtml(o.deposit_slip_validated_by)}</b>` : ''}
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <button class="order-detail-btn" onclick="viewDepositSlip('${o.order_id}')">View full</button>
+              ${isAdmin() && !o.deposit_slip_validated ? `<button class="btn-approve" style="padding:5px 10px;border-radius:4px;cursor:pointer;font-size:12px;font-weight:600;border:none;" onclick="validateDepositSlip('${o.order_id}')">✓ Validate</button>` : ''}
+              ${(isSuperApprover() || isAdmin()) ? `<button class="order-detail-btn" onclick="uploadDepositSlip('${o.order_id}')">Replace</button>` : ''}
+            </div>
+          </div>
+        ` : `
+          ${(isSuperApprover() || isAdmin()) ? `
+            <button class="btn-submit" style="background:var(--warning);width:100%;" onclick="uploadDepositSlip('${o.order_id}')">📎 Upload Deposit Slip</button>
+          ` : '<p style="font-size:12px;color:var(--muted);">The approver or V&V admin can attach a slip here once payment is made.</p>'}
+        `}
+      </div>
+    ` : ''}
+
+    <table class="order-table">
+      <thead><tr><th>Item</th><th class="num">Qty</th><th class="num">Price</th><th class="num">Total</th></tr></thead>
+      <tbody>
+        ${o.lines.map(l => `
+          <tr>
+            <td><b>${escapeHtml(l.name)}</b><br><small style="color:var(--muted);">${l.sku}${l.variant ? ' · ' + escapeHtml(l.variant) : ''}</small></td>
+            <td class="num">${l.qty} ${l.uom || ''}</td>
+            <td class="num">${peso(l.unit_price)}</td>
+            <td class="num">${peso(l.line_total)}</td>
+          </tr>
+        `).join('')}
+        <tr class="totals-row"><td colspan="3" class="num"><b>TOTAL (VAT incl.)</b></td><td class="num"><b>${peso(o.total_php)}</b></td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-size:13px;margin-top:14px;color:var(--muted);">History</h3>
+    <ul style="font-size:12px;color:var(--muted);margin-left:16px;margin-top:4px;">
+      ${o.history.map(h => `<li>${fmtDate(h.at)} — <b>${escapeHtml(h.by)}</b>: ${escapeHtml(h.action)}${h.note ? ' — ' + escapeHtml(h.note) : ''}</li>`).join('')}
+    </ul>
+
+    <div class="btn-row">
+      <button class="btn-cancel" onclick="closeModal('detailModal')">Close</button>
+      ${(isApprover() || isSuperApprover()) && o.status === 'Pending Approval' ? `
+        <button class="btn-reject" onclick="closeModal('detailModal'); rejectOrder('${o.order_id}');">Reject</button>
+        <button class="btn-approve" onclick="closeModal('detailModal'); approveOrder('${o.order_id}');">Approve</button>
+      ` : ''}
+      ${isAdmin() && canSplit(o) && o.lines.length > 0 ? `
+        <button class="btn-submit" style="background:var(--warning);" onclick="closeModal('detailModal'); openSplitOrder('${o.order_id}');">✂️ Split Order</button>
+      ` : ''}
+      <button class="btn-submit" onclick="window.print()">🖨️ Print</button>
+    </div>
+  `;
+  document.getElementById('detailModal').style.display = 'flex';
+}
+
+// ========== APPROVE / REJECT ==========
+function approveOrder(orderId) {
+  const orders = getAllOrders();
+  const o = orders.find(x => x.order_id === orderId);
+  if (!o) return;
+  if (!confirm(`Approve order ${orderId} — ${peso(o.total_php)}?\n\nThis will send the order to V&V for fulfillment.`)) return;
+
+  const name = approverName();
+  const now = new Date().toISOString();
+  o.status = 'Approved';
+  o.approved_at = now;
+  o.approved_by = name;
+  o.history.push({ at: now, by: name, action: 'approved' });
+  saveOrder(o);
+
+  const subject = `[V&V Order – APPROVED] ${o.order_id} — ${o.company.name} (${o.branch.name})`;
+  const body = buildEmailBody(o);
+  const mailto = `mailto:${ADMIN_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.open(mailto, '_blank');
+
+  o.status = 'Submitted to V&V';
+  o.history.push({ at: new Date().toISOString(), by: name, action: 'submitted_to_vv' });
+  saveOrder(o);
+
+  rerenderApprovalsActive();
+  updateTabCounts();
+}
+
+function rejectOrder(orderId) {
+  const reason = prompt('Reason for rejecting this order? (the branch will see this)');
+  if (reason === null) return;
+  if (!reason.trim()) { alert('A rejection reason is required.'); return; }
+
+  const orders = getAllOrders();
+  const o = orders.find(x => x.order_id === orderId);
+  if (!o) return;
+
+  const name = approverName();
+  const now = new Date().toISOString();
+  o.status = 'Rejected';
+  o.rejection_reason = reason.trim();
+  o.history.push({ at: now, by: name, action: 'rejected', note: reason.trim() });
+  saveOrder(o);
+
+  rerenderApprovalsActive();
+  updateTabCounts();
+}
+
+function rerenderApprovalsActive() {
+  const active = document.querySelector('.tab.active')?.dataset.tab;
+  if (!active) return;
+  if (isSuperApprover()) {
+    if (active === 'super-dashboard') renderSuperDashboard();
+    else renderSuperApprovals(active === 'super-history' ? 'history' : 'pending');
+  } else if (isApprover()) {
+    renderApprovals(active === 'history' ? 'history' : 'pending');
+  }
+}
+
+function buildEmailBody(o) {
+  let body = `APPROVED ORDER from V&V Portal\n`;
+  body += `============================\n\n`;
+  body += `Order ID: ${o.order_id}\n`;
+  body += `Placed: ${fmtDate(o.timestamp)}\n`;
+  body += `Approved: ${fmtDate(o.approved_at)} by ${o.approved_by}\n`;
+  body += `Fulfillment: ${o.fulfillment.toUpperCase()}\n\n`;
+  body += `COMPANY\n`;
+  body += `${o.company.name} (TIN: ${o.company.tin})\n\n`;
+  body += `DELIVER TO / BRANCH\n`;
+  body += `${o.branch.name}\n${o.branch.address}\n`;
+  body += `Mobile: ${o.branch.mobile}\nTerms: ${o.branch.terms}\n\n`;
+  body += `ITEMS\n`;
+  body += `-`.repeat(60) + '\n';
+  o.lines.forEach(l => {
+    body += `${l.sku}  ${l.name}${l.variant ? ' [' + l.variant + ']' : ''}\n`;
+    body += `  ${l.qty} ${l.uom || 'unit'} × ₱${l.unit_price.toFixed(2)} = ₱${l.line_total.toFixed(2)}\n`;
+  });
+  body += `-`.repeat(60) + '\n';
+  body += `TOTAL: ₱${o.total_php.toFixed(2)} (VAT incl.)\n\n`;
+  if (o.notes) body += `Notes: ${o.notes}\n\n`;
+  body += `Status: ${o.status}\n`;
+  return body;
+}
+
+// ========== V&V ADMIN ==========
+const LIFECYCLE = ['Submitted to V&V', 'Confirmed', 'Procuring', 'Ready', 'Out for Delivery', 'Delivered', 'Paid'];
+
+function renderAdminDashboard() {
+  const orders = getAllOrders();
+  const content = document.getElementById('adminContent');
+
+  const by = (s) => orders.filter(o => o.status === s).length;
+  const totalPending = by('Pending Approval');
+  const totalNew = by('Submitted to V&V');
+  const totalInFlight = orders.filter(o => ['Confirmed','Procuring','Ready','Out for Delivery'].includes(o.status)).length;
+  const totalDelivered = by('Delivered');
+
+  const slipsToValidate = orders.filter(o => o.deposit_slip && !o.deposit_slip_validated && canUploadSlip(o));
+  const arOrders = orders.filter(o => o.status === 'Delivered');
+  const uninvoicedDelivered = arOrders.filter(o => !o.invoice_number && !o.si_number);
+  const uninvoicedValue = uninvoicedDelivered.reduce((s, o) => s + o.total_php, 0);
+  const arByCompany = {};
+  arOrders.forEach(o => {
+    if (!arByCompany[o.company.name]) arByCompany[o.company.name] = 0;
+    arByCompany[o.company.name] += o.total_php;
+  });
+  const totalAR = arOrders.reduce((s, o) => s + o.total_php, 0);
+
+  const now = new Date();
+  const todayStr = now.toISOString().slice(0, 10);
+  const todayOrders = orders.filter(o => o.timestamp.slice(0, 10) === todayStr);
+  const thisMonth = orders.filter(o => o.timestamp.slice(0, 7) === todayStr.slice(0, 7) && o.status === 'Paid');
+  const revenueThisMonth = thisMonth.reduce((s, o) => s + o.total_php, 0);
+
+  const procData = buildProcurementData('');
+  const hasProcurement = Object.keys(procData).some(sup => procData[sup].length > 0);
+  const allSuppliers = Object.keys(procData).sort((a, b) => {
+    if (a === 'Unassigned') return 1;
+    if (b === 'Unassigned') return -1;
+    return a.localeCompare(b);
+  });
+
+  content.innerHTML = `
+    <h2 style="margin-bottom:14px;">Operations Dashboard</h2>
+
+    <div class="stats-grid">
+      <div class="stat-card warning">
+        <div class="label">New from Approvers</div>
+        <div class="value">${totalNew}</div>
+        <div class="sub">Awaiting your confirmation</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">In Fulfillment</div>
+        <div class="value">${totalInFlight}</div>
+        <div class="sub">Confirmed → OFD</div>
+      </div>
+      <div class="stat-card success">
+        <div class="label">Delivered (unpaid)</div>
+        <div class="value">${totalDelivered}</div>
+        <div class="sub">${peso(totalAR)} outstanding</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Today's orders</div>
+        <div class="value">${todayOrders.length}</div>
+        <div class="sub">${fmtDate(now.toISOString()).slice(0, 12)}</div>
+      </div>
+      <div class="stat-card success">
+        <div class="label">Revenue this month</div>
+        <div class="value">${peso(revenueThisMonth)}</div>
+        <div class="sub">${thisMonth.length} paid order${thisMonth.length !== 1 ? 's' : ''}</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">At customer (pending)</div>
+        <div class="value">${totalPending}</div>
+        <div class="sub">Not yet approved</div>
+      </div>
+      <div class="stat-card ${slipsToValidate.length ? 'warning' : ''}">
+        <div class="label">Slips to Validate</div>
+        <div class="value">${slipsToValidate.length}</div>
+        <div class="sub">Eisha uploaded, awaiting your check</div>
+      </div>
+      <div class="stat-card ${uninvoicedDelivered.length ? 'danger' : ''}">
+        <div class="label">Delivered — Need Invoice</div>
+        <div class="value">${uninvoicedDelivered.length}</div>
+        <div class="sub">${peso(uninvoicedValue)} still to invoice</div>
+      </div>
+    </div>
+
+    ${uninvoicedDelivered.length ? `
+      <div class="orders-section">
+        <h2>📝 Delivered but Not Yet Invoiced</h2>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">Issue BIR sales invoices for these deliveries, then add the SI # via the order detail to mark them invoiced.</p>
+        <table class="order-table">
+          <thead><tr><th>Order ID</th><th>Delivered</th><th>Company / Branch</th><th class="num">Amount</th><th style="width:120px;"></th></tr></thead>
+          <tbody>
+            ${uninvoicedDelivered.sort((a, b) => a.timestamp.localeCompare(b.timestamp)).map(o => `
+              <tr>
+                <td style="font-family:monospace;font-size:12px;">${escapeHtml(o.order_id)}</td>
+                <td style="font-size:12px;">${fmtDate(o.timestamp).slice(0, 12)}</td>
+                <td>${escapeHtml(o.company.name)} · ${escapeHtml(o.branch.name)}</td>
+                <td class="num"><b>${peso(o.total_php)}</b></td>
+                <td>
+                  <button class="order-detail-btn" onclick="promptInvoiceNumber('${o.order_id}')" style="padding:4px 10px;">+ Add SI #</button>
+                </td>
+              </tr>
+            `).join('')}
+            <tr class="totals-row"><td colspan="3" class="num"><b>TOTAL</b></td><td class="num"><b>${peso(uninvoicedValue)}</b></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    ` : ''}
+
+    ${slipsToValidate.length ? `
+      <div class="orders-section">
+        <h2>🧾 Deposit Slips Awaiting Validation</h2>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">Click a slip to view the deposit proof, then validate if payment is confirmed in your V&V bank / GCash account.</p>
+        <table class="order-table">
+          <thead>
+            <tr>
+              <th style="width:80px;">Slip</th>
+              <th>Order</th>
+              <th>Uploaded By</th>
+              <th>When</th>
+              <th class="num">Amount</th>
+              <th style="width:130px;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            ${slipsToValidate.map(o => `
+              <tr>
+                <td><img src="${o.deposit_slip}" style="width:56px;height:56px;object-fit:cover;border-radius:4px;border:1px solid var(--border);cursor:pointer;" onclick="viewDepositSlip('${o.order_id}')"></td>
+                <td>
+                  <div style="font-family:monospace;font-size:12px;">${escapeHtml(o.order_id)}</div>
+                  <div style="font-size:12px;color:var(--muted);">${escapeHtml(o.company.name)} · ${escapeHtml(o.branch.name)}</div>
+                  <div style="font-size:11px;color:var(--muted);">${escapeHtml(o.branch.terms)} · ${escapeHtml(o.status)}</div>
+                </td>
+                <td style="font-size:13px;">${escapeHtml(o.deposit_slip_uploaded_by)}</td>
+                <td style="font-size:12px;color:var(--muted);">${fmtDate(o.deposit_slip_uploaded_at)}</td>
+                <td class="num"><b>${peso(o.total_php)}</b></td>
+                <td>
+                  <div style="display:flex;flex-direction:column;gap:4px;">
+                    <button class="order-detail-btn" onclick="viewDepositSlip('${o.order_id}')" style="padding:4px 8px;">View</button>
+                    <button class="btn-approve" style="padding:5px 8px;border-radius:4px;cursor:pointer;font-size:12px;font-weight:600;border:none;" onclick="validateDepositSlip('${o.order_id}')">✓ Validate</button>
+                  </div>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    ` : ''}
+
+    ${hasProcurement ? `
+      <div class="orders-section">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:10px;">
+          <h2 style="margin:0;">📦 Consolidated Procurement List</h2>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <select id="procSupplierFilter" onchange="filterProcurement()" style="padding:6px 10px;border:1px solid var(--border);border-radius:5px;font-size:13px;">
+              <option value="">All suppliers (grouped)</option>
+              ${allSuppliers.map(s => `<option value="${escapeHtml(s)}">${escapeHtml(s)} (${procData[s].length})</option>`).join('')}
+            </select>
+            <button onclick="printProcurement(document.getElementById('procSupplierFilter').value)" style="background:var(--primary);color:white;border:none;padding:7px 14px;border-radius:5px;cursor:pointer;font-size:13px;font-weight:500;">🖨️ Print</button>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">Items grouped by preferred supplier. Pick a supplier above to filter, or print one supplier's list at a time.</p>
+        <div id="procListBody">${buildProcurementHtml('')}</div>
+      </div>
+    ` : ''}
+
+    ${totalAR > 0 ? `
+      <div class="orders-section">
+        <h2>💰 A/R — Outstanding by Customer</h2>
+        <table class="order-table">
+          <thead><tr><th>Company</th><th class="num">Outstanding</th></tr></thead>
+          <tbody>
+            ${Object.entries(arByCompany).sort((a, b) => b[1] - a[1]).map(([name, amt]) => `
+              <tr><td>${escapeHtml(name)}</td><td class="num"><b>${peso(amt)}</b></td></tr>
+            `).join('')}
+            <tr class="totals-row"><td class="num"><b>TOTAL</b></td><td class="num"><b>${peso(totalAR)}</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+    ` : ''}
+
+    <div class="orders-section">
+      <h2>Recent Orders (latest 10)</h2>
+      ${orders.length === 0
+        ? '<div class="empty-state">No orders yet. Branches place orders → approvers approve → they appear here.</div>'
+        : orders.slice(0, 10).map(o => adminOrderRowHtml(o)).join('')}
+    </div>
+  `;
+}
+
+function renderAdminOrders() {
+  const orders = getAllOrders();
+  const content = document.getElementById('adminContent');
+
+  const companies = [...new Set(orders.map(o => o.company.name))].sort();
+  const statuses = ['Pending Approval', 'Submitted to V&V', 'Confirmed', 'Procuring', 'Ready', 'Out for Delivery', 'Delivered', 'Paid', 'Rejected'];
+
+  content.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px;">
+      <h2 style="margin:0;">All Orders (${orders.length})</h2>
+      <button onclick="openManualOrderForm()" style="background:var(--success);color:white;border:none;padding:8px 16px;border-radius:5px;cursor:pointer;font-size:14px;font-weight:600;">+ Log Manual Order</button>
+    </div>
+
+    <div class="admin-filter-bar">
+      <input type="text" id="adminSearch" placeholder="Search order ID, product, SKU…" oninput="applyAdminFilters()">
+      <select id="adminStatus" onchange="applyAdminFilters()">
+        <option value="">All Statuses</option>
+        ${statuses.map(s => `<option value="${s}">${s}</option>`).join('')}
+      </select>
+      <select id="adminCompany" onchange="applyAdminFilters()">
+        <option value="">All Companies</option>
+        ${companies.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('')}
+      </select>
+      <select id="adminInvoice" onchange="applyAdminFilters()">
+        <option value="">Any invoice state</option>
+        <option value="uninvoiced">Uninvoiced only</option>
+        <option value="invoiced">Invoiced only</option>
+      </select>
+      <button onclick="exportAllOrders()">⬇ Export CSV</button>
+    </div>
+
+    <div id="adminOrdersList">
+      ${orders.length === 0
+        ? '<div class="empty-state">No orders yet.</div>'
+        : orders.map(o => adminOrderRowHtml(o)).join('')}
+    </div>
+  `;
+}
+
+function applyAdminFilters() {
+  const search = document.getElementById('adminSearch').value.toLowerCase().trim();
+  const status = document.getElementById('adminStatus').value;
+  const company = document.getElementById('adminCompany').value;
+  const invoiceFilter = document.getElementById('adminInvoice')?.value || '';
+  let orders = getAllOrders();
+  if (status) orders = orders.filter(o => o.status === status);
+  if (company) orders = orders.filter(o => o.company.name === company);
+  if (invoiceFilter === 'uninvoiced') orders = orders.filter(o => !o.invoice_number && !o.si_number);
+  if (invoiceFilter === 'invoiced') orders = orders.filter(o => !!(o.invoice_number || o.si_number));
+  if (search) {
+    orders = orders.filter(o =>
+      o.order_id.toLowerCase().includes(search) ||
+      o.lines.some(l => l.name.toLowerCase().includes(search) || l.sku.toLowerCase().includes(search))
+    );
+  }
+  const list = document.getElementById('adminOrdersList');
+  list.innerHTML = orders.length
+    ? orders.map(o => adminOrderRowHtml(o)).join('')
+    : '<div class="empty-state">No orders match the filters.</div>';
+}
+
+function adminOrderRowHtml(o) {
+  const statusBadge = o.status === 'Pending Approval' ? 'status-pending' :
+                      o.status === 'Rejected' ? 'status-rejected' :
+                      o.status === 'Submitted to V&V' ? 'status-submitted' : 'status-approved';
+  const canAdvance = o.status !== 'Pending Approval' && o.status !== 'Rejected';
+  const nextStatuses = LIFECYCLE.concat(['Rejected']);
+
+  return `
+    <div class="admin-order-row">
+      <div>
+        <div style="font-family:monospace;font-size:12px;background:#f1f5f9;padding:2px 6px;border-radius:3px;display:inline-block;margin-bottom:4px;">${o.order_id}</div>
+        <div><span class="order-status ${statusBadge}">${o.status}</span></div>
+      </div>
+      <div>
+        <div style="font-weight:600;font-size:14px;">${escapeHtml(o.company.name)} · ${escapeHtml(o.branch.name)}</div>
+        <div style="font-size:12px;color:var(--muted);">
+          ${fmtDate(o.timestamp)} · ${o.lines.length} line${o.lines.length > 1 ? 's' : ''} · ${o.fulfillment}
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-weight:700;color:var(--primary-dark);font-size:16px;">${peso(o.total_php)}</div>
+        <div style="font-size:11px;color:var(--muted);">${escapeHtml(o.branch.terms)}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px;min-width:170px;">
+        ${canAdvance ? `
+          <select class="status-select" onchange="updateOrderStatus('${o.order_id}', this.value)">
+            ${nextStatuses.map(s => `<option value="${s}" ${o.status === s ? 'selected' : ''}>${s}</option>`).join('')}
+          </select>
+        ` : ''}
+        ${o.deposit_slip ? `
+          <button class="order-detail-btn" style="padding:4px 10px;border-color:${o.deposit_slip_validated ? 'var(--success)' : 'var(--warning)'};color:${o.deposit_slip_validated ? 'var(--success)' : 'var(--warning)'};" onclick="viewDepositSlip('${o.order_id}')">
+            ${o.deposit_slip_validated ? '✓ Slip validated' : '🧾 Slip — validate'}
+          </button>
+        ` : (canUploadSlip(o) ? `<span style="font-size:11px;color:var(--muted);text-align:center;">No slip yet</span>` : '')}
+        <button class="order-detail-btn" onclick="showOrderDetail('${o.order_id}')" style="margin-top:0;">View Details</button>
+      </div>
+    </div>
+  `;
+}
+
+function updateOrderStatus(orderId, newStatus) {
+  const orders = getAllOrders();
+  const o = orders.find(x => x.order_id === orderId);
+  if (!o || o.status === newStatus) return;
+
+  const now = new Date().toISOString();
+  o.status = newStatus;
+  o.history.push({ at: now, by: 'V&V Admin', action: `status → ${newStatus}` });
+  saveOrder(o);
+
+  const active = document.querySelector('.tab.active').dataset.tab;
+  if (active === 'dashboard') renderAdminDashboard();
+  else if (active === 'all-orders') applyAdminFilters();
+  updateTabCounts();
+}
+
+// ========== ADMIN: ANALYTICS ==========
+function renderAnalytics() {
+  const content = document.getElementById('adminContent');
+  const orders = getAllOrders();
+  const paidOrders = orders.filter(o => o.status === 'Paid');
+  const deliveredNotPaid = orders.filter(o => o.status === 'Delivered');
+  const revenueOrders = [...paidOrders, ...deliveredNotPaid];  // count delivered as recognized revenue
+
+  // Monthly revenue
+  const byMonth = {};
+  revenueOrders.forEach(o => {
+    const m = o.timestamp.slice(0, 7);
+    if (!byMonth[m]) byMonth[m] = { paid: 0, outstanding: 0, orders: 0 };
+    if (o.status === 'Paid') byMonth[m].paid += o.total_php;
+    else byMonth[m].outstanding += o.total_php;
+    byMonth[m].orders++;
+  });
+  const months = Object.keys(byMonth).sort();
+
+  // By customer
+  const byCompany = {};
+  revenueOrders.forEach(o => {
+    if (!byCompany[o.company.name]) byCompany[o.company.name] = { paid: 0, outstanding: 0, orders: 0 };
+    if (o.status === 'Paid') byCompany[o.company.name].paid += o.total_php;
+    else byCompany[o.company.name].outstanding += o.total_php;
+    byCompany[o.company.name].orders++;
+  });
+
+  // By branch
+  const byBranch = {};
+  revenueOrders.forEach(o => {
+    const key = `${o.company.name} — ${o.branch.name}`;
+    if (!byBranch[key]) byBranch[key] = { total: 0, orders: 0 };
+    byBranch[key].total += o.total_php;
+    byBranch[key].orders++;
+  });
+
+  // Fast-moving SKUs (only from non-legacy orders; legacy has single "LEGACY" line)
+  const skuStats = {};
+  orders.forEach(o => {
+    if (o.legacy) return;
+    o.lines.forEach(l => {
+      if (l.sku === 'LEGACY') return;
+      if (!skuStats[l.sku]) skuStats[l.sku] = { sku: l.sku, name: l.name, qty: 0, revenue: 0, orders: 0 };
+      skuStats[l.sku].qty += l.qty;
+      skuStats[l.sku].revenue += l.line_total;
+      skuStats[l.sku].orders++;
+    });
+  });
+  const topSkus = Object.values(skuStats).sort((a, b) => b.qty - a.qty);
+
+  const totalPaid = paidOrders.reduce((s, o) => s + o.total_php, 0);
+  const totalOutstanding = deliveredNotPaid.reduce((s, o) => s + o.total_php, 0);
+  const avgOrder = revenueOrders.length ? (totalPaid + totalOutstanding) / revenueOrders.length : 0;
+  const legacyCount = orders.filter(o => o.legacy).length;
+  const portalCount = orders.length - legacyCount;
+
+  // Max month revenue for bar widths
+  const maxMonthRev = months.length ? Math.max(...months.map(m => byMonth[m].paid + byMonth[m].outstanding)) : 1;
+
+  content.innerHTML = `
+    <h2 style="margin-bottom:6px;">Analytics</h2>
+    <p style="color:var(--muted);font-size:13px;margin-bottom:16px;">
+      Based on ${orders.length} total order${orders.length !== 1 ? 's' : ''}
+      (${legacyCount} historical imported from Sales Tracker + ${portalCount} placed via portal).
+    </p>
+
+    <div class="stats-grid">
+      <div class="stat-card success">
+        <div class="label">Total Paid Revenue</div>
+        <div class="value">${peso(totalPaid)}</div>
+        <div class="sub">${paidOrders.length} paid order${paidOrders.length !== 1 ? 's' : ''}</div>
+      </div>
+      <div class="stat-card warning">
+        <div class="label">Outstanding A/R</div>
+        <div class="value">${peso(totalOutstanding)}</div>
+        <div class="sub">${deliveredNotPaid.length} delivered, unpaid</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Avg Order Value</div>
+        <div class="value">${peso(avgOrder)}</div>
+        <div class="sub">Across ${revenueOrders.length} recognized orders</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Months of Data</div>
+        <div class="value">${months.length}</div>
+        <div class="sub">${months[0] || '—'} to ${months[months.length - 1] || '—'}</div>
+      </div>
+    </div>
+
+    <div class="orders-section">
+      <h2>📅 Monthly Revenue</h2>
+      <table class="order-table">
+        <thead><tr><th>Month</th><th class="num">Orders</th><th class="num">Paid</th><th class="num">Outstanding</th><th>Trend</th></tr></thead>
+        <tbody>
+          ${months.slice().reverse().map(m => {
+            const d = byMonth[m];
+            const total = d.paid + d.outstanding;
+            const paidPct = total ? (d.paid / maxMonthRev) * 100 : 0;
+            const outPct = total ? (d.outstanding / maxMonthRev) * 100 : 0;
+            return `
+              <tr>
+                <td><b>${m}</b></td>
+                <td class="num">${d.orders}</td>
+                <td class="num">${peso(d.paid)}</td>
+                <td class="num" style="color:${d.outstanding > 0 ? 'var(--warning)' : 'inherit'};">${d.outstanding > 0 ? peso(d.outstanding) : '—'}</td>
+                <td>
+                  <div style="display:flex;height:16px;background:#f1f5f9;border-radius:3px;overflow:hidden;min-width:180px;">
+                    <div style="width:${paidPct}%;background:var(--success);"></div>
+                    <div style="width:${outPct}%;background:var(--warning);"></div>
+                  </div>
+                </td>
+              </tr>
+            `;
+          }).join('')}
+          <tr class="totals-row">
+            <td><b>TOTAL</b></td>
+            <td class="num"><b>${revenueOrders.length}</b></td>
+            <td class="num"><b>${peso(totalPaid)}</b></td>
+            <td class="num"><b>${peso(totalOutstanding)}</b></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="orders-section">
+      <h2>🏢 Revenue by Customer</h2>
+      <table class="order-table">
+        <thead><tr><th>Company</th><th class="num">Orders</th><th class="num">Paid</th><th class="num">Outstanding</th><th class="num">Total</th></tr></thead>
+        <tbody>
+          ${Object.entries(byCompany).sort((a, b) => (b[1].paid + b[1].outstanding) - (a[1].paid + a[1].outstanding)).map(([name, d]) => `
+            <tr>
+              <td>${escapeHtml(name)}</td>
+              <td class="num">${d.orders}</td>
+              <td class="num">${peso(d.paid)}</td>
+              <td class="num" style="color:${d.outstanding > 0 ? 'var(--warning)' : 'inherit'};">${d.outstanding > 0 ? peso(d.outstanding) : '—'}</td>
+              <td class="num"><b>${peso(d.paid + d.outstanding)}</b></td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="orders-section">
+      <h2>📍 Revenue by Branch</h2>
+      <table class="order-table">
+        <thead><tr><th>Company — Branch</th><th class="num">Orders</th><th class="num">Total Revenue</th></tr></thead>
+        <tbody>
+          ${Object.entries(byBranch).sort((a, b) => b[1].total - a[1].total).slice(0, 20).map(([name, d]) => `
+            <tr>
+              <td>${escapeHtml(name)}</td>
+              <td class="num">${d.orders}</td>
+              <td class="num"><b>${peso(d.total)}</b></td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="orders-section">
+      <h2>🔥 Fast-Moving Products (Top 25)</h2>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:8px;">
+        Based on portal orders only — ${portalCount} orders with ${topSkus.length} distinct SKU${topSkus.length !== 1 ? 's' : ''}.
+        Historical imports (${legacyCount}) are totals-only in the source sheet and don't have line-item data.
+      </p>
+      ${topSkus.length ? `
+        <table class="order-table">
+          <thead><tr><th style="width:90px;">SKU</th><th>Product</th><th class="num">Units Sold</th><th class="num">Orders</th><th class="num">Revenue</th></tr></thead>
+          <tbody>
+            ${topSkus.slice(0, 25).map(s => `
+              <tr>
+                <td style="font-family:monospace;font-size:12px;">${escapeHtml(s.sku)}</td>
+                <td>${escapeHtml(s.name)}</td>
+                <td class="num"><b>${s.qty}</b></td>
+                <td class="num">${s.orders}</td>
+                <td class="num">${peso(s.revenue)}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      ` : '<div class="empty-state">No portal orders with line items yet. Once branches start placing orders through the portal, their SKUs will appear here.</div>'}
+    </div>
+  `;
+}
+
+// ========== ADMIN: CATALOG CRUD ==========
+function getProductEdits() { return JSON.parse(localStorage.getItem('vv_products_edited') || '{}'); }
+function saveProductEdits(edits) { localStorage.setItem('vv_products_edited', JSON.stringify(edits)); }
+
+let selectedSkus = new Set();
+
+function toggleSelectAll() {
+  const checked = document.getElementById('selectAllBox').checked;
+  document.querySelectorAll('.product-check').forEach(cb => {
+    cb.checked = checked;
+    if (checked) selectedSkus.add(cb.dataset.sku);
+    else selectedSkus.delete(cb.dataset.sku);
+  });
+  updateBulkBar();
+}
+
+function toggleProductCheck(sku) {
+  if (selectedSkus.has(sku)) selectedSkus.delete(sku);
+  else selectedSkus.add(sku);
+  updateBulkBar();
+}
+
+function updateBulkBar() {
+  const bar = document.getElementById('bulkBar');
+  if (!bar) return;
+  if (selectedSkus.size > 0) {
+    bar.style.display = 'flex';
+    document.getElementById('bulkCount').textContent = selectedSkus.size;
+  } else {
+    bar.style.display = 'none';
+  }
+}
+
+function clearSelection() {
+  selectedSkus.clear();
+  document.querySelectorAll('.product-check').forEach(cb => cb.checked = false);
+  const all = document.getElementById('selectAllBox');
+  if (all) all.checked = false;
+  updateBulkBar();
+}
+
+function applyBulkEdit(mutator) {
+  const edits = getProductEdits();
+  const added = JSON.parse(localStorage.getItem('vv_products_added') || '[]');
+  let addedChanged = false;
+
+  selectedSkus.forEach(sku => {
+    const p = PRODUCTS.find(x => x.sku === sku);
+    if (!p) return;
+    const changes = mutator(p);
+    if (!changes) return;
+    Object.assign(p, changes);
+    edits[sku] = { ...(edits[sku] || {}), ...changes };
+    const ai = added.findIndex(x => x.sku === sku);
+    if (ai >= 0) { Object.assign(added[ai], changes); addedChanged = true; }
+  });
+  saveProductEdits(edits);
+  if (addedChanged) localStorage.setItem('vv_products_added', JSON.stringify(added));
+  selectedSkus.clear();
+  renderAdminCatalog();
+}
+
+function bulkSetStatus(active) {
+  if (selectedSkus.size === 0) return;
+  const verb = active ? 'Activate' : 'Deactivate';
+  if (!confirm(`${verb} ${selectedSkus.size} product${selectedSkus.size !== 1 ? 's' : ''}?${!active ? '\n\nDeactivated products won\'t show in the Shop for any branch.' : ''}`)) return;
+  applyBulkEdit(() => ({ active }));
+}
+
+function bulkSetSupplier() {
+  if (selectedSkus.size === 0) return;
+  const suppliers = [...new Set(PRODUCTS.map(p => p.supplier).filter(Boolean))].sort();
+  const supplier = prompt(`Set Preferred Supplier for ${selectedSkus.size} product${selectedSkus.size !== 1 ? 's' : ''}.\n\nExisting: ${suppliers.join(', ')}\n\nEnter supplier name (blank to clear):`, '');
+  if (supplier === null) return;
+  applyBulkEdit(() => ({ supplier: supplier.trim() }));
+}
+
+function bulkSetCategory() {
+  if (selectedSkus.size === 0) return;
+  const valid = ['Medical', 'Utility', 'Office', 'Spa_Salon', 'Kitchen'];
+  const category = prompt(`Set category for ${selectedSkus.size} product${selectedSkus.size !== 1 ? 's' : ''}.\n\nOptions: ${valid.join(', ')}`, '');
+  if (category === null) return;
+  const normalized = valid.find(c => c.toLowerCase() === category.trim().toLowerCase());
+  if (!normalized) { alert('Invalid category. Must be one of: ' + valid.join(', ')); return; }
+  applyBulkEdit(() => ({ category: normalized }));
+}
+
+function bulkSetPriceDelta() {
+  if (selectedSkus.size === 0) return;
+  const input = prompt(`Adjust price for ${selectedSkus.size} product${selectedSkus.size !== 1 ? 's' : ''}.\n\nExamples:\n  +10% → raise by 10%\n  -5% → drop by 5%\n  +50 → add ₱50\n  =200 → set all to ₱200`, '');
+  if (input === null) return;
+  const s = input.trim();
+  let mutator;
+  if (s.startsWith('=')) {
+    const v = parseFloat(s.slice(1));
+    if (isNaN(v) || v < 0) { alert('Invalid price.'); return; }
+    mutator = () => ({ price: v });
+  } else if (s.endsWith('%')) {
+    const pct = parseFloat(s.slice(0, -1));
+    if (isNaN(pct)) { alert('Invalid percent.'); return; }
+    mutator = (p) => ({ price: Math.round(p.price * (1 + pct / 100) * 100) / 100 });
+  } else {
+    const delta = parseFloat(s);
+    if (isNaN(delta)) { alert('Invalid amount. Use e.g. +10%, -5%, +50, or =200.'); return; }
+    mutator = (p) => ({ price: Math.max(0, Math.round((p.price + delta) * 100) / 100) });
+  }
+  applyBulkEdit(mutator);
+}
+
+function renderAdminCatalog() {
+  const content = document.getElementById('adminContent');
+  const suppliers = [...new Set(PRODUCTS.map(p => p.supplier).filter(Boolean))].sort();
+
+  content.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px;">
+      <h2 style="margin:0;">Product Catalog (${PRODUCTS.length})</h2>
+      <button onclick="openProductForm()" style="background:var(--success);color:white;border:none;padding:8px 16px;border-radius:5px;cursor:pointer;font-size:14px;font-weight:600;">+ Add Product</button>
+    </div>
+
+    <div class="admin-filter-bar">
+      <input type="text" id="catalogSearch" placeholder="Search SKU, name, brand…" oninput="applyCatalogFilters()">
+      <select id="catalogCategory" onchange="applyCatalogFilters()">
+        <option value="">All Categories</option>
+        <option>Medical</option><option>Utility</option><option>Office</option>
+        <option>Spa_Salon</option><option>Kitchen</option>
+      </select>
+      <select id="catalogSupplier" onchange="applyCatalogFilters()">
+        <option value="">All Suppliers</option>
+        <option value="__unassigned">⚠️ Unassigned</option>
+        ${suppliers.map(s => `<option value="${escapeHtml(s)}">${escapeHtml(s)}</option>`).join('')}
+      </select>
+      <select id="catalogStatus" onchange="applyCatalogFilters()">
+        <option value="active">Active only</option>
+        <option value="">All</option>
+        <option value="inactive">Inactive only</option>
+      </select>
+    </div>
+
+    <div id="bulkBar" style="display:none;background:#1e293b;color:white;padding:10px 14px;border-radius:6px;margin-bottom:12px;align-items:center;gap:8px;flex-wrap:wrap;">
+      <b><span id="bulkCount">0</span> selected</b>
+      <div style="flex:1;"></div>
+      <button onclick="bulkSetStatus(true)" class="bulk-btn" style="background:var(--success);">✓ Mark Active</button>
+      <button onclick="bulkSetStatus(false)" class="bulk-btn" style="background:var(--warning);">🚫 Deactivate (hide from Shop)</button>
+      <button onclick="bulkSetSupplier()" class="bulk-btn" style="background:#475569;">🏭 Set Supplier…</button>
+      <button onclick="bulkSetCategory()" class="bulk-btn" style="background:#475569;">📂 Set Category…</button>
+      <button onclick="bulkSetPriceDelta()" class="bulk-btn" style="background:#475569;">💵 Adjust Price…</button>
+      <button onclick="clearSelection()" class="bulk-btn" style="background:transparent;border:1px solid rgba(255,255,255,0.4);color:white;">Clear</button>
+    </div>
+
+    <div id="catalogList"></div>
+  `;
+  applyCatalogFilters();
+}
+
+function applyCatalogFilters() {
+  const search = (document.getElementById('catalogSearch')?.value || '').toLowerCase().trim();
+  const cat = document.getElementById('catalogCategory')?.value || '';
+  const supplier = document.getElementById('catalogSupplier')?.value || '';
+  const statusFilter = document.getElementById('catalogStatus')?.value ?? 'active';
+
+  let items = [...PRODUCTS];
+  if (cat) items = items.filter(p => p.category === cat);
+  if (supplier === '__unassigned') items = items.filter(p => !p.supplier);
+  else if (supplier) items = items.filter(p => p.supplier === supplier);
+  if (statusFilter === 'active') items = items.filter(p => p.active !== false);
+  else if (statusFilter === 'inactive') items = items.filter(p => p.active === false);
+  if (search) items = items.filter(p =>
+    p.sku.toLowerCase().includes(search) ||
+    p.name.toLowerCase().includes(search) ||
+    (p.brand && p.brand.toLowerCase().includes(search))
+  );
+
+  const list = document.getElementById('catalogList');
+  if (!items.length) {
+    list.innerHTML = '<div class="empty-state">No products match the filters.</div>';
+    updateBulkBar();
+    return;
+  }
+
+  const shown = items.slice(0, 300);
+  list.innerHTML = `
+    <p style="font-size:12px;color:var(--muted);margin-bottom:6px;">${items.length} product${items.length !== 1 ? 's' : ''} shown${items.length > 300 ? ' — truncated to 300. Refine filters to see more.' : ''}</p>
+    <table class="order-table">
+      <thead>
+        <tr>
+          <th style="width:36px;"><input type="checkbox" id="selectAllBox" onchange="toggleSelectAll()" title="Select all visible"></th>
+          <th style="width:56px;"></th>
+          <th style="width:90px;">SKU</th><th>Name</th><th style="width:90px;">Category</th>
+          <th style="width:120px;">Supplier</th><th class="num" style="width:90px;">Price</th>
+          <th style="width:70px;">UOM</th><th style="width:70px;">Status</th><th style="width:60px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        ${shown.map(p => `
+          <tr style="${p.active === false ? 'opacity:0.55;' : ''}">
+            <td><input type="checkbox" class="product-check" data-sku="${escapeHtml(p.sku)}" ${selectedSkus.has(p.sku) ? 'checked' : ''} onchange="toggleProductCheck('${escapeHtml(p.sku)}')"></td>
+            <td>${p.image ? `<img src="${p.image}" alt="" style="width:44px;height:44px;object-fit:cover;border-radius:4px;border:1px solid var(--border);">` : '<div style="width:44px;height:44px;border-radius:4px;background:#f1f5f9;color:var(--muted);display:flex;align-items:center;justify-content:center;font-size:18px;">📦</div>'}</td>
+            <td style="font-family:monospace;font-size:12px;">${escapeHtml(p.sku)}</td>
+            <td>
+              <b>${escapeHtml(p.name)}</b>${p.brand ? ' · <span style="color:var(--muted);font-size:12px;">' + escapeHtml(p.brand) + '</span>' : ''}
+              ${p.variant ? '<br><small style="color:var(--muted);">' + escapeHtml(p.variant) + '</small>' : ''}
+            </td>
+            <td style="font-size:12px;">${escapeHtml((p.category || '').replace('_', ' & '))}</td>
+            <td style="font-size:12px;">${p.supplier ? escapeHtml(p.supplier) : '<span style="color:var(--warning);">Unassigned</span>'}</td>
+            <td class="num"><b>${peso(p.price)}</b></td>
+            <td style="font-size:12px;">${escapeHtml(p.uom || '')}</td>
+            <td style="font-size:12px;">${p.active === false ? '<span style="color:var(--muted);">Inactive</span>' : '<span style="color:var(--success);">Active</span>'}</td>
+            <td><button class="order-detail-btn" onclick="openProductForm('${escapeHtml(p.sku)}')" style="padding:4px 10px;">Edit</button></td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+  updateBulkBar();
+}
+
+let pendingProdPhoto = null;
+
+function openProductForm(sku) {
+  const editing = !!sku;
+  const p = editing ? PRODUCTS.find(x => x.sku === sku) : null;
+  if (editing && !p) { alert('Product not found.'); return; }
+
+  document.getElementById('productFormTitle').textContent = editing ? `Edit Product — ${sku}` : 'Add New Product';
+  document.getElementById('productFormSku').value = editing ? sku : '';
+  document.getElementById('productFormSku').disabled = editing;
+  document.getElementById('productFormSkuHint').textContent = editing ? 'SKU cannot be changed.' : 'Leave blank to auto-generate (CAT-NNNN based on category).';
+  document.getElementById('productFormName').value = editing ? p.name : '';
+  document.getElementById('productFormBrand').value = editing ? (p.brand || '') : '';
+  document.getElementById('productFormCategory').value = editing ? p.category : '';
+  document.getElementById('productFormVariant').value = editing ? (p.variant || '') : '';
+  document.getElementById('productFormUom').value = editing ? (p.uom || '') : '';
+  document.getElementById('productFormPrice').value = editing ? p.price : '';
+  document.getElementById('productFormSupplier').value = editing ? (p.supplier || '') : '';
+  document.getElementById('productFormActive').checked = editing ? (p.active !== false) : true;
+
+  // Photo setup
+  document.getElementById('prodPhoto').value = '';
+  if (editing && p.image) {
+    pendingProdPhoto = p.image;
+    document.getElementById('prodPhotoImg').src = p.image;
+    document.getElementById('prodPhotoPlaceholder').style.display = 'none';
+    document.getElementById('prodPhotoPreview').style.display = 'block';
+  } else {
+    pendingProdPhoto = null;
+    document.getElementById('prodPhotoImg').src = '';
+    document.getElementById('prodPhotoPlaceholder').style.display = 'block';
+    document.getElementById('prodPhotoPreview').style.display = 'none';
+  }
+
+  const dl = document.getElementById('supplierList');
+  const suppliers = [...new Set(PRODUCTS.map(x => x.supplier).filter(Boolean))].sort();
+  dl.innerHTML = suppliers.map(s => `<option value="${escapeHtml(s)}">`).join('');
+
+  document.getElementById('productFormModal').dataset.editingSku = editing ? sku : '';
+  document.getElementById('productFormModal').style.display = 'flex';
+  setTimeout(() => document.getElementById('productFormName').focus(), 50);
+}
+
+function resizeImage(file, maxDim) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        let { width, height } = img;
+        if (width > maxDim || height > maxDim) {
+          const scale = maxDim / Math.max(width, height);
+          width = Math.round(width * scale);
+          height = Math.round(height * scale);
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, width, height);
+        ctx.drawImage(img, 0, 0, width, height);
+        resolve(canvas.toDataURL('image/jpeg', 0.85));
+      };
+      img.onerror = () => reject(new Error('Failed to load image'));
+      img.src = e.target.result;
+    };
+    reader.onerror = () => reject(new Error('Failed to read file'));
+    reader.readAsDataURL(file);
+  });
+}
+
+async function handleProdPhotoUpload(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  if (file.size > 10 * 1024 * 1024) {
+    alert('Photo must be under 10 MB. Please pick a smaller one.');
+    e.target.value = '';
+    return;
+  }
+  try {
+    const dataUrl = await resizeImage(file, 600);
+    pendingProdPhoto = dataUrl;
+    document.getElementById('prodPhotoImg').src = dataUrl;
+    document.getElementById('prodPhotoPlaceholder').style.display = 'none';
+    document.getElementById('prodPhotoPreview').style.display = 'block';
+  } catch (err) {
+    alert('Could not process that image: ' + err.message);
+  }
+}
+
+function clearProdPhoto() {
+  pendingProdPhoto = null;
+  document.getElementById('prodPhoto').value = '';
+  document.getElementById('prodPhotoImg').src = '';
+  document.getElementById('prodPhotoPlaceholder').style.display = 'block';
+  document.getElementById('prodPhotoPreview').style.display = 'none';
+}
+
+function submitProductForm() {
+  const modal = document.getElementById('productFormModal');
+  const existingSku = modal.dataset.editingSku || '';
+  const editing = !!existingSku;
+
+  const sku = document.getElementById('productFormSku').value.trim().toUpperCase();
+  const name = document.getElementById('productFormName').value.trim();
+  const brand = document.getElementById('productFormBrand').value.trim();
+  const category = document.getElementById('productFormCategory').value;
+  const variant = document.getElementById('productFormVariant').value.trim();
+  const uom = document.getElementById('productFormUom').value.trim();
+  const price = parseFloat(document.getElementById('productFormPrice').value);
+  const supplier = document.getElementById('productFormSupplier').value.trim();
+  const active = document.getElementById('productFormActive').checked;
+
+  if (!name) { alert('Product name is required.'); return; }
+  if (!category) { alert('Please pick a category.'); return; }
+  if (isNaN(price) || price <= 0) { alert('Please enter a valid price > 0.'); return; }
+
+  const image = pendingProdPhoto || '';
+
+  if (editing) {
+    const p = PRODUCTS.find(x => x.sku === existingSku);
+    const changes = { name, brand, category, variant, uom, price, supplier, active, image };
+    Object.assign(p, changes);
+
+    const edits = getProductEdits();
+    edits[existingSku] = { ...(edits[existingSku] || {}), ...changes };
+    try {
+      saveProductEdits(edits);
+    } catch (err) {
+      alert('Save failed — the photo may be too large for browser storage. Try a smaller image.');
+      return;
+    }
+
+    const added = JSON.parse(localStorage.getItem('vv_products_added') || '[]');
+    const aIdx = added.findIndex(x => x.sku === existingSku);
+    if (aIdx >= 0) { added[aIdx] = { ...added[aIdx], ...changes }; localStorage.setItem('vv_products_added', JSON.stringify(added)); }
+  } else {
+    let finalSku = sku;
+    if (!finalSku) finalSku = nextSkuFor(category);
+    else if (PRODUCTS.find(x => x.sku === finalSku)) { alert(`SKU "${finalSku}" already exists. Pick a different one or leave blank to auto-generate.`); return; }
+
+    const newProduct = { sku: finalSku, name, brand, category, variant, uom, price, supplier, active, image };
+    PRODUCTS.push(newProduct);
+    const added = JSON.parse(localStorage.getItem('vv_products_added') || '[]');
+    added.push(newProduct);
+    try {
+      localStorage.setItem('vv_products_added', JSON.stringify(added));
+    } catch (err) {
+      PRODUCTS.pop();
+      alert('Save failed — the photo may be too large for browser storage. Try a smaller image.');
+      return;
+    }
+  }
+
+  closeModal('productFormModal');
+  renderAdminCatalog();
+}
+
+// ========== ORDER SPLIT ==========
+function canSplit(o) {
+  return ['Submitted to V&V', 'Confirmed', 'Procuring', 'Ready', 'Out for Delivery'].includes(o.status);
+}
+
+let splittingOrderId = null;
+
+function openSplitOrder(orderId) {
+  const o = getAllOrders().find(x => x.order_id === orderId);
+  if (!o) return;
+  if (!canSplit(o)) {
+    alert('This order cannot be split right now. Splitting is allowed only between Submitted and Out for Delivery.');
+    return;
+  }
+  splittingOrderId = orderId;
+
+  document.getElementById('splitBanner').innerHTML =
+    `Splitting <b>${o.order_id}</b> — ${escapeHtml(o.company.name)} · ${escapeHtml(o.branch.name)} · Current status: <b>${o.status}</b>`;
+
+  const tbody = document.getElementById('splitTableBody');
+  tbody.innerHTML = o.lines.map((l, i) => `
+    <tr>
+      <td>
+        <b>${escapeHtml(l.name)}</b>
+        <div style="font-size:11px;color:var(--muted);">${l.sku}${l.variant ? ' · ' + escapeHtml(l.variant) : ''} · ${peso(l.unit_price)}</div>
+      </td>
+      <td class="num">${l.qty}</td>
+      <td class="num">
+        <input type="number" min="0" max="${l.qty}" value="0"
+          class="split-qty-input" data-idx="${i}" data-max="${l.qty}"
+          style="width:70px;padding:4px;border:1px solid var(--border);border-radius:4px;text-align:right;"
+          oninput="recomputeSplitTotal()">
+      </td>
+      <td class="num keep-qty" data-idx="${i}">${l.qty}</td>
+      <td class="num split-val" data-idx="${i}">${peso(0)}</td>
+    </tr>
+  `).join('');
+
+  document.getElementById('splitReason').value = '';
+  document.getElementById('splitNewTotal').textContent = peso(0);
+  document.getElementById('splitRemainTotal').textContent = peso(o.total_php);
+  document.getElementById('splitModal').style.display = 'flex';
+}
+
+function recomputeSplitTotal() {
+  const o = getAllOrders().find(x => x.order_id === splittingOrderId);
+  if (!o) return;
+  let splitTotal = 0;
+  let keepTotal = 0;
+  document.querySelectorAll('.split-qty-input').forEach(input => {
+    const idx = +input.dataset.idx;
+    const max = +input.dataset.max;
+    let qty = parseInt(input.value) || 0;
+    if (qty < 0) qty = 0;
+    if (qty > max) { qty = max; input.value = qty; }
+    const line = o.lines[idx];
+    splitTotal += qty * line.unit_price;
+    keepTotal += (max - qty) * line.unit_price;
+    document.querySelector(`.keep-qty[data-idx="${idx}"]`).textContent = max - qty;
+    document.querySelector(`.split-val[data-idx="${idx}"]`).textContent = peso(qty * line.unit_price);
+  });
+  document.getElementById('splitNewTotal').textContent = peso(splitTotal);
+  document.getElementById('splitRemainTotal').textContent = peso(keepTotal);
+}
+
+function confirmSplitOrder() {
+  const orders = getAllOrders();
+  const parent = orders.find(x => x.order_id === splittingOrderId);
+  if (!parent) return;
+
+  const splits = [];
+  document.querySelectorAll('.split-qty-input').forEach(input => {
+    const idx = +input.dataset.idx;
+    const qty = parseInt(input.value) || 0;
+    if (qty > 0) splits.push({ idx, qty });
+  });
+
+  if (!splits.length) { alert('Enter a Split Qty above 0 on at least one line.'); return; }
+
+  const takesEverything = splits.length === parent.lines.length &&
+    splits.every(s => s.qty === parent.lines[s.idx].qty);
+  if (takesEverything) {
+    alert('Cannot split the entire order — that would leave the original empty. Split a partial amount instead.');
+    return;
+  }
+
+  const reason = document.getElementById('splitReason').value.trim();
+
+  // Build child
+  const existingCount = parent.split_children?.length || 0;
+  const childSuffix = String.fromCharCode(65 + existingCount); // A, B, C…
+  const childId = `${parent.order_id}-${childSuffix}`;
+
+  const childLines = splits.map(s => {
+    const line = parent.lines[s.idx];
+    return {
+      sku: line.sku, name: line.name, brand: line.brand,
+      variant: line.variant, uom: line.uom,
+      qty: s.qty, unit_price: line.unit_price,
+      line_total: line.unit_price * s.qty,
+    };
+  });
+  const childTotal = childLines.reduce((sum, l) => sum + l.line_total, 0);
+
+  const now = new Date().toISOString();
+  const child = {
+    order_id: childId,
+    timestamp: now,
+    status: parent.status,
+    company: parent.company,
+    branch: parent.branch,
+    fulfillment: parent.fulfillment,
+    notes: `Split from ${parent.order_id}${reason ? ' — ' + reason : ''}`,
+    lines: childLines,
+    total_php: childTotal,
+    parent_order_id: parent.order_id,
+    approved_at: parent.approved_at,
+    approved_by: parent.approved_by,
+    history: [{ at: now, by: 'V&V Admin', action: `split from ${parent.order_id}`, note: reason }],
+  };
+
+  // Shrink parent
+  splits.forEach(s => {
+    parent.lines[s.idx].qty -= s.qty;
+    parent.lines[s.idx].line_total = parent.lines[s.idx].qty * parent.lines[s.idx].unit_price;
+  });
+  parent.lines = parent.lines.filter(l => l.qty > 0);
+  parent.total_php = parent.lines.reduce((sum, l) => sum + l.line_total, 0);
+  parent.split_children = parent.split_children || [];
+  parent.split_children.push(childId);
+  parent.history.push({ at: now, by: 'V&V Admin', action: `split to ${childId}`, note: reason });
+
+  saveOrder(parent);
+  saveOrder(child);
+
+  closeModal('splitModal');
+  splittingOrderId = null;
+
+  alert(`✓ Order split.\n\nOriginal ${parent.order_id}: ${peso(parent.total_php)} (${parent.lines.length} line${parent.lines.length !== 1 ? 's' : ''})\nNew ${child.order_id}: ${peso(child.total_php)} (${child.lines.length} line${child.lines.length !== 1 ? 's' : ''})\n\nBoth can be fulfilled and billed separately. Advance their statuses independently in All Orders.`);
+
+  const active = document.querySelector('.tab.active')?.dataset.tab;
+  if (active === 'dashboard') renderAdminDashboard();
+  else if (active === 'all-orders') applyAdminFilters();
+  updateTabCounts();
+}
+
+function buildProcurementData(filter) {
+  const orders = getAllOrders().filter(o => o.status === 'Submitted to V&V');
+  const bySupplier = {};
+  orders.forEach(o => {
+    o.lines.forEach(l => {
+      const p = PRODUCTS.find(x => x.sku === l.sku);
+      const supplier = ((p && p.supplier) || '').trim() || 'Unassigned';
+      if (filter && supplier !== filter) return;
+      if (!bySupplier[supplier]) bySupplier[supplier] = {};
+      const key = l.sku;
+      if (!bySupplier[supplier][key]) bySupplier[supplier][key] = { sku: key, name: l.name, variant: l.variant, uom: l.uom, qty: 0, sources: new Set() };
+      bySupplier[supplier][key].qty += l.qty;
+      bySupplier[supplier][key].sources.add(`${o.order_id} — ${o.company.name} · ${o.branch.name}`);
+    });
+  });
+  const out = {};
+  Object.entries(bySupplier).forEach(([sup, items]) => {
+    out[sup] = Object.values(items).sort((a, b) => a.name.localeCompare(b.name));
+  });
+  return out;
+}
+
+function buildProcurementHtml(filter) {
+  const data = buildProcurementData(filter);
+  const suppliers = Object.keys(data).sort((a, b) => {
+    if (a === 'Unassigned') return 1;
+    if (b === 'Unassigned') return -1;
+    return a.localeCompare(b);
+  });
+  if (!suppliers.length) return '<div class="empty-state">No items to procure.</div>';
+
+  return suppliers.map(sup => {
+    const items = data[sup];
+    const totalUnits = items.reduce((s, i) => s + i.qty, 0);
+    const isUnassigned = sup === 'Unassigned';
+    return `
+      <div style="margin-bottom:14px;border:1px solid var(--border);border-radius:6px;padding:12px;background:${isUnassigned ? '#fef3c7' : '#f8fafc'};">
+        <h3 style="font-size:14px;margin:0 0 8px;color:${isUnassigned ? '#92400e' : 'var(--primary-dark)'};">
+          🏭 ${escapeHtml(sup)}
+          <span style="font-weight:normal;color:var(--muted);font-size:12px;margin-left:6px;">· ${items.length} line${items.length > 1 ? 's' : ''} · ${totalUnits} unit${totalUnits > 1 ? 's' : ''}</span>
+        </h3>
+        <table class="order-table" style="background:white;margin:0;">
+          <thead><tr><th style="width:100px;">SKU</th><th>Item</th><th class="num" style="width:110px;">Qty Needed</th></tr></thead>
+          <tbody>
+            ${items.map(i => `
+              <tr>
+                <td style="font-family:monospace;font-size:12px;">${escapeHtml(i.sku)}</td>
+                <td>${escapeHtml(i.name)}${i.variant ? ' — <span style="color:var(--muted);font-size:12px;">' + escapeHtml(i.variant) + '</span>' : ''}</td>
+                <td class="num"><b>${i.qty}</b> ${escapeHtml(i.uom || '')}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }).join('');
+}
+
+function filterProcurement() {
+  const filter = document.getElementById('procSupplierFilter').value;
+  document.getElementById('procListBody').innerHTML = buildProcurementHtml(filter);
+}
+
+function printProcurement(filter) {
+  filter = filter || '';
+  const data = buildProcurementData(filter);
+  const suppliers = Object.keys(data).sort((a, b) => {
+    if (a === 'Unassigned') return 1;
+    if (b === 'Unassigned') return -1;
+    return a.localeCompare(b);
+  });
+  if (!suppliers.length) { alert('No items to procure.'); return; }
+
+  const orders = getAllOrders().filter(o => o.status === 'Submitted to V&V');
+  const allSources = new Set();
+  Object.values(data).forEach(items => items.forEach(i => i.sources.forEach(s => allSources.add(s))));
+
+  const totalLines = Object.values(data).reduce((s, items) => s + items.length, 0);
+  const totalUnits = Object.values(data).reduce((s, items) => s + items.reduce((x, i) => x + i.qty, 0), 0);
+  const now = new Date();
+  const dateStr = now.toLocaleString('en-PH', { dateStyle: 'long', timeStyle: 'short' });
+
+  const supplierSections = suppliers.map(sup => {
+    const items = data[sup];
+    const subTotal = items.reduce((s, i) => s + i.qty, 0);
+    const rows = items.map(i => `
+      <tr>
+        <td style="font-family:monospace;font-size:11px;">${escapeHtmlPlain(i.sku)}</td>
+        <td>${escapeHtmlPlain(i.name)}${i.variant ? '<br><small style="color:#64748b;">' + escapeHtmlPlain(i.variant) + '</small>' : ''}</td>
+        <td style="text-align:right;font-weight:600;">${i.qty}</td>
+        <td>${escapeHtmlPlain(i.uom || '')}</td>
+        <td style="text-align:right;"><input type="checkbox" style="transform:scale(1.3);"></td>
+      </tr>
+    `).join('');
+    return `
+      <h2 style="page-break-before:${sup === suppliers[0] ? 'auto' : 'always'};color:${sup === 'Unassigned' ? '#92400e' : '#305496'};">
+        🏭 ${escapeHtmlPlain(sup)}
+        <span style="font-weight:normal;font-size:12px;color:#64748b;">— ${items.length} line${items.length > 1 ? 's' : ''}, ${subTotal} unit${subTotal > 1 ? 's' : ''}</span>
+      </h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:14%;">SKU</th>
+            <th>Item</th>
+            <th style="width:8%;">Qty</th>
+            <th style="width:10%;">UOM</th>
+            <th style="width:6%;">✓</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    `;
+  }).join('');
+
+  const title = filter ? `Procurement — ${filter}` : 'Procurement List';
+  const html = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>${escapeHtmlPlain(title)} — ${now.toISOString().slice(0, 10)}</title>
+  <style>
+    @page { margin: 15mm; }
+    * { box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; color: #1e293b; margin: 0; padding: 20px; font-size: 13px; line-height: 1.4; }
+    .header { display: flex; justify-content: space-between; align-items: start; border-bottom: 3px solid #305496; padding-bottom: 12px; margin-bottom: 16px; }
+    .header h1 { margin: 0; color: #305496; font-size: 22px; }
+    .header .meta { text-align: right; font-size: 12px; color: #64748b; }
+    .summary { background: #f1f5f9; padding: 10px 14px; border-radius: 6px; margin-bottom: 12px; font-size: 12px; }
+    .summary b { color: #305496; }
+    table { width: 100%; border-collapse: collapse; margin-top: 4px; margin-bottom: 10px; }
+    th { text-align: left; background: #305496; color: white; padding: 7px; font-size: 12px; }
+    th:nth-child(3), th:nth-child(5) { text-align: right; }
+    td { padding: 7px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+    tr:nth-child(even) td { background: #fafbfc; }
+    h2 { font-size: 15px; margin: 16px 0 4px; color: #305496; }
+    .sources { font-size: 11px; color: #64748b; }
+    .sources li { margin-bottom: 2px; }
+    .footer { margin-top: 24px; font-size: 10px; color: #94a3b8; text-align: center; border-top: 1px solid #e2e8f0; padding-top: 8px; }
+    @media print {
+      body { padding: 0; }
+      .no-print { display: none; }
+      thead { display: table-header-group; }
+    }
+    .actions { margin-bottom: 16px; }
+    .actions button { background: #305496; color: white; border: none; padding: 8px 14px; border-radius: 5px; cursor: pointer; font-size: 13px; margin-right: 8px; }
+  </style>
+</head>
+<body>
+  <div class="no-print actions">
+    <button onclick="window.print()">🖨️ Print</button>
+    <button onclick="window.close()" style="background:#64748b;">Close</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1>V&amp;V — ${escapeHtmlPlain(title)}</h1>
+      <div style="color:#64748b;margin-top:4px;font-size:12px;">${filter ? 'Items to buy from ' + escapeHtmlPlain(filter) : 'Items to buy — grouped by supplier'}</div>
+    </div>
+    <div class="meta">
+      Generated: ${dateStr}<br>
+      <b>${totalLines}</b> line${totalLines !== 1 ? 's' : ''} · <b>${totalUnits}</b> units<br>
+      From <b>${orders.length}</b> pending order${orders.length !== 1 ? 's' : ''} · <b>${suppliers.length}</b> supplier${suppliers.length !== 1 ? 's' : ''}
+    </div>
+  </div>
+
+  <div class="summary">
+    <b>Instructions:</b> Each section is one supplier's shopping list. Use the ✓ column to check items off as you procure them.
+  </div>
+
+  ${supplierSections}
+
+  <h2 style="page-break-before:always;">Source Orders</h2>
+  <ul class="sources">
+    ${[...allSources].sort().map(s => `<li>${escapeHtmlPlain(s)}</li>`).join('')}
+  </ul>
+
+  <div class="footer">
+    V&amp;V Internal Document · Generated by V&amp;V Order Portal · Not a customer-facing document
+  </div>
+
+  <script>window.onload = function() { setTimeout(function() { window.print(); }, 300); };<\/script>
+</body>
+</html>`;
+
+  const w = window.open('', '_blank', 'width=900,height=800');
+  if (!w) { alert('Pop-up blocked. Please allow pop-ups for this site to print.'); return; }
+  w.document.write(html);
+  w.document.close();
+}
+
+
+function escapeHtmlPlain(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// ========== MANUAL ORDER ENTRY ==========
+function openManualOrderForm() {
+  const sel = document.getElementById('mo_company');
+  sel.innerHTML = '<option value="">-- Select --</option>' +
+    COMPANIES.map(c => `<option value="${c.code}">${escapeHtml(c.name)}</option>`).join('');
+  document.getElementById('mo_branch').innerHTML = '<option value="">-- Select company first --</option>';
+  document.getElementById('mo_date').value = new Date().toISOString().slice(0, 10);
+  document.getElementById('mo_amount').value = '';
+  document.getElementById('mo_status').value = 'Delivered';
+  document.getElementById('mo_invoice').value = '';
+  document.getElementById('mo_notes').value = '';
+  document.getElementById('manualOrderModal').style.display = 'flex';
+}
+
+function mo_onCompanyChange() {
+  const code = document.getElementById('mo_company').value;
+  const sel = document.getElementById('mo_branch');
+  sel.innerHTML = '<option value="">-- Select --</option>';
+  if (!code) return;
+  const co = COMPANIES.find(c => c.code === code);
+  if (!co) return;
+  co.branches.forEach(b => {
+    const opt = document.createElement('option');
+    opt.value = b.code;
+    opt.textContent = b.name;
+    sel.appendChild(opt);
+  });
+  if (co.branches.length === 1) sel.value = co.branches[0].code;
+}
+
+function submitManualOrder() {
+  const companyCode = document.getElementById('mo_company').value;
+  const branchCode = document.getElementById('mo_branch').value;
+  const date = document.getElementById('mo_date').value;
+  const amount = parseFloat(document.getElementById('mo_amount').value);
+  const status = document.getElementById('mo_status').value;
+  const invoice = document.getElementById('mo_invoice').value.trim();
+  const notes = document.getElementById('mo_notes').value.trim();
+
+  if (!companyCode) { alert('Pick a company.'); return; }
+  if (!branchCode) { alert('Pick a branch.'); return; }
+  if (!date) { alert('Pick a delivery date.'); return; }
+  if (isNaN(amount) || amount <= 0) { alert('Enter a valid amount.'); return; }
+
+  const co = COMPANIES.find(c => c.code === companyCode);
+  const br = co.branches.find(b => b.code === branchCode);
+
+  const iso = new Date(date + 'T12:00:00').toISOString();
+  const suffix = Math.random().toString(36).slice(2, 6).toUpperCase();
+  const orderId = invoice ? `MAN-SI-${invoice}-${suffix}` : `MAN-${date.replace(/-/g, '')}-${suffix}`;
+
+  const order = {
+    order_id: orderId,
+    timestamp: iso,
+    status,
+    legacy: true,
+    invoice_number: invoice || '',
+    company: { code: co.code, name: co.name, tin: co.tin, approver: co.approver_name },
+    branch: { code: br.code, name: br.name, address: br.address, mobile: br.mobile || '', terms: br.terms },
+    fulfillment: 'delivery',
+    notes: `Manual entry${notes ? ' · ' + notes : ''}`,
+    lines: [{
+      sku: 'MANUAL',
+      name: invoice ? `Manual entry — SI #${invoice}` : 'Manual entry (no SI yet)',
+      brand: '', variant: '', uom: 'lot',
+      qty: 1, unit_price: amount, line_total: amount,
+    }],
+    total_php: amount,
+    approved_at: iso, approved_by: 'Manual entry',
+    history: [
+      { at: new Date().toISOString(), by: 'V&V Admin', action: `manual order entered · status ${status}${invoice ? ' · SI #' + invoice : ' · uninvoiced'}` },
+    ],
+  };
+
+  const all = getAllOrders();
+  all.unshift(order);
+  saveOrders(all);
+
+  closeModal('manualOrderModal');
+  alert(`✓ Order ${orderId} saved.\n\nCompany: ${co.name} · ${br.name}\nAmount: ${peso(amount)}\nStatus: ${status}\n${invoice ? 'SI #: ' + invoice : 'Uninvoiced — add SI # later from the dashboard'}`);
+
+  const active = document.querySelector('.tab.active')?.dataset.tab;
+  if (active === 'dashboard') renderAdminDashboard();
+  else if (active === 'all-orders') applyAdminFilters();
+  else if (active === 'analytics') renderAnalytics();
+}
+
+function promptInvoiceNumber(orderId) {
+  const o = getAllOrders().find(x => x.order_id === orderId);
+  if (!o) return;
+  const n = prompt(`Add SI / Invoice number for this delivery:\n\n${o.company.name} · ${o.branch.name} · ${peso(o.total_php)}`, '');
+  if (n === null) return;
+  const num = n.trim();
+  if (!num) { alert('Invoice number required.'); return; }
+  o.invoice_number = num;
+  o.history.push({ at: new Date().toISOString(), by: 'V&V Admin', action: `invoice issued · SI #${num}` });
+  saveOrder(o);
+  renderAdminDashboard();
+  updateTabCounts();
+}
+
+function exportAllOrders() {
+  const orders = getAllOrders();
+  if (!orders.length) { alert('No orders to export.'); return; }
+
+  const headers = ['Order ID', 'Timestamp', 'Status', 'Company', 'TIN', 'Branch', 'Terms', 'Fulfillment', 'Approver', 'Notes', 'Total PHP', 'Line SKU', 'Line Name', 'Line Variant', 'Line Qty', 'Line UOM', 'Line Unit Price', 'Line Total'];
+  const rows = [headers.join(',')];
+  orders.forEach(o => {
+    o.lines.forEach(l => {
+      const row = [
+        o.order_id, o.timestamp, o.status, o.company.name, o.company.tin,
+        o.branch.name, o.branch.terms, o.fulfillment, o.company.approver || '',
+        (o.notes || '').replace(/\n/g, ' '),
+        o.total_php,
+        l.sku, l.name, l.variant || '', l.qty, l.uom || '', l.unit_price, l.line_total,
+      ].map(v => `"${String(v).replace(/"/g, '""')}"`);
+      rows.push(row.join(','));
+    });
+  });
+
+  const blob = new Blob([rows.join('\n')], { type: 'text/csv;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `vv-orders-${new Date().toISOString().slice(0, 10)}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+// ========== DEPOSIT SLIPS ==========
+async function uploadDepositSlip(orderId) {
+  let input = document.getElementById('depositSlipInput');
+  if (!input) {
+    input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.id = 'depositSlipInput';
+    input.style.display = 'none';
+    document.body.appendChild(input);
+  }
+  input.dataset.orderId = orderId;
+  input.onchange = handleDepositSlipUpload;
+  input.click();
+}
+
+async function handleDepositSlipUpload(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const orderId = e.target.dataset.orderId;
+
+  if (file.size > 10 * 1024 * 1024) {
+    alert('Image must be under 10 MB.');
+    e.target.value = '';
+    return;
+  }
+
+  try {
+    const dataUrl = await resizeImage(file, 1000);
+    const orders = getAllOrders();
+    const o = orders.find(x => x.order_id === orderId);
+    if (!o) return;
+
+    const who = isSuperApprover() ? 'Eisha'
+      : isAdmin() ? 'V&V Admin'
+      : (session.companyCode && getCompany()?.approver_name) || 'User';
+
+    o.deposit_slip = dataUrl;
+    o.deposit_slip_uploaded_at = new Date().toISOString();
+    o.deposit_slip_uploaded_by = who;
+    o.history.push({ at: o.deposit_slip_uploaded_at, by: who, action: 'deposit slip uploaded' });
+    saveOrder(o);
+
+    alert(`✓ Deposit slip attached to ${orderId}.\n\nV&V can now see it and mark the order Paid.`);
+
+    const active = document.querySelector('.tab.active')?.dataset.tab;
+    if (active === 'super-dashboard') renderSuperDashboard();
+    else if (active === 'super-pending' || active === 'super-history') renderSuperApprovals(active === 'super-history' ? 'history' : 'pending');
+    else if (active === 'dashboard') renderAdminDashboard();
+    else if (active === 'all-orders') applyAdminFilters();
+  } catch (err) {
+    alert('Could not process the image: ' + err.message);
+  }
+  e.target.value = '';
+}
+
+function viewDepositSlip(orderId) {
+  const o = getAllOrders().find(x => x.order_id === orderId);
+  if (!o || !o.deposit_slip) return;
+  const modal = document.createElement('div');
+  modal.className = 'modal-backdrop';
+  modal.innerHTML = `
+    <div class="photo-modal">
+      <img src="${o.deposit_slip}">
+      <div style="color:white;font-size:12px;margin-top:8px;text-align:center;">
+        ${escapeHtml(orderId)} · Uploaded ${fmtDate(o.deposit_slip_uploaded_at)} by ${escapeHtml(o.deposit_slip_uploaded_by)}
+      </div>
+      <button class="close" onclick="this.closest('.modal-backdrop').remove()">Close</button>
+    </div>
+  `;
+  modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+  document.body.appendChild(modal);
+}
+
+function canUploadSlip(o) {
+  return o.status !== 'Pending Approval' && o.status !== 'Rejected';
+}
+
+function validateDepositSlip(orderId) {
+  const orders = getAllOrders();
+  const o = orders.find(x => x.order_id === orderId);
+  if (!o || !o.deposit_slip) return;
+  if (!confirm(`Validate deposit slip for ${orderId} — ${peso(o.total_php)}?\n\nConfirm that payment has been received in the V&V bank/GCash account.`)) return;
+
+  const now = new Date().toISOString();
+  o.deposit_slip_validated = true;
+  o.deposit_slip_validated_at = now;
+  o.deposit_slip_validated_by = 'V&V Admin';
+  o.history.push({ at: now, by: 'V&V Admin', action: 'deposit slip validated' });
+  saveOrder(o);
+
+  closeModal('detailModal');
+  const active = document.querySelector('.tab.active')?.dataset.tab;
+  if (active === 'dashboard') renderAdminDashboard();
+  else if (active === 'all-orders') applyAdminFilters();
+  updateTabCounts();
+}
+
+function depositSlipCellHtml(o) {
+  if (!canUploadSlip(o)) return '';
+  if (o.deposit_slip) {
+    return `<button class="order-detail-btn" style="padding:4px 10px;border-color:var(--success);color:var(--success);" onclick="viewDepositSlip('${o.order_id}')" title="Uploaded ${fmtDate(o.deposit_slip_uploaded_at)}">✓ Slip on file</button>`;
+  }
+  return `<button class="order-detail-btn" style="padding:4px 10px;border-color:var(--warning);color:var(--warning);" onclick="uploadDepositSlip('${o.order_id}')">📎 Upload Slip</button>`;
+}
+
+// ========== SUPER APPROVER (Eisha — cross-company) ==========
+function renderSuperDashboard() {
+  const orders = getAllOrders();
+  const content = document.getElementById('adminContent');
+
+  const pending = orders.filter(o => o.status === 'Pending Approval');
+  const approved = orders.filter(o => ['Approved', 'Submitted to V&V', 'Confirmed', 'Procuring', 'Ready', 'Out for Delivery', 'Delivered', 'Paid'].includes(o.status));
+  const rejected = orders.filter(o => o.status === 'Rejected');
+
+  const companyStats = {};
+  COMPANIES.forEach(c => {
+    companyStats[c.code] = {
+      name: c.name, pending: 0, approved: 0, rejected: 0, totalValue: 0,
+      branches: {},
+    };
+    c.branches.forEach(b => {
+      companyStats[c.code].branches[b.code] = { name: b.name, pending: 0, approved: 0, rejected: 0, totalValue: 0 };
+    });
+  });
+  orders.forEach(o => {
+    const s = companyStats[o.company.code];
+    if (!s) return;
+    const bs = s.branches[o.branch.code];
+    if (o.status === 'Pending Approval') { s.pending++; if (bs) bs.pending++; }
+    else if (o.status === 'Rejected') { s.rejected++; if (bs) bs.rejected++; }
+    else {
+      s.approved++; s.totalValue += o.total_php;
+      if (bs) { bs.approved++; bs.totalValue += o.total_php; }
+    }
+  });
+
+  const pendingValue = pending.reduce((s, o) => s + o.total_php, 0);
+  const monthKey = new Date().toISOString().slice(0, 7);
+  const monthApproved = approved.filter(o => o.approved_at && o.approved_at.slice(0, 7) === monthKey);
+  const monthValue = monthApproved.reduce((s, o) => s + o.total_php, 0);
+
+  content.innerHTML = `
+    <h2 style="margin-bottom:6px;">Approval Dashboard — Eisha</h2>
+    <p style="color:var(--muted);font-size:13px;margin-bottom:18px;">
+      You approve orders for <b>${COMPANIES.length} companies</b>. Pending items appear below; approve or reject from here or the Pending Approvals tab.
+    </p>
+
+    <div class="stats-grid">
+      <div class="stat-card warning">
+        <div class="label">Awaiting approval</div>
+        <div class="value">${pending.length}</div>
+        <div class="sub">${peso(pendingValue)} total value</div>
+      </div>
+      <div class="stat-card success">
+        <div class="label">Approved this month</div>
+        <div class="value">${monthApproved.length}</div>
+        <div class="sub">${peso(monthValue)}</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Total rejected</div>
+        <div class="value">${rejected.length}</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Companies</div>
+        <div class="value">${COMPANIES.length}</div>
+        <div class="sub">Under your approval</div>
+      </div>
+    </div>
+
+    <div class="orders-section">
+      <h2>By Company &amp; Branch</h2>
+      <table class="order-table">
+        <thead><tr><th>Company / Branch</th><th class="num">Pending</th><th class="num">Approved</th><th class="num">Rejected</th><th class="num">Approved Value</th></tr></thead>
+        <tbody>
+          ${Object.values(companyStats).sort((a, b) => b.pending - a.pending || b.totalValue - a.totalValue).map(s => {
+            const branchRows = Object.values(s.branches).sort((a, b) => b.pending - a.pending || a.name.localeCompare(b.name)).map(b => `
+              <tr>
+                <td style="padding-left:32px;color:var(--muted);font-size:13px;">└ ${escapeHtml(b.name)}</td>
+                <td class="num">${b.pending > 0 ? '<b style="color:var(--warning);">' + b.pending + '</b>' : b.pending}</td>
+                <td class="num">${b.approved}</td>
+                <td class="num">${b.rejected}</td>
+                <td class="num">${peso(b.totalValue)}</td>
+              </tr>
+            `).join('');
+            return `
+              <tr style="background:#f1f5f9;">
+                <td><b>${escapeHtml(s.name)}</b></td>
+                <td class="num"><b>${s.pending > 0 ? '<span style="color:var(--warning);">' + s.pending + '</span>' : s.pending}</b></td>
+                <td class="num"><b>${s.approved}</b></td>
+                <td class="num"><b>${s.rejected}</b></td>
+                <td class="num"><b>${peso(s.totalValue)}</b></td>
+              </tr>
+              ${branchRows}
+            `;
+          }).join('')}
+        </tbody>
+      </table>
+    </div>
+
+    ${pending.length ? `
+      <div class="orders-section">
+        <h2>⚠️ Pending Your Approval (${pending.length})</h2>
+        ${pending.slice(0, 8).map(o => superApproverCardHtml(o, true)).join('')}
+        ${pending.length > 8 ? `<p style="text-align:center;margin-top:10px;"><button class="order-detail-btn" onclick="switchTab('super-pending')">View all ${pending.length} pending →</button></p>` : ''}
+      </div>
+    ` : '<div class="orders-section"><div class="empty-state">🎉 No orders awaiting your approval.</div></div>'}
+  `;
+}
+
+function renderSuperApprovals(mode) {
+  const orders = getAllOrders();
+  const content = document.getElementById('adminContent');
+
+  const list = mode === 'pending'
+    ? orders.filter(o => o.status === 'Pending Approval')
+    : orders.filter(o => o.status !== 'Pending Approval');
+  const title = mode === 'pending' ? `Pending Approval (${list.length})` : `Approval History (${list.length})`;
+  const companies = [...new Set(list.map(o => o.company.name))].sort();
+
+  content.innerHTML = `
+    <h2 style="margin-bottom:14px;">${title}</h2>
+    ${list.length ? `
+      <div class="admin-filter-bar">
+        <input type="text" id="superSearch" placeholder="Search order ID, product…" oninput="applySuperFilter('${mode}')">
+        <select id="superCompanyFilter" onchange="applySuperFilter('${mode}')">
+          <option value="">All companies</option>
+          ${companies.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('')}
+        </select>
+      </div>
+      <div id="superApprovalsList">
+        ${list.map(o => superApproverCardHtml(o, mode === 'pending')).join('')}
+      </div>
+    ` : `<div class="orders-section"><div class="empty-state">${mode === 'pending' ? '🎉 No pending orders.' : 'No past decisions yet.'}</div></div>`}
+  `;
+}
+
+function applySuperFilter(mode) {
+  const search = (document.getElementById('superSearch')?.value || '').toLowerCase().trim();
+  const filter = document.getElementById('superCompanyFilter')?.value || '';
+  const orders = getAllOrders();
+  let list = mode === 'pending'
+    ? orders.filter(o => o.status === 'Pending Approval')
+    : orders.filter(o => o.status !== 'Pending Approval');
+  if (filter) list = list.filter(o => o.company.name === filter);
+  if (search) list = list.filter(o =>
+    o.order_id.toLowerCase().includes(search) ||
+    o.lines.some(l => l.name.toLowerCase().includes(search))
+  );
+  const container = document.getElementById('superApprovalsList');
+  container.innerHTML = list.length ? list.map(o => superApproverCardHtml(o, mode === 'pending')).join('') :
+    '<div class="empty-state">No orders match the filter.</div>';
+}
+
+function superApproverCardHtml(o, showActions) {
+  const statusClass = o.status === 'Pending Approval' ? 'pending' :
+                     (o.status === 'Rejected' ? 'rejected' : 'approved');
+  const statusBadge = o.status === 'Pending Approval' ? 'status-pending' :
+                      o.status === 'Rejected' ? 'status-rejected' :
+                      o.status === 'Submitted to V&V' ? 'status-submitted' : 'status-approved';
+  return `
+    <div class="order-card ${statusClass}">
+      <div>
+        <div class="order-head">
+          <span class="order-id">${o.order_id}</span>
+          <span class="order-status ${statusBadge}">${o.status}</span>
+          <span style="font-size:13px;font-weight:600;color:var(--primary-dark);">${escapeHtml(o.company.name)}</span>
+          <span class="order-meta">${escapeHtml(o.branch.name)} · ${fmtDate(o.timestamp)}</span>
+        </div>
+        <div class="order-meta" style="margin-top:6px;">
+          ${o.lines.length} line${o.lines.length > 1 ? 's' : ''} · ${o.fulfillment === 'delivery' ? '🚚 Delivery' : '🏪 Pickup'}
+          ${o.notes ? ' · <i>"' + escapeHtml(o.notes.substring(0, 80)) + (o.notes.length > 80 ? '…' : '') + '"</i>' : ''}
+        </div>
+        <button class="order-detail-btn" onclick="showOrderDetail('${o.order_id}')">View Details</button>
+      </div>
+      <div style="text-align:right;">
+        <div class="order-total">${peso(o.total_php)}</div>
+        ${showActions ? `
+          <div style="display:flex;gap:6px;margin-top:8px;">
+            <button class="btn-reject" style="padding:6px 12px;border-radius:4px;cursor:pointer;font-size:12px;font-weight:600;border:none;" onclick="rejectOrder('${o.order_id}')">Reject</button>
+            <button class="btn-approve" style="padding:6px 12px;border-radius:4px;cursor:pointer;font-size:12px;font-weight:600;border:none;" onclick="approveOrder('${o.order_id}')">Approve</button>
+          </div>` : ''}
+        ${depositSlipCellHtml(o) ? `<div style="margin-top:6px;">${depositSlipCellHtml(o)}</div>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+// ========== STAFF LOGIN (admin + super approver) ==========
+const STAFF_CREDS = {
+  'admin': { password: 'vvadmin2026', role: 'admin', name: 'V&V Admin' },
+  'eisha': { password: 'eisha2026', role: 'super_approver', name: 'Eisha' },
+};
+
+function switchLoginTab(which) {
+  document.querySelectorAll('.login-tab').forEach(b => b.classList.toggle('active', b.dataset.ltab === which));
+  document.getElementById('login-customer').style.display = which === 'customer' ? 'block' : 'none';
+  document.getElementById('login-staff').style.display = which === 'staff' ? 'block' : 'none';
+}
+
+function staffLogin() {
+  const u = document.getElementById('staffUser').value.trim().toLowerCase();
+  const p = document.getElementById('staffPass').value;
+  const cred = STAFF_CREDS[u];
+  if (!cred || cred.password !== p) {
+    alert('Invalid username or password.');
+    return;
+  }
+  session = { role: cred.role, username: u, name: cred.name };
+  sessionStorage.setItem('vv_session', JSON.stringify(session));
+  document.getElementById('staffUser').value = '';
+  document.getElementById('staffPass').value = '';
+  onLoggedIn();
+}
+
+// ========== SIGNUPS ==========
+function getSignups() { return JSON.parse(localStorage.getItem('vv_signups') || '[]'); }
+function saveSignups(list) { localStorage.setItem('vv_signups', JSON.stringify(list)); }
+
+function openSignup() {
+  closeModal('loginModal');
+  document.getElementById('signupModal').style.display = 'flex';
+  if (!document.getElementById('branchesList').children.length) addBranchRow();
+}
+
+function addBranchRow() {
+  const id = 'br_' + Math.random().toString(36).slice(2, 7);
+  const row = document.createElement('div');
+  row.className = 'branch-row';
+  row.id = id;
+  row.innerHTML = `
+    <div><label>Branch Name</label><input type="text" class="br-name" placeholder="e.g. Alabang"></div>
+    <div><label>Address</label><input type="text" class="br-address" placeholder="Branch address"></div>
+    <div><label>Mobile</label><input type="tel" class="br-mobile" placeholder="+63 9XX XXX XXXX"></div>
+    <button type="button" onclick="document.getElementById('${id}').remove()">Remove</button>
+  `;
+  document.getElementById('branchesList').appendChild(row);
+}
+
+function toggleApproverFields() {
+  const same = document.getElementById('su_approver_same').checked;
+  document.getElementById('approverFields').style.display = same ? 'none' : 'grid';
+}
+
+function submitSignup() {
+  const company = document.getElementById('su_company').value.trim();
+  const tin = document.getElementById('su_tin').value.trim();
+  const address = document.getElementById('su_address').value.trim();
+  const type = document.getElementById('su_type').value;
+  const contact = document.getElementById('su_contact').value.trim();
+  const email = document.getElementById('su_email').value.trim();
+  const mobile = document.getElementById('su_mobile').value.trim();
+
+  if (!company || !tin || !address || !type || !contact || !email || !mobile) {
+    alert('Please fill in all required fields marked with *'); return;
+  }
+
+  const branches = [...document.querySelectorAll('#branchesList .branch-row')].map(r => ({
+    name: r.querySelector('.br-name').value.trim(),
+    address: r.querySelector('.br-address').value.trim(),
+    mobile: r.querySelector('.br-mobile').value.trim(),
+  })).filter(b => b.name);
+
+  if (!branches.length) { alert('Please list at least one branch.'); return; }
+
+  const approverSame = document.getElementById('su_approver_same').checked;
+  const approver = approverSame ? { name: contact, mobile, email } : {
+    name: document.getElementById('su_approver_name').value.trim() || contact,
+    mobile: document.getElementById('su_approver_mobile').value.trim() || mobile,
+    email: document.getElementById('su_approver_email').value.trim() || email,
+  };
+
+  const signup = {
+    id: 'SU-' + new Date().toISOString().slice(0, 10).replace(/-/g, '') + '-' + Math.random().toString(36).slice(2, 5).toUpperCase(),
+    timestamp: new Date().toISOString(),
+    status: 'Pending',
+    company: { name: company, tin, address, type,
+      volume: document.getElementById('su_volume').value,
+    },
+    contact: { name: contact, role: document.getElementById('su_role').value.trim(), email, mobile },
+    branches, approver,
+    referral: document.getElementById('su_referral').value.trim(),
+  };
+
+  const all = getSignups();
+  all.unshift(signup);
+  saveSignups(all);
+
+  closeModal('signupModal');
+  alert(`Application submitted!\n\nReference: ${signup.id}\n\nV&V will review and email you within 1–2 business days.`);
+
+  // Clear form
+  ['su_company','su_tin','su_address','su_contact','su_role','su_email','su_mobile','su_referral',
+   'su_approver_name','su_approver_mobile','su_approver_email'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('su_type').value = '';
+  document.getElementById('su_volume').value = '';
+  document.getElementById('branchesList').innerHTML = '';
+  document.getElementById('loginModal').style.display = 'flex';
+}
+
+// ========== PRODUCT REQUESTS ==========
+function getRequests() { return JSON.parse(localStorage.getItem('vv_requests') || '[]'); }
+function saveRequests(list) { localStorage.setItem('vv_requests', JSON.stringify(list)); }
+
+let pendingPhoto = null;
+
+function openProductRequest() {
+  clearPhoto();
+  ['rq_name','rq_brand','rq_uom','rq_desc','rq_notes'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('rq_category').value = '';
+  document.getElementById('rq_qty').value = '';
+  document.getElementById('requestModal').style.display = 'flex';
+}
+
+function handlePhotoUpload(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  if (file.size > 5 * 1024 * 1024) {
+    alert('Photo must be under 5 MB. Please compress or choose a smaller image.');
+    e.target.value = '';
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    pendingPhoto = ev.target.result;
+    document.getElementById('photoImg').src = pendingPhoto;
+    document.getElementById('photoPlaceholder').style.display = 'none';
+    document.getElementById('photoPreview').style.display = 'block';
+  };
+  reader.readAsDataURL(file);
+}
+
+function clearPhoto() {
+  pendingPhoto = null;
+  document.getElementById('rq_photo').value = '';
+  document.getElementById('photoImg').src = '';
+  document.getElementById('photoPlaceholder').style.display = 'block';
+  document.getElementById('photoPreview').style.display = 'none';
+}
+
+function submitProductRequest() {
+  const name = document.getElementById('rq_name').value.trim();
+  const category = document.getElementById('rq_category').value;
+
+  if (!name) { alert('Product name is required.'); return; }
+  if (!category) { alert('Please pick a category.'); return; }
+  if (!pendingPhoto) { alert('A photo of the product is required. Please upload one.'); return; }
+
+  const br = getBranch();
+  const co = getCompany();
+
+  const req = {
+    id: 'RQ-' + new Date().toISOString().slice(0, 10).replace(/-/g, '') + '-' + Math.random().toString(36).slice(2, 5).toUpperCase(),
+    timestamp: new Date().toISOString(),
+    status: 'Pending Review',
+    requester: { company: co.name, companyCode: co.code, branch: br.name, branchCode: br.code, mobile: br.mobile },
+    product: {
+      name,
+      category,
+      brand: document.getElementById('rq_brand').value.trim(),
+      qty: document.getElementById('rq_qty').value || '',
+      uom: document.getElementById('rq_uom').value.trim(),
+      description: document.getElementById('rq_desc').value.trim(),
+    },
+    photo: pendingPhoto,
+    notes: document.getElementById('rq_notes').value.trim(),
+    history: [{ at: new Date().toISOString(), by: `${br.name} branch`, action: 'submitted' }],
+  };
+
+  const all = getRequests();
+  all.unshift(req);
+  saveRequests(all);
+
+  closeModal('requestModal');
+  alert(`Request submitted!\n\nReference: ${req.id}\n\nV&V will review and let you know if this item can be sourced. You'll be notified when it's added to the catalog.`);
+}
+
+// ========== ADMIN: SIGNUPS ==========
+function renderAdminSignups() {
+  const signups = getSignups();
+  const content = document.getElementById('adminContent');
+
+  const groups = {
+    'Pending': signups.filter(s => s.status === 'Pending'),
+    'Approved': signups.filter(s => s.status === 'Approved'),
+    'Declined': signups.filter(s => s.status === 'Declined'),
+  };
+
+  content.innerHTML = `
+    <h2 style="margin-bottom:14px;">Customer Account Applications (${signups.length})</h2>
+    ${Object.entries(groups).map(([title, list]) => list.length ? `
+      <div class="orders-section">
+        <h2>${title} (${list.length})</h2>
+        ${list.map(s => signupCardHtml(s)).join('')}
+      </div>
+    ` : '').join('') || '<div class="orders-section"><div class="empty-state">No customer applications yet. New companies can apply from the login screen.</div></div>'}
+  `;
+}
+
+function signupCardHtml(s) {
+  const statusClass = s.status === 'Pending' ? 'pending' : (s.status === 'Declined' ? 'declined' : 'approved');
+  return `
+    <div class="signup-card ${statusClass}">
+      <div style="width:60px;height:60px;background:var(--primary);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;">
+        ${escapeHtml(s.company.name[0] || '?')}
+      </div>
+      <div>
+        <div style="font-weight:700;font-size:15px;">${escapeHtml(s.company.name)}</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px;">
+          ${escapeHtml(s.id)} · TIN ${escapeHtml(s.company.tin)} · ${escapeHtml(s.company.type)} · ${fmtDate(s.timestamp)}
+        </div>
+        <div style="font-size:13px;margin-top:6px;">
+          📍 ${escapeHtml(s.company.address)}<br>
+          👤 <b>${escapeHtml(s.contact.name)}</b>${s.contact.role ? ' (' + escapeHtml(s.contact.role) + ')' : ''} · ${escapeHtml(s.contact.email)} · ${escapeHtml(s.contact.mobile)}<br>
+          🏢 ${s.branches.length} branch${s.branches.length>1?'es':''}: ${s.branches.map(b => escapeHtml(b.name)).join(', ')}<br>
+          ✅ Approver: <b>${escapeHtml(s.approver.name)}</b> · ${escapeHtml(s.approver.email)}
+          ${s.company.volume ? '<br>💰 Volume estimate: ' + escapeHtml(s.company.volume) : ''}
+          ${s.referral ? '<br>🔗 Referral: ' + escapeHtml(s.referral) : ''}
+        </div>
+      </div>
+      <div class="card-actions">
+        <span class="order-status ${s.status === 'Pending' ? 'status-pending' : s.status === 'Declined' ? 'status-rejected' : 'status-approved'}">${s.status}</span>
+        ${s.status === 'Pending' ? `
+          <button style="background:var(--success);color:white;" onclick="approveSignup('${s.id}')">✓ Approve</button>
+          <button style="background:var(--danger);color:white;" onclick="declineSignup('${s.id}')">✗ Decline</button>
+        ` : ''}
+      </div>
+    </div>
+  `;
+}
+
+function approveSignup(id) {
+  const list = getSignups();
+  const s = list.find(x => x.id === id);
+  if (!s) return;
+  const terms = prompt(`Approve "${s.company.name}" — set payment terms:\n\n  1 = Net 15 (loyal)\n  2 = Prepaid\n\nEnter 1 or 2:`, '2');
+  if (!terms || !['1', '2'].includes(terms.trim())) return;
+  const termLabel = terms.trim() === '1' ? 'Net 15' : 'Prepaid';
+
+  const nextCoNum = COMPANIES.length + 1;
+  const newCompany = {
+    code: `CO-${String(nextCoNum).padStart(3, '0')}`,
+    name: s.company.name,
+    tin: s.company.tin,
+    approver_name: 'Eisha',
+    approver_mobile: '+63 917 109 5850',
+    branches: s.branches.map((b, i) => ({
+      code: `BR-${s.id.replace('SU-', '')}-${i + 1}`,
+      name: b.name || 'Main',
+      address: b.address || s.company.address,
+      mobile: b.mobile || s.contact.mobile,
+      terms: termLabel,
+    })),
+  };
+
+  const added = JSON.parse(localStorage.getItem('vv_companies_added') || '[]');
+  added.push(newCompany);
+  localStorage.setItem('vv_companies_added', JSON.stringify(added));
+  COMPANIES.push(newCompany);
+
+  s.status = 'Approved';
+  s.approved_at = new Date().toISOString();
+  s.approved_terms = termLabel;
+  s.company_code = newCompany.code;
+  saveSignups(list);
+
+  alert(`✓ Approved ${s.company.name} with ${termLabel} terms.\n\nThey've been added to the company list as ${newCompany.code} (${newCompany.branches.length} branch${newCompany.branches.length > 1 ? 'es' : ''}). They can log in immediately via the Customer tab on the login screen.`);
+  renderAdminSignups();
+  updateTabCounts();
+}
+
+function declineSignup(id) {
+  const reason = prompt('Reason for declining? (will be emailed to applicant)');
+  if (reason === null) return;
+  if (!reason.trim()) { alert('A reason is required.'); return; }
+  const list = getSignups();
+  const s = list.find(x => x.id === id);
+  if (!s) return;
+  s.status = 'Declined';
+  s.decline_reason = reason.trim();
+  s.declined_at = new Date().toISOString();
+  saveSignups(list);
+  renderAdminSignups(); updateTabCounts();
+}
+
+// ========== ADMIN: PRODUCT REQUESTS ==========
+function renderAdminRequests() {
+  const requests = getRequests();
+  const content = document.getElementById('adminContent');
+
+  const groups = {
+    'Pending Review': requests.filter(r => r.status === 'Pending Review'),
+    'Sourcing': requests.filter(r => r.status === 'Sourcing'),
+    'Added to Catalog': requests.filter(r => r.status === 'Added to Catalog'),
+    'Declined': requests.filter(r => r.status === 'Declined'),
+  };
+
+  content.innerHTML = `
+    <h2 style="margin-bottom:14px;">Product Requests from Branches (${requests.length})</h2>
+    ${Object.entries(groups).map(([title, list]) => list.length ? `
+      <div class="orders-section">
+        <h2>${title} (${list.length})</h2>
+        ${list.map(r => requestCardHtml(r)).join('')}
+      </div>
+    ` : '').join('') || '<div class="orders-section"><div class="empty-state">No product requests yet. Branch users can request items not in the catalog via the 📸 button in Shop.</div></div>'}
+  `;
+}
+
+function requestCardHtml(r) {
+  const statusClass = r.status === 'Pending Review' ? 'pending' :
+                      r.status === 'Declined' ? 'declined' : 'approved';
+  const statusBadge = r.status === 'Pending Review' ? 'status-pending' :
+                      r.status === 'Declined' ? 'status-rejected' :
+                      r.status === 'Added to Catalog' ? 'status-approved' : 'status-submitted';
+  return `
+    <div class="request-card ${statusClass}">
+      <img src="${r.photo}" alt="${escapeHtml(r.product.name)}" class="request-photo" onclick="openPhoto('${r.id}')">
+      <div>
+        <div style="font-weight:700;font-size:15px;">${escapeHtml(r.product.name)}</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px;">
+          ${escapeHtml(r.id)} · ${escapeHtml(r.product.category)}${r.product.brand ? ' · ' + escapeHtml(r.product.brand) : ''} · ${fmtDate(r.timestamp)}
+        </div>
+        <div style="font-size:13px;margin-top:8px;">
+          <b>From:</b> ${escapeHtml(r.requester.company)} · ${escapeHtml(r.requester.branch)}
+          ${r.product.qty ? '<br><b>Est. qty:</b> ' + escapeHtml(String(r.product.qty)) + (r.product.uom ? ' ' + escapeHtml(r.product.uom) : '') : ''}
+          ${r.product.description ? '<br><b>Specs:</b> ' + escapeHtml(r.product.description) : ''}
+          ${r.notes ? '<br><b>Notes:</b> <i>' + escapeHtml(r.notes) + '</i>' : ''}
+          ${r.decline_reason ? '<br><b style="color:var(--danger);">Declined:</b> ' + escapeHtml(r.decline_reason) : ''}
+        </div>
+      </div>
+      <div class="card-actions">
+        <span class="order-status ${statusBadge}">${r.status}</span>
+        ${r.status === 'Pending Review' ? `
+          <button style="background:var(--warning);color:white;" onclick="updateRequestStatus('${r.id}', 'Sourcing')">🔍 Sourcing</button>
+          <button style="background:var(--success);color:white;" onclick="addRequestToCatalog('${r.id}')">✓ Add to Catalog</button>
+          <button style="background:var(--danger);color:white;" onclick="declineRequest('${r.id}')">✗ Decline</button>
+        ` : r.status === 'Sourcing' ? `
+          <button style="background:var(--success);color:white;" onclick="addRequestToCatalog('${r.id}')">✓ Add to Catalog</button>
+          <button style="background:var(--danger);color:white;" onclick="declineRequest('${r.id}')">✗ Can't source</button>
+        ` : ''}
+        ${r.catalog_sku ? `<div style="font-size:11px;color:var(--muted);margin-top:4px;text-align:center;">SKU: <b>${escapeHtml(r.catalog_sku)}</b></div>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+const CATEGORY_PREFIX = {
+  'Medical': 'MED', 'Utility': 'UTL', 'Office': 'OFC',
+  'Spa_Salon': 'SPA', 'Kitchen': 'KIT', 'Other': 'GEN',
+};
+
+function nextSkuFor(category) {
+  const prefix = CATEGORY_PREFIX[category] || 'GEN';
+  let max = 0;
+  PRODUCTS.forEach(p => {
+    const m = String(p.sku || '').match(new RegExp(`^${prefix}-(\\d+)$`));
+    if (m) max = Math.max(max, parseInt(m[1]));
+  });
+  return `${prefix}-${String(max + 1).padStart(4, '0')}`;
+}
+
+function addRequestToCatalog(id) {
+  const list = getRequests();
+  const r = list.find(x => x.id === id);
+  if (!r) return;
+
+  const priceStr = prompt(`Add "${r.product.name}" to the catalog.\n\nEnter the sales price in PHP (VAT-incl):`, '');
+  if (priceStr === null) return;
+  const price = parseFloat(String(priceStr).replace(/[₱,]/g, ''));
+  if (!price || price <= 0) { alert('Please enter a valid price (e.g. 150 or 150.00).'); return; }
+
+  const sku = nextSkuFor(r.product.category);
+  const newProduct = {
+    sku,
+    name: r.product.name,
+    brand: r.product.brand || '',
+    category: r.product.category === 'Other' ? 'Utility' : r.product.category, // Other → Utility for shop filtering
+    variant: r.product.uom || '',
+    uom: r.product.uom || 'unit',
+    price,
+  };
+
+  const added = JSON.parse(localStorage.getItem('vv_products_added') || '[]');
+  added.push(newProduct);
+  localStorage.setItem('vv_products_added', JSON.stringify(added));
+  PRODUCTS.push(newProduct);
+
+  r.status = 'Added to Catalog';
+  r.catalog_sku = sku;
+  r.catalog_price = price;
+  r.added_at = new Date().toISOString();
+  r.history.push({
+    at: r.added_at, by: 'V&V Admin',
+    action: `added to catalog as ${sku}`, note: `Price ${peso(price)}`,
+  });
+  saveRequests(list);
+
+  alert(`✓ "${r.product.name}" added to the catalog.\n\nSKU: ${sku}\nPrice: ${peso(price)}\nCategory: ${newProduct.category}\n\n${escapeHtml(r.requester.branch)} of ${escapeHtml(r.requester.company)} can now order it.`);
+  renderAdminRequests();
+  updateTabCounts();
+}
+
+function updateRequestStatus(id, newStatus) {
+  const list = getRequests();
+  const r = list.find(x => x.id === id);
+  if (!r) return;
+  r.status = newStatus;
+  r.history.push({ at: new Date().toISOString(), by: 'V&V Admin', action: `status → ${newStatus}` });
+  saveRequests(list);
+  renderAdminRequests(); updateTabCounts();
+}
+
+function declineRequest(id) {
+  const reason = prompt('Reason for declining? (the branch will see this)');
+  if (reason === null) return;
+  if (!reason.trim()) { alert('A reason is required.'); return; }
+  const list = getRequests();
+  const r = list.find(x => x.id === id);
+  if (!r) return;
+  r.status = 'Declined';
+  r.decline_reason = reason.trim();
+  r.history.push({ at: new Date().toISOString(), by: 'V&V Admin', action: 'declined', note: reason.trim() });
+  saveRequests(list);
+  renderAdminRequests(); updateTabCounts();
+}
+
+function openPhoto(reqId) {
+  const r = getRequests().find(x => x.id === reqId);
+  if (!r) return;
+  const modal = document.createElement('div');
+  modal.className = 'modal-backdrop';
+  modal.innerHTML = `
+    <div class="photo-modal">
+      <img src="${r.photo}">
+      <button class="close" onclick="this.closest('.modal-backdrop').remove()">Close</button>
+    </div>
+  `;
+  modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+  document.body.appendChild(modal);
+}
+
+load();
+</script>
+</body>
+</html>

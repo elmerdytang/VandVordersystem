@@ -1,0 +1,128 @@
+[
+  {
+    "name": "Healthelements Inc.",
+    "tin": "008-664-899-0000",
+    "approver_name": "Eisha",
+    "approver_mobile": "+63 917 109 5850",
+    "branches": [
+      {
+        "code": "CUST-001",
+        "name": "Alabang",
+        "address": "2/F, Commercenter Bldg., Alabang, Muntinlupa",
+        "mobile": "+63 917 581 2990",
+        "terms": "Net 15"
+      },
+      {
+        "code": "CUST-003",
+        "name": "Pasig",
+        "address": "The Grove, Pasig",
+        "mobile": "+63 917 120 7058",
+        "terms": "Net 15"
+      },
+      {
+        "code": "CUST-007",
+        "name": "Head Office",
+        "address": "2169 Narra St. United Hills Village, San Martin De Porres, Paranaque City",
+        "mobile": "+63 917 109 5850",
+        "terms": "Net 15"
+      }
+    ],
+    "code": "CO-001"
+  },
+  {
+    "name": "Integrative Wellness North Manila",
+    "tin": "756-170-176-0000",
+    "approver_name": "Eisha",
+    "approver_mobile": "+63 917 109 5850",
+    "branches": [
+      {
+        "code": "CUST-002",
+        "name": "Quezon City",
+        "address": "Sct Rallos, QC",
+        "mobile": "+63 917 192 2472",
+        "terms": "Net 15"
+      }
+    ],
+    "code": "CO-002"
+  },
+  {
+    "name": "Integrative Wellness Central Inc.",
+    "tin": "010-781-946-00001",
+    "approver_name": "Eisha",
+    "approver_mobile": "+63 917 109 5850",
+    "branches": [
+      {
+        "code": "CUST-004",
+        "name": "BGC",
+        "address": "C227, 2/F of Serendra, 11th Ave, BGC, 1632 Taguig",
+        "mobile": "+63 917 183 4511",
+        "terms": "Net 15"
+      }
+    ],
+    "code": "CO-003"
+  },
+  {
+    "name": "Holistic Wellness Central Inc.",
+    "tin": "651-718-100-00000",
+    "approver_name": "Eisha",
+    "approver_mobile": "+63 917 109 5850",
+    "branches": [
+      {
+        "code": "CUST-005",
+        "name": "Makati",
+        "address": "G/F The Proscenium Retail Row, Sakura Tower, Rockwell Center,  Makati City",
+        "mobile": "+63 917 178 1184",
+        "terms": "Net 15"
+      }
+    ],
+    "code": "CO-004"
+  },
+  {
+    "name": "Culture Hair Salon Inc.",
+    "tin": "010-293-274-0000",
+    "approver_name": "Eisha",
+    "approver_mobile": "+63 917 109 5850",
+    "branches": [
+      {
+        "code": "CUST-006",
+        "name": "Culture Salon",
+        "address": "G/F, Active Fun Bldg, BGC, Taguig",
+        "mobile": "+63 917 112 4869",
+        "terms": "Net 15"
+      }
+    ],
+    "code": "CO-005"
+  },
+  {
+    "name": "Stages Solutions, Inc",
+    "tin": "775-450-393",
+    "approver_name": "Eisha",
+    "approver_mobile": "+63 917 109 5850",
+    "branches": [
+      {
+        "code": "CUST-008",
+        "name": "Stages & Solutions",
+        "address": "2169 Unit D Narra Street, United Hills Village, San Martin De Porres, Paranaque City",
+        "mobile": "+63 917 109 5850",
+        "terms": "Net 15"
+      }
+    ],
+    "code": "CO-006"
+  },
+  {
+    "name": "HEEZ Biovitalis Inc.",
+    "tin": "676-525-820-00001",
+    "approver_name": "Eisha",
+    "approver_mobile": "+63 917 109 5850",
+    "branches": [
+      {
+        "code": "CUST-009",
+        "name": "Paranaque",
+        "address": "2/F S'Maison Conrad Hotel Manila, Marina Way, Mall of Asia Complex, 1300 Pasay City",
+        "mobile": "+63 917 632 7719",
+        "terms": "Net 15"
+      }
+    ],
+    "code": "CO-007"
+  }
+]
