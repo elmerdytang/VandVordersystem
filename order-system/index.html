@@ -3048,6 +3048,10 @@ function renderSuperShop() {
         <option value="Spa_Salon" ${cat==='Spa_Salon'?'selected':''}>Spa & Salon</option>
         <option ${cat==='Kitchen'?'selected':''}>Kitchen</option>
       </select>
+      <div class="view-toggle">
+        <button class="view-btn ${getShopView() === 'grid' ? 'active' : ''}" onclick="setShopView('grid'); renderSuperShop();">🟦 Grid</button>
+        <button class="view-btn ${getShopView() === 'list' ? 'active' : ''}" onclick="setShopView('list'); renderSuperShop();">📋 List</button>
+      </div>
     </div>
 
     ${cartEntries.length ? `
@@ -3076,9 +3080,33 @@ function renderSuperShop() {
       </div>
     ` : ''}
 
-    <div class="products-grid">
+    <div class="${getShopView() === 'list' ? 'products-list' : 'products-grid'}">
+      ${getShopView() === 'list' ? `
+        <div class="product-row header">
+          <div></div><div>SKU</div><div>Name / Brand / Variant</div>
+          <div>Category</div><div style="text-align:right;">Price</div>
+          <div>UOM</div><div>Qty &amp; Add</div>
+        </div>
+      ` : ''}
       ${items.slice(0, 200).map(p => {
         const inCart = cart[p.sku] || 0;
+        if (getShopView() === 'list') {
+          const imgHtml = p.image ? `<img src="${p.image}" alt="">` : `<div class="product-row-img-ph">📦</div>`;
+          return `
+            <div class="product-row">
+              ${imgHtml}
+              <div class="pr-sku">${escapeHtml(p.sku)}</div>
+              <div class="pr-name">${escapeHtml(p.name)}${p.brand ? ' <small>· ' + escapeHtml(p.brand) + '</small>' : ''}${p.variant ? '<br><small>' + escapeHtml(p.variant) + '</small>' : ''}</div>
+              <div class="pr-cat">${escapeHtml(p.category.replace('_', ' & '))}</div>
+              <div class="pr-price">${peso(p.price)}<small>/ ${p.uom || 'unit'}</small></div>
+              <div style="font-size:12px;color:var(--muted);">${escapeHtml(p.uom || '')}</div>
+              <div class="pr-qty-row">
+                <input type="number" min="0" value="${inCart}" id="sqty-${p.sku}" oninput="updateSuperCart('${p.sku}', this.value)">
+                <button onclick="updateSuperCart('${p.sku}', parseInt(document.getElementById('sqty-${p.sku}').value)||1)">${inCart ? '✓ ' + inCart : '+ Add'}</button>
+              </div>
+            </div>
+          `;
+        }
         const imgHtml = p.image ? `<img src="${p.image}" class="product-img">` : `<div class="product-img product-img-placeholder">📦</div>`;
         return `
           <div class="product-card">
