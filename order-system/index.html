@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>V&V Order Portal</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
   :root {
     --primary: #305496;
@@ -647,68 +648,22 @@
 
 <!-- Login Modal -->
 <div class="modal-backdrop" id="loginModal">
-  <div class="modal" style="max-width:480px;">
-    <h2>Welcome to V&amp;V Order Portal</h2>
-
-    <div style="display:flex;gap:6px;margin:14px 0 16px;border-bottom:1px solid var(--border);">
-      <button class="login-tab active" data-ltab="customer" onclick="switchLoginTab('customer')">🏪 Customer</button>
-      <button class="login-tab" data-ltab="staff" onclick="switchLoginTab('staff')">🔐 Staff Login</button>
+  <div class="modal" style="max-width:420px;">
+    <div style="text-align:center;margin-bottom:20px;">
+      <div style="font-size:36px;margin-bottom:8px;">📦</div>
+      <h2 style="margin:0;font-size:22px;">V&amp;V Order Portal</h2>
+      <p style="color:var(--muted);font-size:13px;margin-top:6px;">Sign in with your email and password.</p>
     </div>
-
-    <div id="login-customer">
-      <div style="display:flex;gap:0;border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:14px;">
-        <button id="cust-tab-select" type="button" onclick="switchCustomerMode('select')"
-          style="flex:1;padding:8px 6px;border:none;cursor:pointer;font-size:12px;font-weight:600;background:var(--primary);color:white;">
-          Select Branch
-        </button>
-        <button id="cust-tab-creds" type="button" onclick="switchCustomerMode('creds')"
-          style="flex:1;padding:8px 6px;border:none;border-left:1px solid var(--border);cursor:pointer;font-size:12px;font-weight:600;background:white;color:var(--text);">
-          Use Credentials
-        </button>
-      </div>
-
-      <div id="customer-select-mode">
-        <p style="color:var(--muted);font-size:13px;margin-bottom:14px;">Select your company and branch to place or track orders.</p>
-        <label>Company</label>
-        <select id="companySelect" onchange="onCompanyChange()">
-          <option value="">-- Select your company --</option>
-        </select>
-        <label>Branch</label>
-        <select id="roleSelect">
-          <option value="">-- Select your branch --</option>
-        </select>
-        <button class="btn-primary" onclick="login()">Continue</button>
-      </div>
-
-      <div id="customer-creds-mode" style="display:none;">
-        <p style="color:var(--muted);font-size:13px;margin-bottom:14px;">Sign in with the credentials provided by your approver.</p>
-        <label>Username</label>
-        <input type="text" id="branchUser" placeholder="Username" autocomplete="username">
-        <label>Password</label>
-        <input type="password" id="branchPass" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter') branchCredsLogin()">
-        <button class="btn-primary" onclick="branchCredsLogin()">Sign In</button>
-      </div>
-
-      <p style="text-align:center;margin-top:14px;margin-bottom:0;font-size:13px;">
-        New to V&amp;V? <a href="#" onclick="openSignup(); return false;" style="color:var(--primary);font-weight:500;">Apply for a V&amp;V Account →</a>
-      </p>
-    </div>
-
-    <div id="login-staff" style="display:none;">
-      <p style="color:var(--muted);font-size:13px;margin-bottom:14px;">For V&amp;V admin and approvers only.</p>
-      <label>Username</label>
-      <input type="text" id="staffUser" placeholder="Username" autocomplete="username">
-      <label>Password</label>
-      <input type="password" id="staffPass" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter') staffLogin()">
-      <button class="btn-primary" onclick="staffLogin()" style="background:var(--primary-dark);">Staff Sign In</button>
-      <p style="font-size:11px;color:var(--muted);margin-top:10px;line-height:1.5;">
-        <b>Demo credentials:</b><br>
-        Admin — <code>admin</code> / <code>vvadmin2026</code><br>
-        Eisha — <code>eisha</code> / <code>eisha2026</code><br>
-        Grace — <code>grace</code> / <code>Grace2026</code><br>
-        Frances — <code>frances</code> / <code>Frances2026</code>
-      </p>
-    </div>
+    <label>Email</label>
+    <input type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email">
+    <label style="margin-top:10px;">Password</label>
+    <input type="password" id="loginPass" placeholder="Password" autocomplete="current-password"
+      onkeydown="if(event.key==='Enter') doLogin()">
+    <div id="loginError" style="color:var(--danger);font-size:13px;margin:8px 0 4px;display:none;"></div>
+    <button class="btn-primary" onclick="doLogin()" id="loginBtn" style="margin-top:12px;">Sign In</button>
+    <p style="text-align:center;margin-top:16px;margin-bottom:0;font-size:13px;">
+      New to V&amp;V? <a href="#" onclick="openSignup(); return false;" style="color:var(--primary);font-weight:500;">Apply for an account →</a>
+    </p>
   </div>
 </div>
 
@@ -1413,17 +1368,138 @@
 </div>
 
 <script>
+// ========== SUPABASE ==========
+const SUPABASE_URL = 'https://hscbufdvztbrjyfqyajx.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhzY2J1ZmR2enRicmp5ZnF5YWp4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5NTA1ODEsImV4cCI6MjA5MzUyNjU4MX0.h3QUSdPv1CtyYtb0QAiKNAyw6MTgBgcDZGi7IS1gJfU';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// In-memory state populated from Supabase on login
+const STATE = { orders: [] };
+
 const ADMIN_EMAIL = 'elmerdytang@gmail.com';
 let PRODUCTS = [];
 let COMPANIES = [];
-let BASE_COMPANIES = [];    // immutable snapshot of data/companies.json — used to rebuild COMPANIES
-let LEGACY_COMPANIES = [];  // immutable snapshot of legacy_orders companies — used to rebuild COMPANIES
-let session = null;  // { companyCode, role: 'branch:<code>' | 'approver' }
+let BASE_COMPANIES = [];
+let LEGACY_COMPANIES = [];
+let session = null;
 let cart = {};
 let mo_items = [];
 
 // ========== INIT ==========
 async function load() {
+  // Check for an existing Supabase auth session (page refresh / returning user)
+  const { data: { session: authSession } } = await sb.auth.getSession();
+  if (authSession) {
+    await initFromSupabase(authSession.user);
+    return;
+  }
+  // No session — show login modal (it's already visible by default)
+}
+
+// Called after successful Supabase auth — loads all data and sets up the session
+async function initFromSupabase(user) {
+  // 1. Load profile
+  const { data: profile, error: profileErr } = await sb
+    .from('profiles')
+    .select('*, branch:branches(*, company:companies(*)), company:companies(*)')
+    .eq('id', user.id)
+    .single();
+
+  if (profileErr || !profile) {
+    alert('Your account is not fully set up yet. Please contact V&V admin.');
+    await sb.auth.signOut();
+    return;
+  }
+
+  // 2. Load companies + branches
+  const { data: companiesData } = await sb.from('companies').select('*').order('name');
+  const { data: branchesData } = await sb.from('branches').select('*').order('name');
+  COMPANIES = (companiesData || []).map(co => ({
+    code: co.code, name: co.name, tin: co.tin,
+    approver_name: co.approver_name, approver_mobile: co.approver_mobile,
+    _uuid: co.id,
+    branches: (branchesData || [])
+      .filter(b => b.company_id === co.id)
+      .map(b => ({ code: b.code, name: b.name, address: b.address, mobile: b.mobile, terms: b.terms, _uuid: b.id }))
+  }));
+
+  // 3. Load products (from Supabase if seeded, else fallback to JSON)
+  const { data: dbProducts, count } = await sb.from('products').select('*', { count: 'exact' }).eq('is_active', true).order('name');
+  if (dbProducts && dbProducts.length > 0) {
+    PRODUCTS = dbProducts.map(p => ({
+      sku: p.sku, name: p.name, category: p.category, brand: p.brand,
+      variant: p.variant, uom: p.uom, price: p.price, supplier: p.supplier,
+      image: p.image_url, active: p.is_active, _uuid: p.id
+    }));
+  } else {
+    // Fallback: load from JSON files while database is empty
+    const baseProducts = await (await fetch('data/products.json')).json();
+    PRODUCTS = baseProducts.map(p => ({ active: true, ...p }));
+  }
+
+  // 4. Load orders
+  await reloadOrders();
+
+  // 5. Build session object compatible with existing role-check functions
+  const roleMap = { vv_admin: 'admin', approver: 'approver', super_approver: 'super_approver', branch_user: 'branch_user' };
+  session = {
+    role: roleMap[profile.role] || profile.role,
+    name: profile.full_name || user.email,
+    _user_id: user.id,
+    _branch_id: profile.branch_id,
+    _company_id: profile.company_id,
+  };
+
+  if (profile.role === 'branch_user' && profile.branch) {
+    const br = profile.branch;
+    const co = br.company;
+    session.companyCode = co?.code;
+    session.branchCode = br.code;
+  } else if (profile.role === 'approver' && profile.company) {
+    session.companyCode = profile.company.code;
+  }
+
+  onLoggedIn();
+}
+
+// Fetch all orders from Supabase and populate STATE.orders
+async function reloadOrders() {
+  const { data: rows } = await sb.from('orders')
+    .select(`*, items:order_items(*), history:order_history(*), branch:branches(*), company:companies(*)`)
+    .order('placed_at', { ascending: false });
+  STATE.orders = (rows || []).map(adaptOrder);
+}
+
+// Convert Supabase order row → app order object shape
+function adaptOrder(raw) {
+  return {
+    order_id: raw.order_id,
+    timestamp: raw.placed_at,
+    status: raw.status,
+    company: { code: raw.company?.code, name: raw.company?.name, tin: raw.company?.tin, approver: raw.company?.approver_name },
+    branch: { code: raw.branch?.code, name: raw.branch?.name, address: raw.branch?.address, mobile: raw.branch?.mobile, terms: raw.branch?.terms },
+    lines: (raw.items || []).map(i => ({
+      sku: i.product_sku, name: i.product_name, brand: i.product_brand,
+      variant: i.product_variant, uom: i.product_uom,
+      qty: i.qty, unit_price: i.unit_price, line_total: i.total,
+    })),
+    total_php: Number(raw.total_php),
+    fulfillment: raw.fulfillment,
+    notes: raw.notes,
+    history: (raw.history || [])
+      .sort((a, b) => new Date(a.at) - new Date(b.at))
+      .map(h => ({ at: h.at, by: h.by_name, action: h.action, note: h.note })),
+    invoice_number: raw.invoice_number,
+    si_number: raw.invoice_number,
+    deposit_slip: raw.deposit_slip_url,
+    deposit_slip_validated: raw.deposit_slip_validated,
+    rejection_reason: raw.rejection_reason,
+    _uuid: raw.id,
+  };
+}
+
+// ---- stub — no longer used (kept so old call sites don't break) ----
+async function load_legacy() {
   const baseProducts = await (await fetch('data/products.json')).json();
   const addedProducts = JSON.parse(localStorage.getItem('vv_products_added') || '[]');
   PRODUCTS = [...baseProducts, ...addedProducts].map(p => ({ active: true, ...p }));
@@ -1476,71 +1552,52 @@ async function load() {
   }
 
   const sel = document.getElementById('companySelect');
-  COMPANIES.forEach(c => {
-    const opt = document.createElement('option');
-    opt.value = c.code;
-    opt.textContent = `${c.name} (${c.branches.length} branch${c.branches.length>1?'es':''})`;
-    sel.appendChild(opt);
-  });
-  const saved = sessionStorage.getItem('vv_session');
-  if (saved) { session = JSON.parse(saved); onLoggedIn(); }
-
-  const savedCart = sessionStorage.getItem('vv_cart');
-  if (savedCart) cart = JSON.parse(savedCart);
+  // legacy stub close — not used in Supabase mode
 }
 
-// Rebuild COMPANIES from cached base/legacy data + current localStorage overlays.
-// Called at load time and whenever vv_companies_added / vv_companies_edited change.
-function rebuildCompanies() {
-  const added = JSON.parse(localStorage.getItem('vv_companies_added') || '[]');
-  // Deep-clone base/legacy so overlays never mutate the cached originals.
-  COMPANIES = [
-    ...BASE_COMPANIES.map(c => ({ ...c, branches: c.branches.map(b => ({ ...b })) })),
-    ...added,
-    ...LEGACY_COMPANIES.map(c => ({ ...c, branches: (c.branches || []).map(b => ({ ...b })) })),
-  ];
-  const coEdits = JSON.parse(localStorage.getItem('vv_companies_edited') || '{}');
-  const addedCodes = new Set(added.map(c => c.code));
-  COMPANIES = COMPANIES.filter(co => !(coEdits[co.code] && coEdits[co.code]._deleted));
-  COMPANIES.forEach(co => {
-    if (!addedCodes.has(co.code) && coEdits[co.code]) Object.assign(co, coEdits[co.code]);
-  });
+// rebuildCompanies: no-op in Supabase mode (COMPANIES is loaded from DB)
+function rebuildCompanies() {}
+function rebuildLoginDropdown() {}
+function onCompanyChange() {}
+
+// ========== SUPABASE AUTH ==========
+
+async function doLogin() {
+  const email = document.getElementById('loginEmail').value.trim();
+  const pass  = document.getElementById('loginPass').value;
+  const errEl = document.getElementById('loginError');
+  const btn   = document.getElementById('loginBtn');
+
+  errEl.style.display = 'none';
+  if (!email || !pass) { errEl.textContent = 'Please enter your email and password.'; errEl.style.display = 'block'; return; }
+
+  btn.textContent = 'Signing in…';
+  btn.disabled = true;
+
+  const { data, error } = await sb.auth.signInWithPassword({ email, password: pass });
+
+  btn.textContent = 'Sign In';
+  btn.disabled = false;
+
+  if (error) {
+    errEl.textContent = error.message === 'Invalid login credentials'
+      ? 'Incorrect email or password.'
+      : error.message;
+    errEl.style.display = 'block';
+    return;
+  }
+
+  document.getElementById('loginEmail').value = '';
+  document.getElementById('loginPass').value = '';
+  await initFromSupabase(data.user);
 }
 
-// Cross-tab sync: when another tab writes company data, refresh COMPANIES and re-render the
-// current view if it happens to be All Branches or Shop for a Branch.
-window.addEventListener('storage', function(e) {
-  if (e.key !== 'vv_companies_added' && e.key !== 'vv_companies_edited') return;
-  if (!session) return;
-  rebuildCompanies();
-  rebuildLoginDropdown();
-  const active = document.querySelector('.tab.active')?.dataset.tab;
-  if (active === 'super-branches' || active === 'admin-branches') renderSuperBranches();
-  else if (active === 'super-shop' || active === 'admin-shop') renderSuperShop();
-});
-
-function onCompanyChange() {
-  const code = document.getElementById('companySelect').value;
-  const roleSel = document.getElementById('roleSelect');
-  roleSel.innerHTML = '<option value="">-- Select your branch --</option>';
-  if (!code) return;
-  const co = COMPANIES.find(c => c.code === code);
-  co.branches.forEach(b => {
-    const opt = document.createElement('option');
-    opt.value = `branch:${b.code}`;
-    opt.textContent = `🏪 ${b.name}`;
-    roleSel.appendChild(opt);
-  });
-}
-
-function login() {
-  const companyCode = document.getElementById('companySelect').value;
-  const role = document.getElementById('roleSelect').value;
-  if (!companyCode || !role) { alert('Please select your company and branch.'); return; }
-  session = { companyCode, role };
-  sessionStorage.setItem('vv_session', JSON.stringify(session));
-  onLoggedIn();
-}
+// legacy stubs — no longer used
+function login() {}
+function staffLogin() {}
+function branchCredsLogin() {}
+function switchLoginTab() {}
+function switchCustomerMode() {}
 
 function getCompany() { return COMPANIES.find(c => c.code === session.companyCode); }
 function getBranch() {
@@ -1711,25 +1768,96 @@ function switchTab(tab) {
   updateTabCounts();
 }
 
-function logout() {
-  sessionStorage.removeItem('vv_session');
-  sessionStorage.removeItem('vv_cart');
+async function logout() {
+  await sb.auth.signOut();
   cart = {}; session = null;
+  STATE.orders = [];
   location.reload();
 }
 
-// ========== ORDERS STORAGE ==========
+// ========== ORDERS STORAGE (Supabase-backed) ==========
+
 function getAllOrders() {
-  return JSON.parse(localStorage.getItem('vv_orders') || '[]');
+  return STATE.orders;
 }
-function saveOrders(orders) {
-  localStorage.setItem('vv_orders', JSON.stringify(orders));
+
+// Kept for backward compat — no-op (STATE is the source of truth now)
+function saveOrders() {}
+
+async function saveOrder(order) {
+  // 1. Update in-memory STATE immediately so renders are instant
+  const idx = STATE.orders.findIndex(o => o.order_id === order.order_id);
+  if (idx >= 0) STATE.orders[idx] = order; else STATE.orders.unshift(order);
+
+  // 2. Persist to Supabase in the background
+  try {
+    if (order._uuid) {
+      // Existing order — update fields only (items + history managed separately)
+      await sb.from('orders').update({
+        status: order.status,
+        fulfillment: order.fulfillment,
+        notes: order.notes,
+        total_php: order.total_php,
+        invoice_number: order.invoice_number || order.si_number || null,
+        deposit_slip_url: order.deposit_slip || null,
+        deposit_slip_validated: !!order.deposit_slip_validated,
+        rejection_reason: order.rejection_reason || null,
+      }).eq('id', order._uuid);
+    } else {
+      // New order — full insert (called from submitForApproval / shop-for-branch flows)
+      await _createOrderInSupabase(order);
+    }
+  } catch (e) {
+    console.error('saveOrder failed:', e);
+  }
 }
-function saveOrder(order) {
-  const orders = getAllOrders();
-  const idx = orders.findIndex(o => o.order_id === order.order_id);
-  if (idx >= 0) orders[idx] = order; else orders.unshift(order);
-  saveOrders(orders);
+
+// Insert a brand-new order + items + history into Supabase
+async function _createOrderInSupabase(order) {
+  const branchRow = COMPANIES.flatMap(c => c.branches).find(b => b.code === order.branch?.code);
+  const companyRow = COMPANIES.find(c => c.code === order.company?.code);
+  const branch_id  = branchRow?._uuid  || session._branch_id  || null;
+  const company_id = companyRow?._uuid || session._company_id || null;
+
+  const { data: orderRow, error } = await sb.from('orders').insert({
+    order_id: order.order_id,
+    branch_id, company_id,
+    status: order.status,
+    fulfillment: order.fulfillment,
+    notes: order.notes || null,
+    total_php: order.total_php,
+    placed_at: order.timestamp,
+    placed_by: session._user_id || null,
+  }).select().single();
+
+  if (error) throw error;
+
+  order._uuid = orderRow.id; // attach UUID for future updates
+
+  if (order.lines?.length) {
+    await sb.from('order_items').insert(order.lines.map(l => ({
+      order_id: orderRow.id,
+      product_sku: l.sku, product_name: l.name,
+      product_brand: l.brand || null, product_variant: l.variant || null, product_uom: l.uom || null,
+      qty: l.qty, unit_price: l.unit_price, total: l.line_total,
+    })));
+  }
+  if (order.history?.length) {
+    await sb.from('order_history').insert(order.history.map(h => ({
+      order_id: orderRow.id,
+      action: h.action, by_name: h.by || null, at: h.at, note: h.note || null,
+    })));
+  }
+}
+
+// Append a single history entry to an existing order
+async function _addHistory(order, action, note) {
+  const entry = { at: new Date().toISOString(), by: session.name || 'System', action, note: note || null };
+  if (!order.history) order.history = [];
+  order.history.push(entry);
+  if (order._uuid) {
+    await sb.from('order_history').insert({ order_id: order._uuid, action, by_name: entry.by, at: entry.at, note: entry.note });
+  }
 }
 
 // ========== CONSOLIDATED SHEETS STORAGE ==========
@@ -2018,41 +2146,47 @@ function generateOrderId() {
   return `ORD-${ymd}-${rand}`;
 }
 
-function submitForApproval() {
-  const orderId = generateOrderId();
-  const fulfillment = document.querySelector('input[name="fulfill"]:checked').value;
-  const notes = document.getElementById('orderNotes').value.trim();
-  const timestamp = new Date().toISOString();
+async function submitForApproval() {
+  const btn = document.querySelector('#checkoutModal .btn-submit');
+  if (btn) { btn.textContent = 'Submitting…'; btn.disabled = true; }
 
-  const lines = Object.entries(cart).map(([sku, qty]) => {
-    const p = PRODUCTS.find(x => x.sku === sku);
-    return {
-      sku, name: p.name, brand: p.brand, variant: p.variant, uom: p.uom,
-      qty, unit_price: p.price, line_total: p.price * qty,
+  try {
+    const orderId = generateOrderId();
+    const fulfillment = document.querySelector('input[name="fulfill"]:checked').value;
+    const notes = document.getElementById('orderNotes').value.trim();
+    const timestamp = new Date().toISOString();
+
+    const lines = Object.entries(cart).map(([sku, qty]) => {
+      const p = PRODUCTS.find(x => x.sku === sku);
+      return {
+        sku, name: p.name, brand: p.brand, variant: p.variant, uom: p.uom,
+        qty, unit_price: p.price, line_total: p.price * qty,
+      };
+    });
+    const total = lines.reduce((s, l) => s + l.line_total, 0);
+    const co = getCompany();
+    const br = getBranch();
+
+    const order = {
+      order_id: orderId,
+      timestamp,
+      status: 'Pending Approval',
+      company: { code: co.code, name: co.name, tin: co.tin, approver: co.approver_name },
+      branch: { code: br.code, name: br.name, address: br.address, mobile: br.mobile, terms: br.terms },
+      fulfillment, notes,
+      lines, total_php: total,
+      history: [{ at: timestamp, by: `${br.name} branch`, action: 'submitted_for_approval' }],
     };
-  });
-  const total = lines.reduce((s, l) => s + l.line_total, 0);
-  const co = getCompany();
-  const br = getBranch();
 
-  const order = {
-    order_id: orderId,
-    timestamp,
-    status: 'Pending Approval',
-    company: { code: co.code, name: co.name, tin: co.tin, approver: co.approver_name },
-    branch: { code: br.code, name: br.name, address: br.address, mobile: br.mobile, terms: br.terms },
-    fulfillment, notes,
-    lines, total_php: total,
-    history: [{ at: timestamp, by: `${br.name} branch`, action: 'submitted_for_approval' }],
-  };
-
-  saveOrder(order);
-  cart = {};
-  sessionStorage.removeItem('vv_cart');
-  closeModal('checkoutModal');
-
-  alert(`Order ${orderId} submitted for approval.\n\nApprover: ${co.approver_name}\n\nYou'll see it in the "My Orders" tab.`);
-  switchTab('my-orders');
+    await saveOrder(order);
+    cart = {};
+    sessionStorage.removeItem('vv_cart');
+    closeModal('checkoutModal');
+    alert(`Order ${orderId} submitted for approval.\n\nApprover: ${co.approver_name}\n\nYou'll see it in the "My Orders" tab.`);
+    switchTab('my-orders');
+  } finally {
+    if (btn) { btn.textContent = 'Submit Order'; btn.disabled = false; }
+  }
 }
 
 // ========== MY ORDERS (branch view) ==========
@@ -5150,73 +5284,16 @@ function getEffectiveBuiltIn(originalKey) {
   };
 }
 
-function staffLogin() {
-  const u = document.getElementById('staffUser').value.trim().toLowerCase();
-  const p = document.getElementById('staffPass').value;
-  const staffEdits = getStaffEdits();
+// staffLogin / branchCredsLogin: replaced by doLogin() (Supabase Auth)
 
-  let cred = null;
-  let originalKey = u;
-
-  if (STAFF_CREDS[u]) {
-    // Direct built-in match (original or unchanged username)
-    cred = { ...STAFF_CREDS[u] };
-    const edit = staffEdits[u] || {};
-    if (edit.password) cred.password = edit.password;
-    if (edit.name) cred.name = edit.name;
-  } else {
-    // Check if u matches a renamed built-in account
-    for (const [key, edit] of Object.entries(staffEdits)) {
-      if (STAFF_CREDS[key] && edit.username && edit.username.toLowerCase() === u) {
-        cred = { ...STAFF_CREDS[key] };
-        if (edit.password) cred.password = edit.password;
-        if (edit.name) cred.name = edit.name;
-        originalKey = key;
-        break;
-      }
-    }
-  }
-
-  if (!cred) {
-    const added = JSON.parse(localStorage.getItem('vv_staff_added') || '[]');
-    const dynamicCred = added.find(x => x.username.toLowerCase() === u);
-    if (dynamicCred) { cred = dynamicCred; originalKey = u; }
-  }
-
-  if (!cred || cred.password !== p) { alert('Invalid username or password.'); return; }
-  session = { role: cred.role, username: originalKey, name: cred.name };
-  if (cred.approver_id) session.approver_id = cred.approver_id;
-  sessionStorage.setItem('vv_session', JSON.stringify(session));
-  document.getElementById('staffUser').value = '';
-  document.getElementById('staffPass').value = '';
-  onLoggedIn();
+// ========== SIGNUPS (Supabase-backed) ==========
+function getSignups() {
+  // Return cached signups from STATE if available, else empty (admin reloads via renderAdminSignups)
+  return STATE.signups || [];
 }
-
-// ========== SIGNUPS ==========
-function getSignups() { return JSON.parse(localStorage.getItem('vv_signups') || '[]'); }
-function saveSignups(list) { localStorage.setItem('vv_signups', JSON.stringify(list)); }
-
-function switchCustomerMode(mode) {
-  const isCreds = mode === 'creds';
-  document.getElementById('customer-select-mode').style.display = isCreds ? 'none' : 'block';
-  document.getElementById('customer-creds-mode').style.display = isCreds ? 'block' : 'none';
-  document.getElementById('cust-tab-select').style.background = isCreds ? 'white' : 'var(--primary)';
-  document.getElementById('cust-tab-select').style.color = isCreds ? 'var(--text)' : 'white';
-  document.getElementById('cust-tab-creds').style.background = isCreds ? 'var(--primary)' : 'white';
-  document.getElementById('cust-tab-creds').style.color = isCreds ? 'white' : 'var(--text)';
-}
-
-function branchCredsLogin() {
-  const u = document.getElementById('branchUser').value.trim().toLowerCase();
-  const p = document.getElementById('branchPass').value;
-  const logins = JSON.parse(localStorage.getItem('vv_branch_logins') || '[]');
-  const found = logins.find(x => x.username.toLowerCase() === u && x.password === p);
-  if (!found) { alert('Invalid username or password.'); return; }
-  session = { role: 'branch_user', companyCode: found.company_code, branchCode: found.branch_code };
-  sessionStorage.setItem('vv_session', JSON.stringify(session));
-  document.getElementById('branchUser').value = '';
-  document.getElementById('branchPass').value = '';
-  onLoggedIn();
+function saveSignups(list) {
+  STATE.signups = list;
+  // No localStorage write — Supabase is the source of truth
 }
 
 function getBranchLogin(branchCode) {
@@ -5522,7 +5599,7 @@ function addBranchRow() {
   document.getElementById('branchesList').appendChild(row);
 }
 
-function submitSignup() {
+async function submitSignup() {
   const company = document.getElementById('su_company').value.trim();
   const tin = document.getElementById('su_tin').value.trim();
   const address = document.getElementById('su_address').value.trim();
@@ -5530,14 +5607,10 @@ function submitSignup() {
   const contact = document.getElementById('su_contact').value.trim();
   const email = document.getElementById('su_email').value.trim();
   const mobile = document.getElementById('su_mobile').value.trim();
-  const proposedUsername = document.getElementById('su_username').value.trim().toLowerCase();
-  const proposedPassword = document.getElementById('su_password').value;
 
   if (!company || !tin || !address || !type || !contact || !email || !mobile) {
     alert('Please fill in all required fields marked with *'); return;
   }
-  if (!proposedUsername) { alert('Please enter a proposed username.'); return; }
-  if (proposedPassword.length < 6) { alert('Password must be at least 6 characters.'); return; }
 
   const branches = [...document.querySelectorAll('#branchesList .branch-row')].map(r => ({
     name: r.querySelector('.br-name').value.trim(),
@@ -5547,26 +5620,21 @@ function submitSignup() {
 
   if (!branches.length) { alert('Please list at least one branch.'); return; }
 
-  const signup = {
-    id: 'SU-' + new Date().toISOString().slice(0, 10).replace(/-/g, '') + '-' + Math.random().toString(36).slice(2, 5).toUpperCase(),
-    timestamp: new Date().toISOString(),
-    status: 'Pending',
-    account_type: 'group_super_approver',
-    company: { name: company, tin, address, type, volume: document.getElementById('su_volume').value },
-    contact: { name: contact, role: document.getElementById('su_role').value.trim(), email, mobile },
+  const { error } = await sb.from('signups').insert({
+    company_name: company,
+    tin, address,
+    business_type: type,
+    volume: document.getElementById('su_volume').value,
+    contact_name: contact,
+    contact_role: document.getElementById('su_role').value.trim(),
+    email, mobile,
     branches,
-    approver: { name: contact, mobile, email },
-    proposed_username: proposedUsername,
-    proposed_password: proposedPassword,
-    referral: document.getElementById('su_referral').value.trim(),
-  };
+  });
 
-  const all = getSignups();
-  all.unshift(signup);
-  saveSignups(all);
+  if (error) { alert('Submission failed: ' + error.message); return; }
 
   closeModal('signupModal');
-  alert(`Application submitted!\n\nReference: ${signup.id}\n\nV&V will review and activate your account within 1–2 business days.`);
+  alert(`Application submitted!\n\nV&V will review and activate your account within 1–2 business days.`);
 
   ['su_company','su_tin','su_address','su_contact','su_role','su_email','su_mobile','su_referral','su_username','su_password'].forEach(id => {
     const el = document.getElementById(id); if (el) el.value = '';
@@ -5578,8 +5646,8 @@ function submitSignup() {
 }
 
 // ========== PRODUCT REQUESTS ==========
-function getRequests() { return JSON.parse(localStorage.getItem('vv_requests') || '[]'); }
-function saveRequests(list) { localStorage.setItem('vv_requests', JSON.stringify(list)); }
+function getRequests() { return STATE.requests || []; }
+function saveRequests(list) { STATE.requests = list; }
 
 let pendingPhoto = null;
 
@@ -5702,7 +5770,16 @@ function submitProductRequest() {
 }
 
 // ========== ADMIN: SIGNUPS ==========
-function renderAdminSignups() {
+async function renderAdminSignups() {
+  const { data } = await sb.from('signups').select('*').order('created_at', { ascending: false });
+  STATE.signups = (data || []).map(s => ({
+    id: s.id, timestamp: s.created_at, status: s.status,
+    company: { name: s.company_name, tin: s.tin, address: s.address, type: s.business_type, volume: s.volume },
+    contact: { name: s.contact_name, role: s.contact_role, email: s.email, mobile: s.mobile },
+    branches: s.branches || [],
+    terms: s.terms, decline_reason: s.decline_reason,
+    _uuid: s.id,
+  }));
   const signups = getSignups();
   const content = document.getElementById('adminContent');
 
@@ -5826,7 +5903,15 @@ function declineSignup(id) {
 }
 
 // ========== ADMIN: PRODUCT REQUESTS ==========
-function renderAdminRequests() {
+async function renderAdminRequests() {
+  const { data } = await sb.from('product_requests').select('*').order('created_at', { ascending: false });
+  STATE.requests = (data || []).map(r => ({
+    id: r.id, timestamp: r.created_at, status: r.status,
+    product_name: r.product_name, description: r.description, photo_url: r.photo_url,
+    admin_note: r.admin_note, branch_name: r.branch_name, company_name: r.company_name,
+    _uuid: r.id,
+    company: { name: r.company_name }, branch: { name: r.branch_name },
+  }));
   const requests = getRequests();
   const content = document.getElementById('adminContent');
 
@@ -6025,6 +6110,11 @@ function openPhoto(reqId) {
   modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
   document.body.appendChild(modal);
 }
+
+// Listen for auth state changes (handles token refresh, etc.)
+sb.auth.onAuthStateChange(async (event, authSession) => {
+  if (event === 'SIGNED_OUT') { cart = {}; session = null; STATE.orders = []; location.reload(); }
+});
 
 load();
 </script>
